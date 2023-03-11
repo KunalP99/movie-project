@@ -6,9 +6,36 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper';
 
+// Get width of the current window
+const getWindowDimensions = () => {
+  const { innerWidth: width } = window;
+  return {
+    width
+  };
+};
+
+// Fire resize event and set the dimensions each time resize event occurs
+const useWindowDimensions = () => {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+};
+
 const Hero = () => {
   const [moviesInTheatre, setMoviesInTheatre] = useState<IMoviesInTheatre[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const { width } = useWindowDimensions();
 
   // Fetch data from TMDB api
   useEffect(() => {
@@ -37,7 +64,7 @@ const Hero = () => {
       >
         {!loading && moviesInTheatre.map(movie => (
           <SwiperSlide key={movie.id}>
-            <img src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+            <img src={width > 800 ? `http://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `http://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
           </SwiperSlide>
         ))}
       </Swiper>
