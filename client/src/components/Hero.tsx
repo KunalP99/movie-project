@@ -64,7 +64,7 @@ const Hero = () => {
       >
         {!loading && moviesInTheatre.map(movie => (
           <SwiperSlide key={movie.id}>
-            <img src={width > 800 ? `http://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `http://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+            <img src={width > 800 ? `http://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `http://image.tmdb.org/t/p/w780/${movie.poster_path}`} alt={movie.title} />
           </SwiperSlide>
         ))}
       </Swiper>

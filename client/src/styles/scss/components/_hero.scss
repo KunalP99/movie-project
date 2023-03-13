@@ -1,0 +1,20 @@
+.hero-container {
+  .swiper {
+    .swiper-slide img{
+      object-fit: cover;
+      width: 100vw;
+    }
+
+    .swiper-pagination {
+      padding-bottom: $spacing-08;
+
+      .swiper-pagination-bullet{
+        width: 12px;
+        height: 12px;
+      }
+      .swiper-pagination-bullet-active {
+        background-color: $primary-colour; 
+      }
+    }
+  }
+}
