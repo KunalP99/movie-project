@@ -100,6 +100,7 @@ p {
 .hero-container .swiper .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
+  background-color: rgba(50, 50, 50, 0.61);
 }
 .hero-container .swiper .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #70A7B2;
@@ -111,19 +112,18 @@ p {
 @media (min-width: 800px) {
   .hero-container {
     position: relative;
-    border: solid 2px red;
   }
   .hero-container .hero-banner-img {
-    height: 100vh;
+    height: 900px;
   }
   .hero-container .swiper .banner-foreground-overlay {
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 900px;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000 100%);
   }
   .hero-container .swiper .swiper-pagination {
-    padding-bottom: 56px;
+    padding-bottom: 40px;
   }
   .hero-container .swiper .swiper-pagination .swiper-pagination-bullet {
     width: 18px;
@@ -132,6 +132,7 @@ p {
   .hero-container .swiper .hero-movie-information-container {
     position: absolute;
     bottom: 300px;
+    left: 30px;
     display: flex;
     flex-direction: column;
     z-index: 3;
@@ -149,18 +150,20 @@ p {
             backdrop-filter: blur(2px);
     padding: 8px;
     border-radius: 8px;
+    margin-bottom: 24px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-title {
+    margin-bottom: 16px;
   }
 }
-@media (max-height: 970px) {
-  .hero-container .hero-banner-img {
-    height: 970px;
-  }
-  .hero-container .swiper .banner-foreground-overlay {
-    height: 970px;
+@media (min-width: 1000px) {
+  .hero-container .swiper .hero-movie-information-container {
+    left: 100px;
   }
 }
-@media (max-width: 768px) {
-  .hero-container .swiper .banner-foreground-overlay {
-    display: none;
+@media (min-width: 1700px) {
+  .hero-container .swiper .hero-movie-information-container {
+    left: 180px;
+    bottom: 200px;
   }
 }
