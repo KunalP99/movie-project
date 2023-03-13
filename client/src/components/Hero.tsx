@@ -67,6 +67,16 @@ const Hero = () => {
           <SwiperSlide key={movie.id}>
             <div className='banner-foreground-overlay'></div>
             <img src={width > 800 ? `http://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `http://image.tmdb.org/t/p/w780/${movie.poster_path}`} alt={movie.title} />
+            <div className='hero-movie-information-container'>
+              <div className='hero-rating-container'></div>
+              <div className='hero-title'>
+                <h1>{movie.title}</h1>
+              </div>
+              <div className='hero-overview'>
+                <p>{movie.overview}</p>
+              </div>
+              <div className='hero-btn-container'></div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

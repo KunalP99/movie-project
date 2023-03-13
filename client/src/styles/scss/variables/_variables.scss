@@ -1,10 +1,12 @@
+@use 'sass:math';
 @import './spacing';
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap');
 
 $main-font-family: 'Red Hat Display', sans-serif;
 
-
 // Colours 
 $primary-colour: #70A7B2;
+$primary-font-colour: #FFFFFF;
 $foreground-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000 100%);
 
 /* Typography */

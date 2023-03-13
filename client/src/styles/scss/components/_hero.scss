@@ -21,6 +21,7 @@
 
 @media (min-width: 800px) {
   .hero-container {
+    position: relative;
     .swiper {
       .banner-foreground-overlay {
         position: absolute;
@@ -33,12 +34,19 @@
       }
 
       .swiper-pagination {
-        padding-bottom: $spacing-56
+        padding-bottom: $spacing-56;
+
+        .swiper-pagination-bullet {
+          width: 18px;
+          height: 18px;
+        }
       }
 
-      .swiper-pagination-bullet {
-        width: 18px;
-        height: 18px;
+      .hero-movie-information-container {
+        position: absolute;
+        z-index: 3;
+        color: $primary-font-colour;
+        top: 0;
       }
     }
   }

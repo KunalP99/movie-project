@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -50,6 +51,10 @@ table {
 
 /* Typography */
 /* Font Weights */
+body {
+  font-family: "Red Hat Display", sans-serif;
+}
+
 .hero-container .swiper .swiper-slide img {
   -o-object-fit: cover;
      object-fit: cover;
@@ -67,6 +72,9 @@ table {
 }
 
 @media (min-width: 800px) {
+  .hero-container {
+    position: relative;
+  }
   .hero-container .swiper .banner-foreground-overlay {
     position: absolute;
     width: 100vw;
@@ -79,8 +87,14 @@ table {
   .hero-container .swiper .swiper-pagination {
     padding-bottom: 56px;
   }
-  .hero-container .swiper .swiper-pagination-bullet {
+  .hero-container .swiper .swiper-pagination .swiper-pagination-bullet {
     width: 18px;
     height: 18px;
+  }
+  .hero-container .swiper .hero-movie-information-container {
+    position: absolute;
+    z-index: 3;
+    color: #FFFFFF;
+    top: 0;
   }
 }
