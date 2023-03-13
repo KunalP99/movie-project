@@ -12,50 +12,35 @@ $foreground-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000
 /* Typography */
 // H1
 @mixin h1 {
-  font-size: pxToRem(60px);
+  font-size: clamp(pxToRem(30px), 4vw, pxToRem(60px));
   font-weight: $font-weight-bold;
 }
 
 @mixin h2 {
-  font-size: pxToRem(48px);
+  font-size: clamp( pxToRem(24px), 4vw, pxToRem(48px));
   font-weight: $font-weight-bold;
 }
 
 @mixin h3 {
-  font-size: pxToRem(40px);
+  font-size: clamp(pxToRem(18px), 4vw, pxToRem(40px));
   font-weight: $font-weight-bold;
 }
 
 @mixin subtitle {
-  font-size: pxToRem(28px);
+  font-size: clamp(pxToRem(20px), 4vw, pxToRem(28px));
   font-weight: $font-weight-regular;
 }
 
 @mixin subtitle2 {
-  font-size: pxToRem(18px);
+  font-size: clamp(pxToRem(10px), 4vw, pxToRem(18px));
   font-weight: $font-weight-regular;
   letter-spacing: 0.4px;
   text-transform: capitalize;
 }
 
-@mixin body-large-regular {
-  font-size: pxToRem(20px);
+@mixin body-regular {
+  font-size: clamp(pxToRem(16px), 4vw, pxToRem(20px));
   font-weight: $font-weight-regular;
-}
-
-@mixin body-large-semi {
-  font-size: pxToRem(20px);
-  font-weight: $font-weight-semi;
-}
-
-@mixin body-small-regular {
-  font-size: pxToRem(16px);
-  font-weight: $font-weight-regular;
-}
-
-@mixin body-small-semi {
-  font-size: pxToRem(16px);
-  font-weight: $font-weight-semi;
 }
 
 /* Font Weights */
