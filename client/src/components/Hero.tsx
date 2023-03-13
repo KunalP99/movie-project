@@ -57,6 +57,7 @@ const Hero = () => {
     <section className="hero-container">
       <Swiper 
         pagination={true}
+        loop={true}
         modules={[Pagination, Autoplay]}
         autoplay={{
           delay: 9000
@@ -64,6 +65,7 @@ const Hero = () => {
       >
         {!loading && moviesInTheatre.map(movie => (
           <SwiperSlide key={movie.id}>
+            <div className='banner-foreground-overlay'></div>
             <img src={width > 800 ? `http://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `http://image.tmdb.org/t/p/w780/${movie.poster_path}`} alt={movie.title} />
           </SwiperSlide>
         ))}

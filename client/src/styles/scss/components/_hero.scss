@@ -1,6 +1,6 @@
 .hero-container {
   .swiper {
-    .swiper-slide img{
+    .swiper-slide img {
       object-fit: cover;
       width: 100vw;
     }
@@ -14,6 +14,31 @@
       }
       .swiper-pagination-bullet-active {
         background-color: $primary-colour; 
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .hero-container {
+    .swiper {
+      .banner-foreground-overlay {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background: $foreground-overlay;
+      }
+      .swiper-slide img {
+        height: 100vh;
+      }
+
+      .swiper-pagination {
+        padding-bottom: $spacing-56
+      }
+
+      .swiper-pagination-bullet {
+        width: 18px;
+        height: 18px;
       }
     }
   }
