@@ -6,6 +6,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper';
 
+// Images
+import RatingStar from '../images/rating-star.svg';
+
 // Get width of the current window
 const getWindowDimensions = () => {
   const { innerWidth: width } = window;
@@ -66,9 +69,12 @@ const Hero = () => {
         {!loading && moviesInTheatre.map(movie => (
           <SwiperSlide key={movie.id}>
             <div className='banner-foreground-overlay'></div>
-            <img src={width > 800 ? `http://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `http://image.tmdb.org/t/p/w780/${movie.poster_path}`} alt={movie.title} />
+            <img className='hero-banner-img' src={width > 800 ? `http://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `http://image.tmdb.org/t/p/w780/${movie.poster_path}`} alt={movie.title} />
             <div className='hero-movie-information-container'>
-              <div className='hero-rating-container'></div>
+              <div className='hero-rating-container'>
+                <img src={RatingStar} alt="Rating of " />
+                <p>{movie.vote_average}</p>
+              </div>
               <div className='hero-title'>
                 <h1>{movie.title}</h1>
               </div>

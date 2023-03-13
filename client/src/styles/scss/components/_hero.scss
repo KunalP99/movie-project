@@ -1,10 +1,9 @@
 .hero-container {
+  .hero-banner-img {
+    object-fit: cover;
+    width: 100vw;
+  }
   .swiper {
-    .swiper-slide img {
-      object-fit: cover;
-      width: 100vw;
-    }
-
     .swiper-pagination {
       padding-bottom: $spacing-08;
 
@@ -16,21 +15,27 @@
         background-color: $primary-colour; 
       }
     }
+
+    .hero-movie-information-container {
+      display: none;
+    }
   }
 }
 
 @media (min-width: 800px) {
   .hero-container {
     position: relative;
+    border: solid 2px red;
+
+    .hero-banner-img {
+      height: 100vh;
+    }
     .swiper {
       .banner-foreground-overlay {
         position: absolute;
         width: 100vw;
         height: 100vh;
         background: $foreground-overlay;
-      }
-      .swiper-slide img {
-        height: 100vh;
       }
 
       .swiper-pagination {
@@ -44,9 +49,46 @@
 
       .hero-movie-information-container {
         position: absolute;
+        bottom: 300px;
+        display: flex;
+        flex-direction: column;
         z-index: 3;
-        color: $primary-font-colour;
-        top: 0;
+        padding: $spacing-16;
+        width: 600px;
+
+        .hero-rating-container {
+          @include flex-center;
+          gap: $spacing-08;
+          background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+          width: 70px;
+          backdrop-filter: blur(2px);
+          padding: $spacing-08;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-height: 970px) {
+  .hero-container {
+    .hero-banner-img {
+      height: 970px;
+    }
+
+    .swiper {
+      .banner-foreground-overlay {
+        height: 970px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    .swiper {
+      .banner-foreground-overlay {
+        display: none;
       }
     }
   }

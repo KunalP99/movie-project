@@ -53,6 +53,7 @@ table {
 /* Font Weights */
 body {
   font-family: "Red Hat Display", sans-serif;
+  color: #FFFFFF;
 }
 
 h1 {
@@ -85,9 +86,10 @@ h5 {
 p {
   font-size: clamp(1rem, 4vw, 1.25rem);
   font-weight: 400;
+  line-height: 32px;
 }
 
-.hero-container .swiper .swiper-slide img {
+.hero-container .hero-banner-img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100vw;
@@ -102,19 +104,23 @@ p {
 .hero-container .swiper .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #70A7B2;
 }
+.hero-container .swiper .hero-movie-information-container {
+  display: none;
+}
 
 @media (min-width: 800px) {
   .hero-container {
     position: relative;
+    border: solid 2px red;
+  }
+  .hero-container .hero-banner-img {
+    height: 100vh;
   }
   .hero-container .swiper .banner-foreground-overlay {
     position: absolute;
     width: 100vw;
     height: 100vh;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000 100%);
-  }
-  .hero-container .swiper .swiper-slide img {
-    height: 100vh;
   }
   .hero-container .swiper .swiper-pagination {
     padding-bottom: 56px;
@@ -125,8 +131,36 @@ p {
   }
   .hero-container .swiper .hero-movie-information-container {
     position: absolute;
+    bottom: 300px;
+    display: flex;
+    flex-direction: column;
     z-index: 3;
-    color: #FFFFFF;
-    top: 0;
+    padding: 16px;
+    width: 600px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-rating-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+    width: 70px;
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+    padding: 8px;
+    border-radius: 8px;
+  }
+}
+@media (max-height: 970px) {
+  .hero-container .hero-banner-img {
+    height: 970px;
+  }
+  .hero-container .swiper .banner-foreground-overlay {
+    height: 970px;
+  }
+}
+@media (max-width: 768px) {
+  .hero-container .swiper .banner-foreground-overlay {
+    display: none;
   }
 }

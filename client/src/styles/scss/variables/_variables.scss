@@ -41,6 +41,7 @@ $foreground-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000
 @mixin body-regular {
   font-size: clamp(pxToRem(16px), 4vw, pxToRem(20px));
   font-weight: $font-weight-regular;
+  line-height: 32px;
 }
 
 /* Font Weights */
