@@ -100,10 +100,10 @@ p {
 .hero-container .swiper .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
-  background-color: rgba(50, 50, 50, 0.61);
+  background: rgba(50, 50, 50, 0.61);
 }
 .hero-container .swiper .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #70A7B2;
+  background: #70A7B2;
 }
 .hero-container .swiper .hero-movie-information-container {
   display: none;
@@ -131,12 +131,11 @@ p {
   }
   .hero-container .swiper .hero-movie-information-container {
     position: absolute;
-    bottom: 300px;
+    bottom: 220px;
     left: 30px;
     display: flex;
     flex-direction: column;
     z-index: 3;
-    padding: 16px;
     width: 600px;
   }
   .hero-container .swiper .hero-movie-information-container .hero-rating-container {
@@ -155,6 +154,33 @@ p {
   .hero-container .swiper .hero-movie-information-container .hero-title {
     margin-bottom: 16px;
   }
+  .hero-container .swiper .hero-movie-information-container .hero-overview {
+    margin-bottom: 56px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container {
+    display: flex;
+    gap: 24px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container button {
+    padding: 20px 23px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-radius: 16px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container .add-to-watchlist-btn {
+    background: #70A7B2;
+    color: #FFFFFF;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn {
+    background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+    color: #FFFFFF;
+    -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+  }
 }
 @media (min-width: 1000px) {
   .hero-container .swiper .hero-movie-information-container {
@@ -164,6 +190,6 @@ p {
 @media (min-width: 1700px) {
   .hero-container .swiper .hero-movie-information-container {
     left: 180px;
-    bottom: 200px;
+    bottom: 180px;
   }
 }

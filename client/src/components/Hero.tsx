@@ -8,6 +8,8 @@ import { Pagination, Autoplay } from 'swiper';
 
 // Images
 import RatingStar from '../images/rating-star.svg';
+import WhitePlus from '../images/white-plus.svg';
+import WhiteArrowRight from '../images/white-arrow-right.svg';
 
 // Get width of the current window
 const getWindowDimensions = () => {
@@ -81,7 +83,10 @@ const Hero = () => {
               <div className='hero-overview'>
                 <p>{movie.overview}</p>
               </div>
-              <div className='hero-btn-container'></div>
+              <div className='hero-btn-container'>
+                <button className='add-to-watchlist-btn'>Add to Watchlist <img src={WhitePlus} alt={`Add ${movie.title}  to Watchlist`} /></button>
+                <button className='view-more-btn'>View more <img src={WhiteArrowRight} alt={`View more information about ${movie.title}`} /></button>
+              </div>
             </div>
           </SwiperSlide>
         ))}

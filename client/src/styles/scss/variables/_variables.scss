@@ -9,6 +9,15 @@ $primary-colour: #70A7B2;
 $primary-font-colour: #FFFFFF;
 $foreground-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000 100%);
 
+// Buttons
+@mixin main-btn {
+  padding: 20px 23px;
+  font-size: pxToRem(20px);
+  font-weight: bold;
+  border-radius: $spacing-16;
+  border: none;
+}
+
 /* Typography */
 // H1
 @mixin h1 {

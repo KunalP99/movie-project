@@ -10,10 +10,10 @@
       .swiper-pagination-bullet{
         width: 12px;
         height: 12px;
-        background-color: rgba(50, 50, 50, 0.61);
+        background: rgba(50, 50, 50, 0.61);
       }
       .swiper-pagination-bullet-active {
-        background-color: $primary-colour; 
+        background: $primary-colour; 
       }
     }
 
@@ -49,12 +49,11 @@
 
       .hero-movie-information-container {
         position: absolute;
-        bottom: 300px;
+        bottom: 220px;
         left: 30px;
         display: flex;
         flex-direction: column;
         z-index: 3;
-        padding: $spacing-16;
         width: 600px;
 
         .hero-rating-container {
@@ -70,6 +69,33 @@
 
         .hero-title {
           margin-bottom: $spacing-16;
+        }
+
+        .hero-overview {
+          margin-bottom: $spacing-56;
+        }
+        
+        .hero-btn-container {
+          display: flex;
+          gap: $spacing-24;
+
+          button {
+            @include main-btn;
+            display: flex;
+            align-items: center;
+            gap: $spacing-08;
+          }
+
+          .add-to-watchlist-btn {
+            background: $primary-colour;
+            color: $primary-font-colour;
+          }
+
+          .view-more-btn {
+            background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+            color: $primary-font-colour;
+            backdrop-filter: blur(4px);
+          }
         }
       }
     }
@@ -91,7 +117,7 @@
     .swiper {
       .hero-movie-information-container {
         left: 180px;
-        bottom: 200px;
+        bottom: 180px;
       }
     }
   }
