@@ -175,11 +175,17 @@ p {
     background: #70A7B2;
     color: #FFFFFF;
   }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container .add-to-watchlist-btn:hover {
+    background: #48727a;
+  }
   .hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn {
     background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
     color: #FFFFFF;
     -webkit-backdrop-filter: blur(4px);
             backdrop-filter: blur(4px);
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn:hover {
+    background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
   }
 }
 @media (min-width: 1000px) {

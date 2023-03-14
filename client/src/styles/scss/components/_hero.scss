@@ -90,11 +90,17 @@
             background: $primary-colour;
             color: $primary-font-colour;
           }
+          .add-to-watchlist-btn:hover {
+            background: #48727a;
+          }
 
           .view-more-btn {
             background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
             color: $primary-font-colour;
             backdrop-filter: blur(4px);
+          }
+          .view-more-btn:hover {
+            background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
           }
         }
       }
