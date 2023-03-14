@@ -54,6 +54,7 @@ table {
 body {
   font-family: "Red Hat Display", sans-serif;
   color: #FFFFFF;
+  background: #000000;
 }
 
 h1 {
@@ -89,6 +90,12 @@ p {
   line-height: 32px;
 }
 
+@media (min-width: 2700px) {
+  .content {
+    width: 2700px;
+    margin: 0 auto;
+  }
+}
 header {
   position: absolute;
   top: 0;
@@ -141,7 +148,7 @@ header nav .active {
     width: 250px;
   }
 }
-@media (min-width: 900px) {
+@media (min-width: 800px) {
   header {
     background: none;
   }
