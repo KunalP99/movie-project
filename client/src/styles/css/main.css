@@ -57,34 +57,34 @@ body {
 }
 
 h1 {
-  font-size: clamp(1.875rem, 4vw, 3.75rem);
+  font-size: clamp(1.875rem, 6vw, 3.75rem);
   font-weight: 700;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-size: clamp(1.5rem, 6vw, 3rem);
   font-weight: 700;
 }
 
 h3 {
-  font-size: clamp(1.125rem, 4vw, 2.5rem);
+  font-size: clamp(1.125rem, 6vw, 2.5rem);
   font-weight: 700;
 }
 
 h4 {
-  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-size: clamp(1.25rem, 6vw, 1.75rem);
   font-weight: 400;
 }
 
 h5 {
-  font-size: clamp(0.625rem, 4vw, 1.125rem);
+  font-size: clamp(0.625rem, 6vw, 1.125rem);
   font-weight: 400;
   letter-spacing: 0.4px;
   text-transform: capitalize;
 }
 
 p {
-  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   font-weight: 400;
   line-height: 32px;
 }
@@ -162,8 +162,10 @@ p {
     gap: 24px;
   }
   .hero-container .swiper .hero-movie-information-container .hero-btn-container button {
-    padding: 20px 23px;
-    font-size: 1.25rem;
+    padding: 18px 23px;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 400;
+    line-height: 32px;
     font-weight: bold;
     border-radius: 16px;
     border: none;

@@ -11,8 +11,8 @@ $foreground-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000
 
 // Buttons
 @mixin main-btn {
-  padding: 20px 23px;
-  font-size: pxToRem(20px);
+  padding: 18px 23px;
+  @include body-regular;
   font-weight: bold;
   border-radius: $spacing-16;
   border: none;
@@ -21,34 +21,34 @@ $foreground-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000
 /* Typography */
 // H1
 @mixin h1 {
-  font-size: clamp(pxToRem(30px), 4vw, pxToRem(60px));
+  font-size: clamp(pxToRem(30px), 6vw, pxToRem(60px));
   font-weight: $font-weight-bold;
 }
 
 @mixin h2 {
-  font-size: clamp( pxToRem(24px), 4vw, pxToRem(48px));
+  font-size: clamp( pxToRem(24px), 6vw, pxToRem(48px));
   font-weight: $font-weight-bold;
 }
 
 @mixin h3 {
-  font-size: clamp(pxToRem(18px), 4vw, pxToRem(40px));
+  font-size: clamp(pxToRem(18px), 6vw, pxToRem(40px));
   font-weight: $font-weight-bold;
 }
 
 @mixin subtitle {
-  font-size: clamp(pxToRem(20px), 4vw, pxToRem(28px));
+  font-size: clamp(pxToRem(20px), 6vw, pxToRem(28px));
   font-weight: $font-weight-regular;
 }
 
 @mixin subtitle2 {
-  font-size: clamp(pxToRem(10px), 4vw, pxToRem(18px));
+  font-size: clamp(pxToRem(10px), 6vw, pxToRem(18px));
   font-weight: $font-weight-regular;
   letter-spacing: 0.4px;
   text-transform: capitalize;
 }
 
 @mixin body-regular {
-  font-size: clamp(pxToRem(16px), 4vw, pxToRem(20px));
+  font-size: clamp(pxToRem(16px), 1.5vw, pxToRem(20px));
   font-weight: $font-weight-regular;
   line-height: 32px;
 }
