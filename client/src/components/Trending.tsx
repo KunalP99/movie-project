@@ -69,7 +69,7 @@ const Trending = () => {
         <div className='shadow-overlay-right'></div>
         {!loading && trendingMovies?.map(movie => (
           <SwiperSlide key={movie.id}>
-            <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt="" loading='lazy'/>
+            <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} loading='lazy'/>
           </SwiperSlide>   
         ))}
       </Swiper>
