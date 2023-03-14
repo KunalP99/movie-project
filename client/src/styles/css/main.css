@@ -89,6 +89,85 @@ p {
   line-height: 32px;
 }
 
+header {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+}
+header a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+header nav .navbar-links {
+  display: none;
+  position: absolute;
+  background: black;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 70%;
+}
+header nav .navbar-links ul {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  display: flex;
+  gap: 56px;
+  flex-direction: column;
+}
+header nav .navbar-links ul li {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+header nav .nav-btn {
+  z-index: 1;
+  border: none;
+  background: transparent;
+}
+header nav .active {
+  display: flex;
+}
+
+@media (max-width: 300px) {
+  header nav .navbar-links {
+    width: 250px;
+  }
+}
+@media (min-width: 900px) {
+  header {
+    background: none;
+  }
+  header nav .navbar-links {
+    display: flex;
+    position: static;
+    background: none;
+    width: auto;
+    height: auto;
+  }
+  header nav .navbar-links ul {
+    position: static;
+    flex-direction: row;
+  }
+  header nav .navbar-links ul li > img {
+    display: none;
+  }
+  header nav .nav-btn {
+    display: none;
+  }
+}
+@media (min-width: 1100px) {
+  header nav {
+    padding: 32px 120px;
+  }
+}
 .hero-container .hero-banner-img {
   -o-object-fit: cover;
      object-fit: cover;

@@ -1,9 +1,13 @@
 import Hero from './Hero';
+import Header from './Header';
 
 const Home = () => {
   return (
     <section className="home-container">
-      <Hero />
+      <Header />
+      <div className='content'>
+        <Hero />
+      </div>
     </section>
   );
 };
