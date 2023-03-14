@@ -1,5 +1,6 @@
 .trending-container {
   padding-left: $spacing-16;
+  margin-bottom: $spacing-64;
   h2 {
     margin-top: $spacing-64;
     margin-bottom: $spacing-16;
@@ -43,7 +44,7 @@
 
 @media (min-width: 1000px) {
   .trending-container {
-    margin-bottom: 100px;
+    margin-bottom: $spacing-120;
     .swiper {
       position: relative;
       .shadow-overlay-left {
