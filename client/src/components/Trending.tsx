@@ -31,8 +31,42 @@ const Trending = () => {
       <Swiper
         navigation={true}
         modules={[Navigation, Autoplay]}
-        slidesPerView={4.5}
+        slidesPerView={2.5}
+        breakpoints={{
+          200: {
+            slidesPerView: 1.3
+          },
+          300: {
+            slidesPerView: 2.3
+          },
+          375: {
+            slidesPerView: 2.5
+          },
+          500: {
+            slidesPerView: 2.2
+          },
+          650: {
+            slidesPerView: 2.6
+          },
+          700: {
+            slidesPerView: 3.1
+          },
+          1000: {
+            slidesPerView: 3.8
+          },
+          1250: {
+            slidesPerView: 5.3
+          },
+          1600: {
+            slidesPerView: 4.5
+          },
+          2300: {
+            slidesPerView: 5.5
+          }
+        }}
       >
+        <div className='shadow-overlay-left'></div>
+        <div className='shadow-overlay-right'></div>
         {!loading && trendingMovies?.map(movie => (
           <SwiperSlide key={movie.id}>
             <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt="" loading='lazy'/>
