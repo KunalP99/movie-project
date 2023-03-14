@@ -1,0 +1,23 @@
+body {
+  font-family: $main-font-family;
+  color: $primary-font-colour;
+}
+
+h1 {
+  @include h1;
+}
+h2 {
+  @include h2;
+}
+h3 {
+  @include h3;
+}
+h4 {
+  @include subtitle;
+}
+h5 {
+  @include subtitle2;
+} 
+p {
+  @include body-regular;
+}

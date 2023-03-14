@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -50,3 +51,153 @@ table {
 
 /* Typography */
 /* Font Weights */
+body {
+  font-family: "Red Hat Display", sans-serif;
+  color: #FFFFFF;
+}
+
+h1 {
+  font-size: clamp(1.875rem, 6vw, 3.75rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 6vw, 3rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.125rem, 6vw, 2.5rem);
+  font-weight: 700;
+}
+
+h4 {
+  font-size: clamp(1.25rem, 6vw, 1.75rem);
+  font-weight: 400;
+}
+
+h5 {
+  font-size: clamp(0.625rem, 6vw, 1.125rem);
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+}
+
+p {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.hero-container .hero-banner-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100vw;
+}
+.hero-container .swiper .swiper-pagination {
+  padding-bottom: 8px;
+}
+.hero-container .swiper .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: rgba(50, 50, 50, 0.61);
+}
+.hero-container .swiper .swiper-pagination .swiper-pagination-bullet-active {
+  background: #70A7B2;
+}
+.hero-container .swiper .hero-movie-information-container {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .hero-container {
+    position: relative;
+  }
+  .hero-container .hero-banner-img {
+    height: 900px;
+  }
+  .hero-container .swiper .banner-foreground-overlay {
+    position: absolute;
+    width: 100vw;
+    height: 900px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000 100%);
+  }
+  .hero-container .swiper .swiper-pagination {
+    padding-bottom: 40px;
+  }
+  .hero-container .swiper .swiper-pagination .swiper-pagination-bullet {
+    width: 18px;
+    height: 18px;
+  }
+  .hero-container .swiper .hero-movie-information-container {
+    position: absolute;
+    bottom: 220px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    width: 600px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-rating-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+    width: 70px;
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-title {
+    margin-bottom: 16px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-overview {
+    margin-bottom: 56px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container {
+    display: flex;
+    gap: 24px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container button {
+    padding: 18px 23px;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 400;
+    line-height: 32px;
+    font-weight: bold;
+    border-radius: 16px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container .add-to-watchlist-btn {
+    background: #70A7B2;
+    color: #FFFFFF;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container .add-to-watchlist-btn:hover {
+    background: #48727a;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn {
+    background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+    color: #FFFFFF;
+    -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn:hover {
+    background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
+  }
+}
+@media (min-width: 1000px) {
+  .hero-container .swiper .hero-movie-information-container {
+    left: 100px;
+  }
+}
+@media (min-width: 1700px) {
+  .hero-container .swiper .hero-movie-information-container {
+    left: 180px;
+    bottom: 180px;
+  }
+}

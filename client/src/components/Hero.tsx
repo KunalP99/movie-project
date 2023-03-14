@@ -6,6 +6,11 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper';
 
+// Images
+import RatingStar from '../images/rating-star.svg';
+import WhitePlus from '../images/white-plus.svg';
+import WhiteArrowRight from '../images/white-arrow-right.svg';
+
 // Get width of the current window
 const getWindowDimensions = () => {
   const { innerWidth: width } = window;
@@ -57,6 +62,7 @@ const Hero = () => {
     <section className="hero-container">
       <Swiper 
         pagination={true}
+        loop={true}
         modules={[Pagination, Autoplay]}
         autoplay={{
           delay: 9000
@@ -64,7 +70,24 @@ const Hero = () => {
       >
         {!loading && moviesInTheatre.map(movie => (
           <SwiperSlide key={movie.id}>
-            <img src={width > 800 ? `http://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `http://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+            <div className='banner-foreground-overlay'></div>
+            <img className='hero-banner-img' src={width > 800 ? `http://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `http://image.tmdb.org/t/p/w780/${movie.poster_path}`} alt={movie.title} />
+            <div className='hero-movie-information-container'>
+              <div className='hero-rating-container'>
+                <img src={RatingStar} alt="Rating of " />
+                <p>{movie.vote_average}</p>
+              </div>
+              <div className='hero-title'>
+                <h1>{movie.title}</h1>
+              </div>
+              <div className='hero-overview'>
+                <p>{movie.overview}</p>
+              </div>
+              <div className='hero-btn-container'>
+                <button className='add-to-watchlist-btn'>Add to Watchlist <img src={WhitePlus} alt={`Add ${movie.title}  to Watchlist`} /></button>
+                <button className='view-more-btn'>View more <img src={WhiteArrowRight} alt={`View more information about ${movie.title}`} /></button>
+              </div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
