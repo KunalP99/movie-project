@@ -22,3 +22,10 @@ h5 {
 p {
   @include body-regular;
 }
+
+@media (min-width: 2700px) {
+  .content {
+    width: 2700px;
+    margin: 0 auto;
+  }
+}

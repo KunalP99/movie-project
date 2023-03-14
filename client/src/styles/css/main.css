@@ -90,6 +90,12 @@ p {
   line-height: 32px;
 }
 
+@media (min-width: 2700px) {
+  .content {
+    width: 2700px;
+    margin: 0 auto;
+  }
+}
 header {
   position: absolute;
   top: 0;
