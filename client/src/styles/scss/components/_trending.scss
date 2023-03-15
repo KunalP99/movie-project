@@ -1,0 +1,58 @@
+@import './swiper';
+
+.trending-container {
+  padding-left: $spacing-16;
+  margin-bottom: $spacing-64;
+  position: relative;
+  h2 {
+    margin-top: $spacing-64;
+    margin-bottom: $spacing-16;
+  }
+  .trending-movies-rating-container {
+    position: absolute;
+    display: flex;
+    left: 8px;
+    top: 8px;
+    align-items: center;
+    gap: $spacing-04;
+    background: $rating-container-bg-colour;
+    border-radius: 8px;
+    padding: 0px $spacing-08;
+
+    p {
+      font-size: pxToRem(10px);
+    }
+
+    img {
+      width: 15px;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .trending-container {
+    h2 {
+      margin-bottom: $spacing-40;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .trending-container {
+    padding-left: $spacing-120;
+    margin-bottom: $spacing-120;
+    position: relative;
+
+    .trending-movies-rating-container {
+      padding: 3px 10px;
+
+      p {
+        @include body-regular;
+      }
+
+      img {
+        width: 20px;
+      }
+    }
+  }
+}

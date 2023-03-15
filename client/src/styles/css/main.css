@@ -287,3 +287,107 @@ header nav .active {
     bottom: 180px;
   }
 }
+.small-swiper .swiper-slide img {
+  width: 120px;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.swiper-button-next-unique-container,
+.swiper-button-prev-unique-container {
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .small-swiper .swiper-slide img {
+    width: 200px;
+  }
+}
+@media (min-width: 1000px) {
+  .swiper-button-next-unique-container,
+  .swiper-button-prev-unique-container {
+    display: block;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+  }
+  .swiper-button-prev-unique-container {
+    left: 20px;
+  }
+  .swiper-button-prev-unique-container .swiper-button-prev-unique {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    transform: rotate(180deg);
+  }
+  .swiper-button-prev-unique-container .swiper-button-prev-unique img {
+    width: 50px;
+  }
+  .swiper-button-next-unique-container {
+    right: 20px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.83) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+  .swiper-button-next-unique-container .swiper-button-next-unique {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+  .swiper-button-next-unique-container .swiper-button-next-unique img {
+    width: 50px;
+  }
+}
+@media (min-width: 1500px) {
+  .small-swiper .swiper-slide img {
+    width: 300px;
+  }
+}
+.trending-container {
+  padding-left: 16px;
+  margin-bottom: 64px;
+  position: relative;
+}
+.trending-container h2 {
+  margin-top: 64px;
+  margin-bottom: 16px;
+}
+.trending-container .trending-movies-rating-container {
+  position: absolute;
+  display: flex;
+  left: 8px;
+  top: 8px;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+  border-radius: 8px;
+  padding: 0px 8px;
+}
+.trending-container .trending-movies-rating-container p {
+  font-size: 0.625rem;
+}
+.trending-container .trending-movies-rating-container img {
+  width: 15px;
+}
+
+@media (min-width: 800px) {
+  .trending-container h2 {
+    margin-bottom: 40px;
+  }
+}
+@media (min-width: 1000px) {
+  .trending-container {
+    padding-left: 120px;
+    margin-bottom: 120px;
+    position: relative;
+  }
+  .trending-container .trending-movies-rating-container {
+    padding: 3px 10px;
+  }
+  .trending-container .trending-movies-rating-container p {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 400;
+    line-height: 32px;
+  }
+  .trending-container .trending-movies-rating-container img {
+    width: 20px;
+  }
+}
