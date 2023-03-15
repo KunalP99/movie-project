@@ -1,4 +1,4 @@
-interface IMoviesInTheatre {
+interface IHeroMovies {
   id: number,
   backdrop_path: string,
   poster_path: string,
@@ -7,4 +7,4 @@ interface IMoviesInTheatre {
   vote_average: number,
 }
 
-export default IMoviesInTheatre;
+export default IHeroMovies;

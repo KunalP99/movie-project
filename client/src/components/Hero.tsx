@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getMoviesInTheatre } from '../api/api';
-import IMoviesInTheatre from '../models/IMoviesInTheatre';
+import IHeroMovies from '../models/IHeroMovies';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -38,7 +38,7 @@ const useWindowDimensions = () => {
 };
 
 const Hero = () => {
-  const [moviesInTheatre, setMoviesInTheatre] = useState<IMoviesInTheatre[]>([]);
+  const [moviesInTheatre, setMoviesInTheatre] = useState<IHeroMovies[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { width } = useWindowDimensions();
 

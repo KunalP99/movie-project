@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { getTrendingMovies } from '../api/api';
-import ITrendingMovies from '../models/ITrendingMovies';
+import ISmallSwiperMovies from '../models/ISmallSwiperMovies';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import type SwiperCore from 'swiper';
@@ -10,7 +10,7 @@ import WhiteArrow from '../images/white-arrow.svg';
 import RatingStar from '../images/rating-star.svg';
 
 const Trending = () => {
-  const [trendingMovies, setTrendingMovies] = useState<ITrendingMovies[]>();
+  const [trendingMovies, setTrendingMovies] = useState<ISmallSwiperMovies[]>();
   const [loading, setLoading] = useState<boolean>(true);
   const swiperRef = useRef<SwiperCore>();
 
