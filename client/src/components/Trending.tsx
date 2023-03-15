@@ -6,7 +6,7 @@ import 'swiper/css';
 import type SwiperCore from 'swiper';
 
 // Images
-import WhiteArrowRight from '../images/white-arrow-right.svg';
+import WhiteArrow from '../images/white-arrow.svg';
 import RatingStar from '../images/rating-star.svg';
 
 const Trending = () => {
@@ -94,12 +94,12 @@ const Trending = () => {
 
       <div className='swiper-button-prev-unique-container'>
         <button className='swiper-button-prev-unique' onClick={() => swiperRef.current?.slidePrev()}>
-          <img src={WhiteArrowRight} alt="Prev" />
+          <img src={WhiteArrow} alt="Prev" />
         </button>
       </div>
       <div className='swiper-button-next-unique-container'>
         <button className='swiper-button-next-unique' onClick={() => swiperRef.current?.slideNext()}>
-          <img src={WhiteArrowRight} alt="Next" />
+          <img src={WhiteArrow} alt="Next" />
         </button>
       </div>
     </section>
