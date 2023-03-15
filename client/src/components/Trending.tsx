@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getTrendingMovies } from '../api/api';
 import ITrendingMovies from '../models/ITrendingMovies';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation, Autoplay } from 'swiper';
+import type SwiperCore from 'swiper';
+import WhiteArrowRight from '../images/white-arrow-right.svg';
 
 const Trending = () => {
   const [trendingMovies, setTrendingMovies] = useState<ITrendingMovies[]>();
   const [loading, setLoading] = useState<boolean>(true);
+  const swiperRef = useRef<SwiperCore>();
 
   useEffect(() => {
     setLoading(true);
@@ -29,9 +30,11 @@ const Trending = () => {
     <section className="trending-container">
       <h2>Trending</h2>
       <Swiper
-        navigation={true}
-        modules={[Navigation, Autoplay]}
+        onBeforeInit={(swiper) => {
+          swiperRef.current = swiper;
+        }}
         slidesPerView={2.5}
+        loop={true}
         breakpoints={{
           200: {
             slidesPerView: 1.3
@@ -49,7 +52,7 @@ const Trending = () => {
             slidesPerView: 2.6
           },
           700: {
-            slidesPerView: 3.1
+            slidesPerView: 3.5
           },
           1000: {
             slidesPerView: 3.8
@@ -65,14 +68,23 @@ const Trending = () => {
           }
         }}
       >
-        <div className='shadow-overlay-left'></div>
-        <div className='shadow-overlay-right'></div>
         {!loading && trendingMovies?.map(movie => (
           <SwiperSlide key={movie.id}>
             <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} loading='lazy'/>
           </SwiperSlide>   
         ))}
       </Swiper>
+
+      <div className='swiper-button-prev-unique-container'>
+        <button className='swiper-button-prev-unique' onClick={() => swiperRef.current?.slidePrev()}>
+          <img src={WhiteArrowRight} alt="Prev" />
+        </button>
+      </div>
+      <div className='swiper-button-next-unique-container'>
+        <button className='swiper-button-next-unique' onClick={() => swiperRef.current?.slideNext()}>
+          <img src={WhiteArrowRight} alt="Next" />
+        </button>
+      </div>
     </section>
   );
 };

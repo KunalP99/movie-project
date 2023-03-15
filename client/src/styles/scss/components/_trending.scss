@@ -11,14 +11,14 @@
       img {
         width: 120px;
         border-radius: 16px;
+        cursor: pointer;
       }
     }
-
-    .swiper-button-next, .swiper-button-prev {
-      display: none;
-    }
   }
-
+  .swiper-button-next-unique-container, 
+  .swiper-button-prev-unique-container {
+    display: none;
+  }
 }
 
 @media (min-width: 500px) {
@@ -35,7 +35,6 @@
 
 @media (min-width: 800px) {
   .trending-container {
-    padding-left: $spacing-120;
     h2 {
       margin-bottom: $spacing-40;
     }
@@ -44,31 +43,38 @@
 
 @media (min-width: 1000px) {
   .trending-container {
+    padding-left: $spacing-120;
     margin-bottom: $spacing-120;
-    .swiper {
-      position: relative;
-      .shadow-overlay-left {
-        top: 0;
-        width: 200px;
-        background: linear-gradient(270deg, rgba(0, 0, 0, 0) 61.07%, #000000 112.42%);
+    position: relative;
+
+    .swiper-button-next-unique-container, 
+    .swiper-button-prev-unique-container {
+      display: block;
+      position: absolute;
+      top: 50%;
+      z-index: 1;
+    }
+    .swiper-button-prev-unique-container {
+      left: 20px;
+      .swiper-button-prev-unique {
+        cursor: pointer;
+        @include reset-btn;
+        transform: rotate(180deg) ;
+        img {
+          width: 50px;
+        }
       }
-      .shadow-overlay-right {
-        top: 0;
-        right: 0;
-        width: 200px;
-        background: linear-gradient(95deg, rgba(0, 0, 0, 0) 61.07%, #000000 112.42%);
-      }
-      .shadow-overlay-left, .shadow-overlay-right {
-        position: absolute;
-        height: 100%;
-        z-index: 1;
-      }
-      .swiper-button-next, .swiper-button-prev {
-        display: flex;
-        color: white;
-      }
-      .swiper-button-disabled {
-        display: none;
+    }
+
+    .swiper-button-next-unique-container {
+      right: 20px;
+      background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.83) 0%, rgba(0, 0, 0, 0) 100%);
+      .swiper-button-next-unique {
+          cursor: pointer;
+          @include reset-btn;
+          img {
+            width: 50px;
+          }
       }
     }
   }

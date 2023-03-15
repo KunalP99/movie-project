@@ -298,8 +298,10 @@ header nav .active {
 .trending-container .swiper .swiper-slide img {
   width: 120px;
   border-radius: 16px;
+  cursor: pointer;
 }
-.trending-container .swiper .swiper-button-next, .trending-container .swiper .swiper-button-prev {
+.trending-container .swiper-button-next-unique-container,
+.trending-container .swiper-button-prev-unique-container {
   display: none;
 }
 
@@ -309,42 +311,46 @@ header nav .active {
   }
 }
 @media (min-width: 800px) {
-  .trending-container {
-    padding-left: 120px;
-  }
   .trending-container h2 {
     margin-bottom: 40px;
   }
 }
 @media (min-width: 1000px) {
   .trending-container {
+    padding-left: 120px;
     margin-bottom: 120px;
-  }
-  .trending-container .swiper {
     position: relative;
   }
-  .trending-container .swiper .shadow-overlay-left {
-    top: 0;
-    width: 200px;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 61.07%, #000000 112.42%);
-  }
-  .trending-container .swiper .shadow-overlay-right {
-    top: 0;
-    right: 0;
-    width: 200px;
-    background: linear-gradient(95deg, rgba(0, 0, 0, 0) 61.07%, #000000 112.42%);
-  }
-  .trending-container .swiper .shadow-overlay-left, .trending-container .swiper .shadow-overlay-right {
+  .trending-container .swiper-button-next-unique-container,
+  .trending-container .swiper-button-prev-unique-container {
+    display: block;
     position: absolute;
-    height: 100%;
+    top: 50%;
     z-index: 1;
   }
-  .trending-container .swiper .swiper-button-next, .trending-container .swiper .swiper-button-prev {
-    display: flex;
-    color: white;
+  .trending-container .swiper-button-prev-unique-container {
+    left: 20px;
   }
-  .trending-container .swiper .swiper-button-disabled {
-    display: none;
+  .trending-container .swiper-button-prev-unique-container .swiper-button-prev-unique {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    transform: rotate(180deg);
+  }
+  .trending-container .swiper-button-prev-unique-container .swiper-button-prev-unique img {
+    width: 50px;
+  }
+  .trending-container .swiper-button-next-unique-container {
+    right: 20px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.83) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+  .trending-container .swiper-button-next-unique-container .swiper-button-next-unique {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+  .trending-container .swiper-button-next-unique-container .swiper-button-next-unique img {
+    width: 50px;
   }
 }
 @media (min-width: 1600px) {
