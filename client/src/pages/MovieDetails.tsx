@@ -7,7 +7,7 @@ type MovieParams = {
   movieId: string;
 }
 
-const IndividualMovie = () => {
+const MovieDetails = () => {
   const { movieId } = useParams<MovieParams>();
   const [loading, setLoading] = useState<boolean>(true);
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
@@ -36,4 +36,4 @@ const IndividualMovie = () => {
   );
 };
 
-export default IndividualMovie;
+export default MovieDetails;

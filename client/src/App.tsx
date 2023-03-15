@@ -1,7 +1,7 @@
 import Home from './components/Home';
 import Header from './components/Header';
 import { Route, Routes } from 'react-router-dom';
-import IndividualMovie from './pages/IndividualMovie';
+import MovieDetails from './pages/MovieDetails';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <div className='content'>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/movie/:movieId' element={<IndividualMovie />} />
+          <Route path='/movie/:movieId' element={<MovieDetails />} />
         </Routes>
       </div>
     </div>
