@@ -4,13 +4,16 @@ import InTheatres from './InTheatres';
 
 const Home = () => {
   return (
-    <section className="home-container">
-      <Hero />
-      <div className='home-content-container'>
-        <Trending />
-        <InTheatres />
-      </div>
-    </section>
+    <div className='content'>
+      <section className="home-container">
+        <Hero />
+        <div className='home-content-container'>
+          <Trending />
+          <InTheatres />
+        </div>
+      </section>
+    </div>
+
   );
 };
 
