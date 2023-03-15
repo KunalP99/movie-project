@@ -51,6 +51,10 @@ table {
 
 /* Typography */
 /* Font Weights */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Red Hat Display", sans-serif;
   color: #FFFFFF;
