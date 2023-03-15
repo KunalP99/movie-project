@@ -22,7 +22,6 @@ $foreground-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000
 @mixin main-btn-small {
   padding: 9px 8px;
   @include body-regular;
-  font-size: pxToRem(12px);
   font-weight: bold;
   border-radius: $spacing-16;
   border: none;

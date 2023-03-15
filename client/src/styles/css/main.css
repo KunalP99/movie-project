@@ -297,7 +297,7 @@ header nav .active {
   display: flex;
   gap: 24px;
 }
-.hero-container .swiper .hero-movie-information-container .hero-btn-container button {
+.hero-container .swiper .hero-movie-information-container .hero-btn-container button, .hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -305,10 +305,12 @@ header nav .active {
   font-size: clamp(1rem, 1.5vw, 1.25rem);
   font-weight: 400;
   line-height: 32px;
-  font-size: 0.75rem;
   font-weight: bold;
   border-radius: 16px;
   border: none;
+}
+.hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn {
+  text-decoration: none;
 }
 .hero-container .swiper .hero-movie-information-container .hero-btn-container .add-to-watchlist-btn {
   background: #70A7B2;
@@ -332,7 +334,7 @@ header nav .active {
     display: flex;
     padding-right: 24px;
   }
-  .hero-container .swiper .hero-movie-information-container .hero-btn-container button {
+  .hero-container .swiper .hero-movie-information-container .hero-btn-container button, .hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn {
     padding: 18px 23px;
     font-size: clamp(1rem, 1.5vw, 1.25rem);
     font-weight: 400;
