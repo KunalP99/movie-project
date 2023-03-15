@@ -1,12 +1,12 @@
-.trending-container {
+.in-theatres-container {
   padding-left: $spacing-16;
   margin-bottom: $spacing-64;
   position: relative;
-  h2 {
+    h2 {
     margin-top: $spacing-64;
     margin-bottom: $spacing-16;
   }
-  .trending-movies-rating-container {
+  .in-theatres-rating-container {
     position: absolute;
     display: flex;
     left: 8px;
@@ -24,11 +24,11 @@
     img {
       width: 15px;
     }
-  }
+  } 
 }
 
 @media (min-width: 800px) {
-  .trending-container {
+  .in-theatres-container {
     h2 {
       margin-bottom: $spacing-40;
     }
@@ -36,12 +36,12 @@
 }
 
 @media (min-width: 1000px) {
-  .trending-container {
+  .in-theatres-container {
     padding-left: $spacing-120;
     margin-bottom: $spacing-120;
     position: relative;
 
-    .trending-movies-rating-container {
+    .in-theatres-rating-container {
       padding: 3px 10px;
 
       p {

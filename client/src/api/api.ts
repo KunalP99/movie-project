@@ -1,5 +1,5 @@
-export const getMoviesInTheatre = () => {
-  return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&language=enUS&page=1`)
+export const getMoviesInTheatre = (pageNo: number) => {
+  return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&language=enUS&page=${pageNo}`)
     .then(res => {
       if (!res.ok) {
         throw new Error(

@@ -1,5 +1,6 @@
 import Hero from './Hero';
 import Trending from './Trending';
+import InTheatres from './InTheatres';
 
 const Home = () => {
   return (
@@ -7,6 +8,7 @@ const Home = () => {
       <Hero />
       <div className='home-content-container'>
         <Trending />
+        <InTheatres />
       </div>
     </section>
   );
