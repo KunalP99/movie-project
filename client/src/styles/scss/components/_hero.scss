@@ -59,7 +59,7 @@
         .hero-rating-container {
           @include flex-center;
           gap: $spacing-08;
-          background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+          background: $rating-container-bg-colour;
           width: 70px;
           backdrop-filter: blur(2px);
           padding: $spacing-08;

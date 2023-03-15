@@ -344,10 +344,28 @@ header nav .active {
 .trending-container {
   padding-left: 16px;
   margin-bottom: 64px;
+  position: relative;
 }
 .trending-container h2 {
   margin-top: 64px;
   margin-bottom: 16px;
+}
+.trending-container .trending-movies-rating-container {
+  position: absolute;
+  display: flex;
+  left: 8px;
+  top: 8px;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+  border-radius: 8px;
+  padding: 0px 8px;
+}
+.trending-container .trending-movies-rating-container p {
+  font-size: 0.625rem;
+}
+.trending-container .trending-movies-rating-container img {
+  width: 15px;
 }
 
 @media (min-width: 800px) {
@@ -360,5 +378,18 @@ header nav .active {
     padding-left: 120px;
     margin-bottom: 120px;
     position: relative;
+  }
+}
+@media (min-width: 1500px) {
+  .trending-container .trending-movies-rating-container {
+    padding: 3px 10px;
+  }
+  .trending-container .trending-movies-rating-container p {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 400;
+    line-height: 32px;
+  }
+  .trending-container .trending-movies-rating-container img {
+    width: 20px;
   }
 }

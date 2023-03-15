@@ -4,7 +4,10 @@ import ITrendingMovies from '../models/ITrendingMovies';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import type SwiperCore from 'swiper';
+
+// Images
 import WhiteArrowRight from '../images/white-arrow-right.svg';
+import RatingStar from '../images/rating-star.svg';
 
 const Trending = () => {
   const [trendingMovies, setTrendingMovies] = useState<ITrendingMovies[]>();
@@ -77,7 +80,14 @@ const Trending = () => {
       >
         {!loading && trendingMovies?.map(movie => (
           <SwiperSlide key={movie.id}>
-            <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} loading='lazy'/>
+            <div>
+              <div className='trending-movies-rating-container'>
+                <img src={RatingStar} alt='Rating star' />
+                <p>{Math.round(movie.vote_average * 10) / 10}</p>
+              </div>
+              <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} loading='lazy'/>
+            </div>
+
           </SwiperSlide>   
         ))}
       </Swiper>
