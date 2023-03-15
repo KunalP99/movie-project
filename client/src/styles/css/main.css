@@ -198,6 +198,7 @@ header nav .active {
 @media (min-width: 800px) {
   .hero-container {
     position: relative;
+    height: 900px;
   }
   .hero-container .hero-banner-img {
     height: 900px;
