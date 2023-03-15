@@ -45,10 +45,10 @@ const Hero = () => {
   // Fetch data from TMDB api
   useEffect(() => {
     setLoading(true);
-    getMoviesInTheatre()
+    getMoviesInTheatre(1)
       .then(data => {
         console.log(data.results);
-        setMoviesInTheatre(data.results.slice(0, 6));
+        setMoviesInTheatre(data.results.slice(0, 5));
       })
       .catch(err => {
         console.log(err.message);
