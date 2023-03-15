@@ -1,35 +1,11 @@
+@import './swiper';
+
 .trending-container {
   padding-left: $spacing-16;
   margin-bottom: $spacing-64;
   h2 {
     margin-top: $spacing-64;
     margin-bottom: $spacing-16;
-  }
-
-  .swiper {
-    .swiper-slide {
-      img {
-        width: 120px;
-        border-radius: 16px;
-        cursor: pointer;
-      }
-    }
-  }
-  .swiper-button-next-unique-container, 
-  .swiper-button-prev-unique-container {
-    display: none;
-  }
-}
-
-@media (min-width: 500px) {
-  .trending-container {
-    .swiper {
-      .swiper-slide {
-        img {
-          width: 200px;
-        }
-      }
-    }
   }
 }
 
@@ -46,48 +22,5 @@
     padding-left: $spacing-120;
     margin-bottom: $spacing-120;
     position: relative;
-
-    .swiper-button-next-unique-container, 
-    .swiper-button-prev-unique-container {
-      display: block;
-      position: absolute;
-      top: 50%;
-      z-index: 1;
-    }
-    .swiper-button-prev-unique-container {
-      left: 20px;
-      .swiper-button-prev-unique {
-        cursor: pointer;
-        @include reset-btn;
-        transform: rotate(180deg) ;
-        img {
-          width: 50px;
-        }
-      }
-    }
-
-    .swiper-button-next-unique-container {
-      right: 20px;
-      background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.83) 0%, rgba(0, 0, 0, 0) 100%);
-      .swiper-button-next-unique {
-          cursor: pointer;
-          @include reset-btn;
-          img {
-            width: 50px;
-          }
-      }
-    }
-  }
-}
-
-@media (min-width: 1600px) {
-  .trending-container {
-    .swiper {
-      .swiper-slide {
-        img {
-          width: 300px;
-        }
-      }
-    }
   }
 }

@@ -35,6 +35,7 @@ const Trending = () => {
         }}
         slidesPerView={2.5}
         loop={true}
+        className='small-swiper'
         breakpoints={{
           200: {
             slidesPerView: 1.3
@@ -51,16 +52,22 @@ const Trending = () => {
           650: {
             slidesPerView: 2.6
           },
-          700: {
-            slidesPerView: 3.5
+          800: {
+            slidesPerView: 3.3
           },
           1000: {
             slidesPerView: 3.8
           },
           1250: {
-            slidesPerView: 5.3
+            slidesPerView: 4.8
+          },
+          1500: {
+            slidesPerView: 3.5
           },
           1600: {
+            slidesPerView: 4.3
+          },
+          1700: {
             slidesPerView: 4.5
           },
           2300: {
