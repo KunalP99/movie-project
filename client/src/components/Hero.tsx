@@ -71,10 +71,10 @@ const Hero = () => {
         {!loading && moviesInTheatre.map(movie => (
           <SwiperSlide key={movie.id}>
             <div className='banner-foreground-overlay'></div>
-            <img className='hero-banner-img' src={width > 800 ? `http://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `http://image.tmdb.org/t/p/w780/${movie.poster_path}`} alt={movie.title} />
+            <img className='hero-banner-img' src={`http://image.tmdb.org/t/p/original/${movie.backdrop_path}`}/>
             <div className='hero-movie-information-container'>
               <div className='hero-rating-container'>
-                <img src={RatingStar} alt="Rating of " />
+                <img src={RatingStar} alt='Rating star' />
                 <p>{movie.vote_average}</p>
               </div>
               <div className='hero-title'>
@@ -84,7 +84,9 @@ const Hero = () => {
                 <p>{movie.overview}</p>
               </div>
               <div className='hero-btn-container'>
-                <button className='add-to-watchlist-btn'>Add to Watchlist <img src={WhitePlus} alt={`Add ${movie.title}  to Watchlist`} /></button>
+                <button className='add-to-watchlist-btn'>
+                  Add to Watchlist 
+                  <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} /></button>
                 <button className='view-more-btn'>View more <img src={WhiteArrow} alt={`View more information about ${movie.title}`} /></button>
               </div>
             </div>
