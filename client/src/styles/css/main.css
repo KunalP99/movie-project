@@ -96,6 +96,11 @@ p {
     margin: 0 auto;
   }
 }
+@media (max-width: 320px) {
+  p {
+    line-height: 28px;
+  }
+}
 header {
   position: absolute;
   top: 0;
@@ -175,10 +180,21 @@ header nav .active {
     padding: 32px 120px;
   }
 }
+.hero-container {
+  position: relative;
+  min-height: 700px;
+}
 .hero-container .hero-banner-img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100vw;
+  height: 700px;
+}
+.hero-container .swiper .banner-foreground-overlay {
+  position: absolute;
+  width: 100vw;
+  height: 700px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000 100%);
 }
 .hero-container .swiper .swiper-pagination {
   padding-bottom: 8px;
@@ -192,61 +208,71 @@ header nav .active {
   background: #70A7B2;
 }
 .hero-container .swiper .hero-movie-information-container {
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  position: absolute;
+  bottom: 150px;
+  left: 10px;
+}
+.hero-container .swiper .hero-movie-information-container .hero-rating-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+  width: 70px;
+  padding: 4px;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+.hero-container .swiper .hero-movie-information-container .hero-title {
+  margin-bottom: 16px;
+}
+.hero-container .swiper .hero-movie-information-container .hero-overview {
+  margin-bottom: 56px;
   display: none;
 }
+.hero-container .swiper .hero-movie-information-container .hero-btn-container {
+  display: flex;
+  gap: 24px;
+}
+.hero-container .swiper .hero-movie-information-container .hero-btn-container button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 8px;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 32px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 16px;
+  border: none;
+}
+.hero-container .swiper .hero-movie-information-container .hero-btn-container .add-to-watchlist-btn {
+  background: #70A7B2;
+  color: #FFFFFF;
+}
+.hero-container .swiper .hero-movie-information-container .hero-btn-container .add-to-watchlist-btn:hover {
+  background: #48727a;
+}
+.hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn {
+  background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+  color: #FFFFFF;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+.hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn:hover {
+  background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
+}
 
-@media (min-width: 800px) {
-  .hero-container {
-    position: relative;
-    height: 900px;
-  }
-  .hero-container .hero-banner-img {
-    height: 900px;
-  }
-  .hero-container .swiper .banner-foreground-overlay {
-    position: absolute;
-    width: 100vw;
-    height: 900px;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000 100%);
-  }
-  .hero-container .swiper .swiper-pagination {
-    padding-bottom: 40px;
-  }
-  .hero-container .swiper .swiper-pagination .swiper-pagination-bullet {
-    width: 18px;
-    height: 18px;
-  }
-  .hero-container .swiper .hero-movie-information-container {
-    position: absolute;
-    bottom: 220px;
-    left: 30px;
-    display: flex;
-    flex-direction: column;
-    z-index: 3;
-    width: 600px;
-  }
-  .hero-container .swiper .hero-movie-information-container .hero-rating-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
-    width: 70px;
-    -webkit-backdrop-filter: blur(2px);
-            backdrop-filter: blur(2px);
-    padding: 8px;
-    border-radius: 8px;
-    margin-bottom: 24px;
-  }
-  .hero-container .swiper .hero-movie-information-container .hero-title {
-    margin-bottom: 16px;
-  }
+@media (min-width: 500px) {
   .hero-container .swiper .hero-movie-information-container .hero-overview {
-    margin-bottom: 56px;
-  }
-  .hero-container .swiper .hero-movie-information-container .hero-btn-container {
     display: flex;
-    gap: 24px;
+    padding-right: 24px;
   }
   .hero-container .swiper .hero-movie-information-container .hero-btn-container button {
     padding: 18px 23px;
@@ -256,33 +282,43 @@ header nav .active {
     font-weight: bold;
     border-radius: 16px;
     border: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .hero-container .swiper .hero-movie-information-container .hero-btn-container .add-to-watchlist-btn {
-    background: #70A7B2;
-    color: #FFFFFF;
-  }
-  .hero-container .swiper .hero-movie-information-container .hero-btn-container .add-to-watchlist-btn:hover {
-    background: #48727a;
-  }
-  .hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn {
-    background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
-    color: #FFFFFF;
-    -webkit-backdrop-filter: blur(4px);
-            backdrop-filter: blur(4px);
-  }
-  .hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn:hover {
-    background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
   }
 }
-@media (min-width: 1000px) {
+@media (min-width: 800px) {
+  .hero-container {
+    height: 900px;
+  }
+  .hero-container .hero-banner-img {
+    height: 900px;
+  }
+  .hero-container .swiper .banner-foreground-overlay {
+    height: 900px;
+  }
+  .hero-container .swiper .swiper-pagination {
+    padding-bottom: 40px;
+  }
+  .hero-container .swiper .swiper-pagination .swiper-pagination-bullet {
+    width: 18px;
+    height: 18px;
+  }
+  .hero-container .swiper .hero-movie-information-container {
+    bottom: 220px;
+    left: 30px;
+    width: 600px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-overview {
+    padding-right: 0px;
+  }
+  .hero-container .swiper .hero-movie-information-container .hero-rating-container {
+    padding: 8px;
+  }
+}
+@media (min-width: 850px) {
   .hero-container .swiper .hero-movie-information-container {
     left: 100px;
   }
 }
-@media (min-width: 1700px) {
+@media (min-width: 1100px) {
   .hero-container .swiper .hero-movie-information-container {
     left: 180px;
     bottom: 180px;

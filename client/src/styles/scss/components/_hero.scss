@@ -1,9 +1,18 @@
 .hero-container {
+  position: relative;
+  min-height: 700px;
   .hero-banner-img {
     object-fit: cover;
     width: 100vw;
+    height: 700px;
   }
   .swiper {
+    .banner-foreground-overlay {
+      position: absolute;
+      width: 100vw;
+      height: 700px;
+      background: $foreground-overlay;
+      }
     .swiper-pagination {
       padding-bottom: $spacing-08;
 
@@ -16,29 +25,94 @@
         background: $primary-colour; 
       }
     }
-
     .hero-movie-information-container {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      z-index: 3;
+      position: absolute;
+      bottom: 150px;
+      left: 10px;
+
+      .hero-rating-container {
+        @include flex-center;
+        gap: $spacing-08;
+        background: $rating-container-bg-colour;
+        width: 70px;
+        padding: $spacing-04;
+        backdrop-filter: blur(2px);
+        border-radius: 8px;
+        margin-bottom: $spacing-24;
+      }
+
+      .hero-title {
+        margin-bottom: $spacing-16;
+      }
+
+      .hero-overview {
+        margin-bottom: $spacing-56;
+        display: none;
+      }
+      
+      .hero-btn-container {
+        display: flex;
+        gap: $spacing-24;
+
+        button {
+          display: flex;
+          align-items: center;
+          gap: $spacing-08;
+          @include main-btn-small;
+        }
+
+        .add-to-watchlist-btn {
+          background: $primary-colour;
+          color: $primary-font-colour;
+        }
+        .add-to-watchlist-btn:hover {
+          background: #48727a;
+        }
+
+        .view-more-btn {
+          background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+          color: $primary-font-colour;
+          backdrop-filter: blur(4px);
+        }
+        .view-more-btn:hover {
+          background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .hero-container {
+    .swiper {
+      .hero-movie-information-container {
+        .hero-overview {
+          display: flex;
+          padding-right: $spacing-24
+        }
+        .hero-btn-container {
+          button {
+            @include main-btn;
+          }
+        }
+      }
     }
   }
 }
 
 @media (min-width: 800px) {
   .hero-container {
-    position: relative;
     height: 900px;
-
     .hero-banner-img {
       height: 900px;
     }
     .swiper {
       .banner-foreground-overlay {
-        position: absolute;
-        width: 100vw;
         height: 900px;
-        background: $foreground-overlay;
       }
-
       .swiper-pagination {
         padding-bottom: $spacing-40;
 
@@ -47,69 +121,25 @@
           height: 18px;
         }
       }
-
       .hero-movie-information-container {
-        position: absolute;
         bottom: 220px;
         left: 30px;
-        display: flex;
-        flex-direction: column;
-        z-index: 3;
         width: 600px;
+        
+        .hero-overview {
+          padding-right: 0px;
+          
+        }
 
         .hero-rating-container {
-          @include flex-center;
-          gap: $spacing-08;
-          background: $rating-container-bg-colour;
-          width: 70px;
-          backdrop-filter: blur(2px);
           padding: $spacing-08;
-          border-radius: 8px;
-          margin-bottom: $spacing-24;
-        }
-
-        .hero-title {
-          margin-bottom: $spacing-16;
-        }
-
-        .hero-overview {
-          margin-bottom: $spacing-56;
-        }
-        
-        .hero-btn-container {
-          display: flex;
-          gap: $spacing-24;
-
-          button {
-            @include main-btn;
-            display: flex;
-            align-items: center;
-            gap: $spacing-08;
-          }
-
-          .add-to-watchlist-btn {
-            background: $primary-colour;
-            color: $primary-font-colour;
-          }
-          .add-to-watchlist-btn:hover {
-            background: #48727a;
-          }
-
-          .view-more-btn {
-            background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
-            color: $primary-font-colour;
-            backdrop-filter: blur(4px);
-          }
-          .view-more-btn:hover {
-            background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
-          }
         }
       }
     }
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 850px) {
   .hero-container {
     .swiper {
       .hero-movie-information-container {
@@ -119,7 +149,7 @@
   }
 }
 
-@media (min-width: 1700px) {
+@media (min-width: 1100px) {
   .hero-container {
     .swiper {
       .hero-movie-information-container {
