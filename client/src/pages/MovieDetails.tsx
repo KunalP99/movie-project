@@ -78,7 +78,7 @@ const MovieDetails = () => {
                 />
               </div>
             </div>
-            <div className='movie-details-top-cast-container'>
+            <div>
               <MovieDetailsTopCast id={movieDetails.id.toString()}/>
             </div>
           </div>
