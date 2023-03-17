@@ -46,7 +46,6 @@
               background: $genre-bg-colour;
               border-radius: $border-radius;
               padding: $spacing-04 $spacing-08;
-              width: 100px;
               text-align: center;
 
               >p {
@@ -88,6 +87,39 @@
       .movie-details-extra-movie-information {
         .movie-details-extra-subtitle {
           font-weight: $font-weight-bold;
+        }
+      }
+    }
+  }
+  .movie-details-top-cast-container {
+    margin-top: $spacing-64;
+    padding-left: $spacing-04;
+    position: relative;
+
+    h2 {
+      margin-bottom: $spacing-24;
+    }
+
+    .movie-details-person-container {
+      > p {
+        // Adds an ellipsis if the name goes over the second line
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 110px;
+      }
+    }
+  }
+}
+
+@media (min-width: 450px) {
+  .movie-details-container {
+    .movie-details-top-cast-container {
+      .movie-details-person-container {
+        > p {
+          width: auto;
         }
       }
     }

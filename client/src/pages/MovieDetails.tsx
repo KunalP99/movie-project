@@ -8,6 +8,7 @@ import IMovieVideos from '../models/IMovieVideos';
 // Components
 import MovieDetailsInformation from '../components/movie_details/MovieDetailsInformation';
 import MovieDetailsExtraInfo from '../components/movie_details/MovieDetailsExtraInfo';
+import MovieDetailsTopCast from '../components/movie_details/MovieDetailsTopCast';
 
 // Images
 import WhitePlus from '../images/white-plus.svg';
@@ -26,27 +27,23 @@ const MovieDetails = () => {
 
   useEffect(() => {
     setLoading(true);
+    // Get movie details for indiviual movie
     getMovieDetails(movieId || '')
       .then(data => {
-        console.log(data);
         setMovieDetails(data);
         setGenres(data.genres);
       })
-      .catch(err => {
-        console.log(err.message);
-      });
+      .catch(err => console.log(err.message)
+      );
 
+    // Get trailers by filtering videos by Trailer
     getMovieVideos(movieId || '')
-      .then(data => {
-        setVideos(data.results.filter((video: IMovieVideos) => video.type === 'Trailer'));
-        console.log(data);
-      })
+      .then(data => setVideos(data.results.filter((video: IMovieVideos) => video.type === 'Trailer'))
+      )
       .catch(err => {
         console.log(err.message);
       })
-      .finally(() => {
-        setLoading(false);
-      });
+      .finally(() => setLoading(false));
   }, []); 
     
   return (
@@ -54,6 +51,7 @@ const MovieDetails = () => {
       {movieDetails && 
         <div>
           {!loading && 
+          <div>
             <div className='movie-details-grid'>
               <div className='top-half'>
                 <iframe src={`https://www.youtube.com/embed/${videos[0].key}`} title="Youtube Video Player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
@@ -80,6 +78,10 @@ const MovieDetails = () => {
                 />
               </div>
             </div>
+            <div className='movie-details-top-cast-container'>
+              <MovieDetailsTopCast id={movieDetails.id.toString()}/>
+            </div>
+          </div>
           }
         </div>
       }
