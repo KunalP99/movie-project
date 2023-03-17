@@ -3,13 +3,64 @@
 
   .movie-details-grid {
     display: grid;
-    justify-content: center;
-    padding: 0px  $spacing-40;
 
     .top-half {
       iframe {
         height: 250px;
         width: 100%;
+        margin-bottom: $spacing-16;
+      }
+
+      .top-half-padded-content {
+        padding: $spacing-04;
+        .movie-details-information-container {
+          .movie-details-title-rating-container {
+            .movie-details-rating {
+              display: inline-block;
+              background: $rating-container-bg-colour;    
+              padding: 0px $spacing-16; 
+              border-radius: $border-radius;   
+              margin-left: $spacing-08; 
+              
+              > div {
+                display: flex;
+                align-items: center;
+                gap: $spacing-08;
+              }
+            }
+          }
+
+          .movie-details-tagline {
+            color: $transparent-white-font-colour;
+            margin-bottom: $spacing-08;
+          }
+
+            .movie-details-genre-container {
+              display: flex;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: $spacing-08;
+              margin-bottom: $spacing-16;
+
+            .movie-details-genres {
+              background: $genre-bg-colour;
+              border-radius: $border-radius;
+              padding: $spacing-04 $spacing-08;
+              width: 100px;
+              text-align: center;
+
+              >p {
+                font-weight: $font-weight-semi;
+              }
+            }
+          }
+        }
+      }
+      .movie-details-btn-container {
+        button {
+          @include main-btn-small;
+          color: $primary-font-colour;
+        }
       }
     }
 

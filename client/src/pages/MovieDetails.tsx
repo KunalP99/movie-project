@@ -5,6 +5,11 @@ import IMovieDetails from '../models/IMovieDetails';
 import IGenres from '../models/IGenres';
 import IMovieVideos from '../models/IMovieVideos';
 
+// Images
+import RatingStar from '../images/rating-star.svg';
+import WhitePlus from '../images/white-plus.svg';
+import HistoryIcon from '../images/white-history-icon.svg';
+
 type MovieParams = {
   movieId: string;
 }
@@ -49,13 +54,43 @@ const MovieDetails = () => {
             <div className='movie-details-grid'>
               <div className='top-half'>
                 <iframe src={`https://www.youtube.com/embed/${videos[0].key}`} title="Youtube Video Player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                <div className='movie-information-container'>
-                  <h1>{movieDetails.title}</h1>
-                  {movieDetails.tagline && <p>{movieDetails.tagline}</p>}
+                <div className='top-half-padded-content'>
+                  <div className='movie-details-information-container'>
+                    <div className='movie-details-title-rating-container'>
+                      <h1>{movieDetails.title} 
+                        <span>
+                          <div className='movie-details-rating'>
+                            <div>
+                              <img src={RatingStar} alt="Rating star" />
+                              <p>{`${Math.round(movieDetails.vote_average * 10) / 10} / 10`}</p>
+                            </div>
+                          </div>
+                        </span>
+                      </h1>
+                    </div>
+                    {movieDetails.tagline && <p className='movie-details-tagline'>{movieDetails.tagline}</p>}
+                    <div className='movie-details-genre-container'>
+                      {genres && genres.map(genre => (
+                        <div key={genre.id}  className='movie-details-genres'>
+                          <p>{genre.name}</p>  
+                        </div>
+                      ))}
+                    </div>
+                    <div className='movie-details-overview-container'>
+                      <p>{movieDetails.overview}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className='movie-details-btn-container'>
+                  <button className='add-to-watchlist-btn' type='button'>Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" /></button>
+                  <button className='view-more-btn' type='button'>Add to History <img src={HistoryIcon} alt="Add to history" /></button>
                 </div>
               </div>
               <div className='bottom-half'>
-                <img src={`http://image.tmdb.org/t/p/w780/${movieDetails?.poster_path}`} alt="" />
+                <img src={`http://image.tmdb.org/t/p/w780/${movieDetails?.poster_path}`} alt={`Poster for ${movieDetails.title}`} />
+                <div className='movie-details-extra-movie-information'>
+                  <p><span></span></p>
+                </div>
               </div>
             </div>
           }
@@ -66,7 +101,3 @@ const MovieDetails = () => {
 };
 
 export default MovieDetails;
-
-// //               {genres && genres.map(genre => (
-//                 <p key={genre.id}>{genre.name}</p>
-//               ))}
