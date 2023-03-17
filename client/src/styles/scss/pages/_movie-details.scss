@@ -80,6 +80,7 @@
       justify-content: center;
       gap: $spacing-16;
       img {
+        border-radius: $border-radius;
         object-fit: cover;
         width: 150px;
       }

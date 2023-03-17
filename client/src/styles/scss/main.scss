@@ -1,10 +1,14 @@
 @import './reset/reset';
 @import './variables/variables';
-@import './components/swiper';
 @import './app.scss';
+
+// Components
+@import './components/swiper';
 @import './components/header';
 @import './components/hero';
 @import './components/in-theatres';
 @import './components/trending';
+
+// Pages
 @import './pages/movie-details';
 
