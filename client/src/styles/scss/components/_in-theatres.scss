@@ -16,6 +16,7 @@
     background: $rating-container-bg-colour;
     border-radius: 8px;
     padding: 0px $spacing-08;
+    color: $primary-font-colour;
 
     p {
       font-size: pxToRem(10px);

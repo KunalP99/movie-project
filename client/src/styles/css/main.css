@@ -450,6 +450,7 @@ header nav .active {
   background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
   border-radius: 8px;
   padding: 0px 8px;
+  color: #FFFFFF;
 }
 .in-theatres-container .in-theatres-rating-container p {
   font-size: 0.625rem;
@@ -500,6 +501,7 @@ header nav .active {
   background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
   border-radius: 8px;
   padding: 0px 8px;
+  color: #FFFFFF;
 }
 .trending-container .trending-movies-rating-container p {
   font-size: 0.625rem;
