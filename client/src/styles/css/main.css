@@ -539,7 +539,7 @@ header nav .active {
 .movie-details-container .movie-details-grid {
   display: grid;
 }
-.movie-details-container .movie-details-grid .top-half iframe {
+.movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
   height: 250px;
   width: 100%;
   margin-bottom: 16px;
@@ -635,7 +635,7 @@ header nav .active {
   .movie-details-container .movie-details-grid {
     gap: 8px;
   }
-  .movie-details-container .movie-details-grid .top-half iframe {
+  .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 350px;
   }
   .movie-details-container .movie-details-grid .top-half .movie-details-btn-container button {
@@ -676,7 +676,7 @@ header nav .active {
   }
 }
 @media (min-width: 800px) {
-  .movie-details-container .movie-details-grid .top-half iframe {
+  .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 300px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
@@ -690,7 +690,7 @@ header nav .active {
     display: flex;
     justify-content: center;
   }
-  .movie-details-container .movie-details-grid .top-half iframe {
+  .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 350px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
@@ -710,7 +710,7 @@ header nav .active {
   }
 }
 @media (min-width: 1200px) {
-  .movie-details-container .movie-details-grid .top-half iframe {
+  .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 400px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
@@ -719,7 +719,7 @@ header nav .active {
   }
 }
 @media (min-width: 1400px) {
-  .movie-details-container .movie-details-grid .top-half iframe {
+  .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 500px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
@@ -728,7 +728,7 @@ header nav .active {
   }
 }
 @media (min-width: 1800px) {
-  .movie-details-container .movie-details-grid .top-half iframe {
+  .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 700px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
@@ -737,7 +737,7 @@ header nav .active {
   }
 }
 @media (min-width: 2133px) {
-  .movie-details-container .movie-details-grid .top-half iframe {
+  .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 800px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
@@ -745,7 +745,7 @@ header nav .active {
   }
 }
 @media (min-width: 2400px) {
-  .movie-details-container .movie-details-grid .top-half iframe {
+  .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 900px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {

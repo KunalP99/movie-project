@@ -5,7 +5,7 @@
     display: grid;
 
     .top-half {
-      iframe {
+      iframe, .no-video-found-img {
         height: 250px;
         width: 100%;
         margin-bottom: $spacing-16;
@@ -132,7 +132,7 @@
     .movie-details-grid {
       gap: $spacing-08;
       .top-half {
-        iframe {
+        iframe, .no-video-found-img {
           height: 350px;
         }
         .movie-details-btn-container {
@@ -189,7 +189,7 @@
   .movie-details-container {
     .movie-details-grid {
       .top-half {
-        iframe {
+        iframe, .no-video-found-img {
           height: 300px;
         }
       }
@@ -212,7 +212,7 @@
       justify-content: center;
 
       .top-half {
-        iframe {
+        iframe, .no-video-found-img {
           height: 350px;
         }
       }
@@ -242,7 +242,7 @@
   .movie-details-container {
     .movie-details-grid {
       .top-half {
-        iframe {
+        iframe, .no-video-found-img {
           height: 400px;
         }
       }
@@ -261,7 +261,7 @@
   .movie-details-container {
     .movie-details-grid {
       .top-half {
-        iframe {
+        iframe, .no-video-found-img {
           height: 500px;
         }
       }
@@ -280,7 +280,7 @@
   .movie-details-container {
     .movie-details-grid {
       .top-half {
-        iframe {
+        iframe, .no-video-found-img {
           height: 700px;
         }
       }
@@ -299,7 +299,7 @@
   .movie-details-container {
     .movie-details-grid {
       .top-half {
-        iframe {
+        iframe, .no-video-found-img {
           height: 800px;
         }
       }
@@ -317,7 +317,7 @@
   .movie-details-container {
     .movie-details-grid {
       .top-half {
-        iframe {
+        iframe, .no-video-found-img {
           height: 900px;
         }
       }

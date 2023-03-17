@@ -13,6 +13,7 @@ import MovieDetailsTopCast from '../components/movie_details/MovieDetailsTopCast
 // Images
 import WhitePlus from '../images/white-plus.svg';
 import HistoryIcon from '../images/white-history-icon.svg';
+import VideoNotFound from '../images/video-not-found.svg';
 
 type MovieParams = {
   movieId: string;
@@ -54,7 +55,8 @@ const MovieDetails = () => {
           <div>
             <div className='movie-details-grid'>
               <div className='top-half'>
-                <iframe src={`https://www.youtube.com/embed/${videos[0].key}`} title="Youtube Video Player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                {videos.length !== 0 ? <iframe src={`https://www.youtube.com/embed/${videos[0].key}`} title="Youtube Video Player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> : <img className='no-video-found-img' src={VideoNotFound} />}
+
                 <div className='top-half-padded-content'>
                   <MovieDetailsInformation 
                     title={movieDetails.title} 
