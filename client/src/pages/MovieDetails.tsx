@@ -21,6 +21,12 @@ const MovieDetails = () => {
   const [videos, setVideos] = useState<IMovieVideos[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
+  // Format number to US dollars
+  const formatToUsDollars = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+
   useEffect(() => {
     setLoading(true);
     getMovieDetails(movieId || '')
@@ -82,14 +88,31 @@ const MovieDetails = () => {
                   </div>
                 </div>
                 <div className='movie-details-btn-container'>
-                  <button className='add-to-watchlist-btn' type='button'>Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" /></button>
-                  <button className='view-more-btn' type='button'>Add to History <img src={HistoryIcon} alt="Add to history" /></button>
+                  <button className='primary-btn' type='button'>Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" /></button>
+                  <button className='secondary-btn' type='button'>Add to History <img src={HistoryIcon} alt="Add to history" /></button>
                 </div>
               </div>
               <div className='bottom-half'>
                 <img src={`http://image.tmdb.org/t/p/w780/${movieDetails?.poster_path}`} alt={`Poster for ${movieDetails.title}`} />
                 <div className='movie-details-extra-movie-information'>
-                  <p><span></span></p>
+                  <div>
+                    <p className='movie-details-extra-subtitle'>Release Date</p>
+                    <p className='movie-details-extra-body'>{movieDetails.release_date}</p>
+                  </div>
+                  <div>
+                    <p className='movie-details-extra-subtitle'>Runtime</p>
+                    <p className='movie-details-extra-body'>{`${movieDetails.runtime}m`}</p>
+                  </div>
+                  <div>
+                    <p className='movie-details-extra-subtitle'>Budget</p>
+                    {movieDetails.budget === 0 ? <p className='movie-details-extra-body'>Unknown</p> : 
+                      <p className='movie-details-extra-body'>{`${formatToUsDollars.format(movieDetails.budget)}`}</p>}
+                  </div>
+                  <div>
+                    <p className='movie-details-extra-subtitle'>Revenue</p>
+                    {movieDetails.revenue === 0 ? <p className='movie-details-extra-body'>Unknown</p> : 
+                      <p className='movie-details-extra-body'>{`${formatToUsDollars.format(movieDetails.revenue)}`}</p>}
+                  </div>
                 </div>
               </div>
             </div>

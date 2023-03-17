@@ -35,12 +35,12 @@
             margin-bottom: $spacing-08;
           }
 
-            .movie-details-genre-container {
-              display: flex;
-              align-items: center;
-              flex-wrap: wrap;
-              gap: $spacing-08;
-              margin-bottom: $spacing-16;
+          .movie-details-genre-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: $spacing-08;
+            margin-bottom: $spacing-16;
 
             .movie-details-genres {
               background: $genre-bg-colour;
@@ -54,19 +54,40 @@
               }
             }
           }
+          .movie-details-overview-container {
+            margin-bottom: $spacing-24;
+          }
         }
       }
+
       .movie-details-btn-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $spacing-08;
+        margin-bottom: $spacing-64;
+
         button {
-          @include main-btn-small;
-          color: $primary-font-colour;
+          display: flex;
+          justify-content: space-around;
+          width: 200px;
         }
       }
     }
 
     .bottom-half {
+      display: flex;
+      justify-content: center;
+      gap: $spacing-16;
       img {
+        object-fit: cover;
         width: 150px;
+      }
+
+      .movie-details-extra-movie-information {
+        .movie-details-extra-subtitle {
+          font-weight: $font-weight-bold;
+        }
       }
     }
   }
@@ -88,7 +109,7 @@
 @media (min-width: 650px) {
   .movie-details-container {
     .movie-details-grid {
-      grid-template-columns: 350px 1fr;
+      grid-template-columns: 400px 1fr;
       
       .top-half {
         iframe {
