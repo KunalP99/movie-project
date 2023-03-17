@@ -17,9 +17,10 @@
           .movie-details-title-rating-container {
             .movie-details-rating {
               display: inline-block;
+              vertical-align: middle;
               background: $rating-container-bg-colour;    
               padding: 0px $spacing-16; 
-              border-radius: $border-radius;   
+              border-radius: 8px;   
               margin-left: $spacing-08; 
               
               > div {
@@ -46,7 +47,7 @@
             .movie-details-genres {
               background: $genre-bg-colour;
               border-radius: $border-radius;
-              padding: $spacing-04 $spacing-08;
+              padding: $spacing-04 $spacing-16;
               text-align: center;
 
               >p {
@@ -158,6 +159,7 @@
           height: 300px;
         }
         .movie-details-btn-container {
+          gap: $spacing-24;
           flex-direction: row;
           align-items: flex-start;
         }
@@ -181,6 +183,19 @@
       display: flex;
       justify-content: center;
       padding: 0px $spacing-120;
+      .top-half {
+        .top-half-padded-content {
+          .movie-details-information-container {
+            .movie-details-title-rating-container {
+              .movie-details-rating {
+                padding: $spacing-08 $spacing-16;
+                margin-left:$spacing-24;
+              }
+            }
+          }
+        }
+      }
+
     }
   }
 }
