@@ -485,5 +485,37 @@ header nav .active {
   }
 }
 .movie-details-container {
-  margin-top: 200px;
+  margin-top: 100px;
+}
+.movie-details-container .movie-details-grid {
+  display: grid;
+  justify-content: center;
+  padding: 0px 40px;
+}
+.movie-details-container .movie-details-grid .top-half iframe {
+  height: 250px;
+  width: 100%;
+}
+.movie-details-container .movie-details-grid .bottom-half img {
+  width: 150px;
+}
+
+@media (min-width: 500px) {
+  .movie-details-container .movie-details-grid {
+    gap: 8px;
+  }
+  .movie-details-container .movie-details-grid .top-half iframe {
+    height: 350px;
+  }
+}
+@media (min-width: 650px) {
+  .movie-details-container .movie-details-grid {
+    grid-template-columns: 350px 1fr;
+  }
+  .movie-details-container .movie-details-grid .top-half iframe {
+    height: 250px;
+  }
+  .movie-details-container .movie-details-grid .bottom-half img {
+    height: 250px;
+  }
 }

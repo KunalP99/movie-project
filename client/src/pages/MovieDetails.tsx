@@ -31,6 +31,7 @@ const MovieDetails = () => {
     getMovieVideos(movieId || '')
       .then(data => {
         setVideos(data.results.filter((video: IMovieVideos) => video.type === 'Trailer'));
+        console.log(data);
       })
       .catch(err => {
         console.log(err.message);
@@ -42,18 +43,24 @@ const MovieDetails = () => {
     
   return (
     <section className="movie-details-container">
-      {!loading && <div className='movie-details-grid'>
-        <div className='top-half'>
-          <iframe src={`https://www.youtube.com/embed/${videos[0].key}`} title="Youtube Video Player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-          <div className='movie-information-container'>
-            {movieDetails && <div>
-              <h1>{movieDetails.title}</h1>
-              <p></p>
-            </div>}
-          </div>
+      {movieDetails && 
+        <div>
+          {!loading && 
+            <div className='movie-details-grid'>
+              <div className='top-half'>
+                <iframe src={`https://www.youtube.com/embed/${videos[0].key}`} title="Youtube Video Player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                <div className='movie-information-container'>
+                  <h1>{movieDetails.title}</h1>
+                  {movieDetails.tagline && <p>{movieDetails.tagline}</p>}
+                </div>
+              </div>
+              <div className='bottom-half'>
+                <img src={`http://image.tmdb.org/t/p/w780/${movieDetails?.poster_path}`} alt="" />
+              </div>
+            </div>
+          }
         </div>
-      </div>}
-
+      }
     </section>
   );
 };
