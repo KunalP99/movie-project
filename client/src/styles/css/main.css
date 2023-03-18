@@ -533,6 +533,47 @@ header nav .active {
     width: 20px;
   }
 }
+.movie-details-top-cast-container {
+  margin-top: 64px;
+  padding-left: 4px;
+  position: relative;
+}
+.movie-details-top-cast-container h2 {
+  margin-bottom: 24px;
+}
+.movie-details-top-cast-container .movie-details-person-container {
+  width: 120px;
+}
+.movie-details-top-cast-container .movie-details-person-container > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 110px;
+  text-align: center;
+}
+
+@media (min-width: 450px) {
+  .movie-details-top-cast-container .movie-details-person-container > p {
+    width: auto;
+  }
+}
+@media (min-width: 500px) {
+  .movie-details-top-cast-container .movie-details-person-container {
+    width: 200px;
+  }
+}
+@media (min-width: 1000px) {
+  .movie-details-top-cast-container {
+    padding-left: 120px;
+  }
+}
+@media (min-width: 1500px) {
+  .movie-details-top-cast-container .movie-details-person-container {
+    width: 300px;
+  }
+}
 .movie-details-container {
   margin-top: 100px;
 }
@@ -610,28 +651,7 @@ header nav .active {
 .movie-details-container .movie-details-grid .bottom-half .movie-details-extra-movie-information .movie-details-extra-subtitle {
   font-weight: 700;
 }
-.movie-details-container .movie-details-top-cast-container {
-  margin-top: 64px;
-  padding-left: 4px;
-  position: relative;
-}
-.movie-details-container .movie-details-top-cast-container h2 {
-  margin-bottom: 24px;
-}
-.movie-details-container .movie-details-top-cast-container .movie-details-person-container > p {
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 110px;
-}
 
-@media (min-width: 450px) {
-  .movie-details-container .movie-details-top-cast-container .movie-details-person-container > p {
-    width: auto;
-  }
-}
 @media (min-width: 500px) {
   .movie-details-container .movie-details-grid {
     gap: 8px;
@@ -710,9 +730,6 @@ header nav .active {
   }
   .movie-details-container .movie-details-grid .bottom-half .movie-details-extra-movie-information .movie-details-extra-subtitle {
     font-weight: 700;
-  }
-  .movie-details-container .movie-details-top-cast-container {
-    padding-left: 120px;
   }
 }
 @media (min-width: 1200px) {
