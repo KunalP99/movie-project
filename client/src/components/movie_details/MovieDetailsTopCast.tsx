@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef} from 'react';
-import { getMovieCredits } from '../../api/api';
 import ITopCast from '../../models/ITopCast';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import type SwiperCore from 'swiper';
@@ -11,24 +11,12 @@ import WhiteArrow from '../../images/white-arrow.svg';
 
 
 interface Props {
-  id: string
+  topCast: ITopCast[]
+  loading: boolean
 }
 
-const MovieDetailsTopCast = ({ id } : Props) => {
-  const [topCast, setTopCast] = useState<ITopCast[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+const MovieDetailsTopCast = ({ topCast, loading } : Props)  => {
   const swiperRef = useRef<SwiperCore>();
-
-  useEffect(() => {
-    setLoading(true);
-    getMovieCredits(id)
-      .then(data => {
-        setTopCast(data.cast.slice(0, 10));
-        console.log(data.cast);
-      })
-      .catch(err => console.log(err))
-      .finally(() => setLoading(false));
-  }, []);
 
   return (
     <section className='movie-details-top-cast-container'>

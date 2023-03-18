@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieDetails, getMovieVideos } from '../api/api';
+import { getMovieDetails, getMovieVideos, getMovieCredits } from '../api/api';
 import IMovieDetails from '../models/IMovieDetails';
 import IGenres from '../models/IGenres';
 import IMovieVideos from '../models/IMovieVideos';
+import ITopCast from '../models/ITopCast';
 
 // Components
 import MovieDetailsInformation from '../components/movie_details/MovieDetailsInformation';
 import MovieDetailsExtraInfo from '../components/movie_details/MovieDetailsExtraInfo';
 import MovieDetailsTopCast from '../components/movie_details/MovieDetailsTopCast';
+import MovieDetailsStarring from '../components/movie_details/MovieDetailsStarring';
 
 // Images
 import WhitePlus from '../images/white-plus.svg';
@@ -24,6 +26,7 @@ const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
   const [genres, setGenres] = useState<IGenres[]>([]);
   const [videos, setVideos] = useState<IMovieVideos[]>([]);
+  const [topCast, setTopCast] = useState<ITopCast[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -43,8 +46,14 @@ const MovieDetails = () => {
       )
       .catch(err => {
         console.log(err.message);
+      });
+
+    getMovieCredits(movieId || '')
+      .then(data => {
+        setTopCast(data.cast.slice(0, 10));
       })
-      .finally(() => setLoading(false));
+      .catch(err => console.log(err));
+    setLoading(false);
   }, []); 
     
   return (
@@ -80,9 +89,8 @@ const MovieDetails = () => {
                 />
               </div>
             </div>
-            <div>
-              <MovieDetailsTopCast id={movieDetails.id.toString()}/>
-            </div>
+            <MovieDetailsTopCast topCast={topCast} loading={loading} />
+            <MovieDetailsStarring topCast={topCast} loading={loading} />
           </div>
           }
         </div>
@@ -90,5 +98,4 @@ const MovieDetails = () => {
     </section>
   );
 };
-
 export default MovieDetails;
