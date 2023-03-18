@@ -90,7 +90,7 @@ const MovieDetails = () => {
               </div>
             </div>
             <MovieDetailsTopCast topCast={topCast} loading={loading} />
-            <MovieDetailsStarring topCast={topCast} loading={loading} />
+            <MovieDetailsStarring topCast={topCast} />
           </div>
           }
         </div>

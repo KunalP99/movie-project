@@ -574,6 +574,40 @@ header nav .active {
     width: 300px;
   }
 }
+.movie-details-starring-container {
+  margin-top: 64px;
+  padding-left: 4px;
+  position: relative;
+}
+.movie-details-starring-container h2 {
+  margin-bottom: 24px;
+}
+.movie-details-starring-container .movie-details-starring-movie-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  cursor: pointer;
+}
+.movie-details-starring-container .movie-details-starring-movie-container p {
+  font-size: clamp(1.25rem, 6vw, 1.75rem);
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  margin-top: 8px;
+}
+
+@media (min-width: 1000px) {
+  .movie-details-starring-container {
+    padding-left: 120px;
+  }
+  .movie-details-starring-container .movie-details-starring-movie-container p {
+    margin-top: 16px;
+  }
+}
 .movie-details-container {
   margin-top: 100px;
 }

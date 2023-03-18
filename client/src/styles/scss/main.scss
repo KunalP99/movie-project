@@ -3,12 +3,13 @@
 @import './app.scss';
 
 // Components
-@import './components/swiper';
+@import './components/small-swiper';
 @import './components/header';
 @import './components/hero';
 @import './components/in-theatres';
 @import './components/trending';
 @import './components/movie-details-top-cast';
+@import './components/movie-details-starring';
 
 // Pages
 @import './pages/movie-details';
