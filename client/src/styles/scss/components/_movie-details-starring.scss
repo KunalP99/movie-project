@@ -6,7 +6,7 @@
     h2 {
       margin-bottom: $spacing-24;
     }
-
+    
     .movie-details-starring-movie-container {
       img {
         object-fit: cover;
@@ -23,6 +23,7 @@
         text-overflow: ellipsis;
         text-align: center;
         margin-top: $spacing-08;
+        color: $primary-font-colour;
       }
     }
 }

@@ -1,7 +1,3 @@
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: $main-font-family;
   color: $primary-font-colour;
@@ -50,6 +46,11 @@ p {
 .secondary-btn:hover {
   background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
 }
+
+.link {
+  text-decoration: none;
+}
+
 
 @media (min-width: 500px) {
   .primary-btn, .secondary-btn {

@@ -54,7 +54,7 @@ const MovieDetails = () => {
       })
       .catch(err => console.log(err));
     setLoading(false);
-  }, []); 
+  }, [movieId]); 
     
   return (
     <section className="movie-details-container">
