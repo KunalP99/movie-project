@@ -1,11 +1,9 @@
 .in-theatres-container {
-  padding-left: $spacing-16;
-  margin-bottom: $spacing-64;
+  @include container-spacing;
   position: relative;
     h2 {
-    margin-top: $spacing-64;
-    margin-bottom: $spacing-16;
-  }
+      @include h2-spacing;
+    }
   .in-theatres-rating-container {
     position: absolute;
     display: flex;
@@ -28,18 +26,8 @@
   } 
 }
 
-@media (min-width: 800px) {
-  .in-theatres-container {
-    h2 {
-      margin-bottom: $spacing-40;
-    }
-  }
-}
-
 @media (min-width: 1000px) {
   .in-theatres-container {
-    padding-left: $spacing-120;
-    margin-bottom: $spacing-120;
     position: relative;
 
     .in-theatres-rating-container {

@@ -1,10 +1,8 @@
 .trending-container {
-  padding-left: $spacing-16;
-  margin-bottom: $spacing-64;
+  @include container-spacing;
   position: relative;
   h2 {
-    margin-top: $spacing-64;
-    margin-bottom: $spacing-16;
+    @include h2-spacing;
   }
   .trending-movies-rating-container {
     position: absolute;
@@ -28,18 +26,8 @@
   }
 }
 
-@media (min-width: 800px) {
-  .trending-container {
-    h2 {
-      margin-bottom: $spacing-40;
-    }
-  }
-}
-
 @media (min-width: 1000px) {
   .trending-container {
-    padding-left: $spacing-120;
-    margin-bottom: $spacing-120;
     position: relative;
 
     .trending-movies-rating-container {

@@ -433,13 +433,23 @@ header nav .active {
   }
 }
 .in-theatres-container {
+  margin-top: 64px;
   padding-left: 16px;
-  margin-bottom: 64px;
   position: relative;
 }
+@media (min-width: 1000px) {
+  .in-theatres-container {
+    padding-left: 120px;
+    margin-top: 120px;
+  }
+}
 .in-theatres-container h2 {
-  margin-top: 64px;
   margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .in-theatres-container h2 {
+    margin-bottom: 40px;
+  }
 }
 .in-theatres-container .in-theatres-rating-container {
   position: absolute;
@@ -460,15 +470,8 @@ header nav .active {
   width: 15px;
 }
 
-@media (min-width: 800px) {
-  .in-theatres-container h2 {
-    margin-bottom: 40px;
-  }
-}
 @media (min-width: 1000px) {
   .in-theatres-container {
-    padding-left: 120px;
-    margin-bottom: 120px;
     position: relative;
   }
   .in-theatres-container .in-theatres-rating-container {
@@ -484,13 +487,23 @@ header nav .active {
   }
 }
 .trending-container {
+  margin-top: 64px;
   padding-left: 16px;
-  margin-bottom: 64px;
   position: relative;
 }
+@media (min-width: 1000px) {
+  .trending-container {
+    padding-left: 120px;
+    margin-top: 120px;
+  }
+}
 .trending-container h2 {
-  margin-top: 64px;
   margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .trending-container h2 {
+    margin-bottom: 40px;
+  }
 }
 .trending-container .trending-movies-rating-container {
   position: absolute;
@@ -511,15 +524,8 @@ header nav .active {
   width: 15px;
 }
 
-@media (min-width: 800px) {
-  .trending-container h2 {
-    margin-bottom: 40px;
-  }
-}
 @media (min-width: 1000px) {
   .trending-container {
-    padding-left: 120px;
-    margin-bottom: 120px;
     position: relative;
   }
   .trending-container .trending-movies-rating-container {
@@ -536,11 +542,22 @@ header nav .active {
 }
 .movie-details-top-cast-container {
   margin-top: 64px;
-  padding-left: 4px;
+  padding-left: 16px;
   position: relative;
 }
+@media (min-width: 1000px) {
+  .movie-details-top-cast-container {
+    padding-left: 120px;
+    margin-top: 120px;
+  }
+}
 .movie-details-top-cast-container h2 {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .movie-details-top-cast-container h2 {
+    margin-bottom: 40px;
+  }
 }
 .movie-details-top-cast-container .movie-details-person-container {
   width: 120px;
@@ -565,23 +582,22 @@ header nav .active {
     width: 200px;
   }
 }
-@media (min-width: 1000px) {
-  .movie-details-top-cast-container {
-    padding-left: 120px;
-  }
-}
 @media (min-width: 1500px) {
   .movie-details-top-cast-container .movie-details-person-container {
     width: 300px;
   }
 }
 .movie-details-starring-container {
-  margin-top: 64px;
   position: relative;
+  margin-top: 64px;
 }
 .movie-details-starring-container h2 {
-  padding-left: 4px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .movie-details-starring-container h2 {
+    margin-bottom: 40px;
+  }
 }
 .movie-details-starring-container .movie-details-starring-movie-container img {
   -o-object-fit: cover;
@@ -603,6 +619,9 @@ header nav .active {
 }
 
 @media (min-width: 1000px) {
+  .movie-details-starring-container {
+    margin-top: 120px;
+  }
   .movie-details-starring-container h2 {
     padding-left: 120px;
   }
@@ -612,18 +631,24 @@ header nav .active {
 }
 .movie-details-more-like-this-container {
   margin-top: 64px;
-  padding-left: 4px;
+  padding-left: 16px;
   position: relative;
 }
-.movie-details-more-like-this-container h2 {
-  margin-bottom: 24px;
-}
-
 @media (min-width: 1000px) {
   .movie-details-more-like-this-container {
     padding-left: 120px;
+    margin-top: 120px;
   }
 }
+.movie-details-more-like-this-container h2 {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .movie-details-more-like-this-container h2 {
+    margin-bottom: 40px;
+  }
+}
+
 .movie-details-container {
   margin-top: 100px;
 }
@@ -680,7 +705,6 @@ header nav .active {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin-bottom: 64px;
 }
 .movie-details-container .movie-details-grid .top-half .movie-details-btn-container button {
   display: flex;
@@ -734,13 +758,16 @@ header nav .active {
 }
 @media (min-width: 750px) {
   .movie-details-container .movie-details-grid {
-    padding: 0px 4px;
+    padding: 0px 16px;
     display: flex;
     justify-content: center;
   }
   .movie-details-container .movie-details-grid .top-half .top-half-padded-content .movie-details-information-container .movie-details-title-rating-container .movie-details-rating {
     padding: 8px 16px;
     margin-left: 24px;
+  }
+  .movie-details-container .movie-details-grid .top-half .top-half-padded-content .movie-details-information-container .movie-details-overview-container > p {
+    padding-right: 40px;
   }
   .movie-details-container .movie-details-grid .bottom-half {
     flex-direction: column;
@@ -792,6 +819,9 @@ header nav .active {
 @media (min-width: 1400px) {
   .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 500px;
+  }
+  .movie-details-container .movie-details-grid .top-half .top-half-padded-content .movie-details-information-container .movie-details-overview-container > p {
+    padding-right: 120px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
     width: 350px;

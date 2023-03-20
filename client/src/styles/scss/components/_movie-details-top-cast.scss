@@ -1,10 +1,9 @@
   .movie-details-top-cast-container {
-    margin-top: $spacing-64;
-    padding-left: $spacing-04;
+    @include container-spacing;
     position: relative;
 
     h2 {
-      margin-bottom: $spacing-24;
+      @include h2-spacing;
     }
 
     .movie-details-person-container {
@@ -37,12 +36,6 @@
       .movie-details-person-container {
         width: 200px;
       }
-    }
-  }
-
-  @media (min-width: 1000px) {
-    .movie-details-top-cast-container {
-      padding-left: 120px;
     }
   }
 
