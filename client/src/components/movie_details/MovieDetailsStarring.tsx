@@ -5,7 +5,8 @@ import type SwiperCore from 'swiper';
 import { getPersonMovieCredits } from '../../api/api';
 import ITopCast from '../../models/ITopCast';
 import IMoviesStarring from '../../models/IMoviesStarring';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import randomNumber from '../helpers/randomNumber';
 
 // Images 
 import WhiteArrow from '../../images/white-arrow.svg';
@@ -27,12 +28,13 @@ const MovieDetailsStarring = ({ topCast } : Props) => {
   const swiperRef = useRef<SwiperCore>();
   const [movies, setMovies] = useState<IMoviesStarring[]>([]);
   const [dataLoaded, setDataLoaded] = useState<boolean>(false);
+  const [randomNum] = useState(randomNumber(0, 2));
 
   useEffect(() => {
     // Once topcast has loaded check if the person is featured in at least 6 movies
     setDataLoaded(false);
     if (topCast.length > 0)  {
-      getPersonMovieCredits(topCast[0].id.toString())
+      getPersonMovieCredits(topCast[randomNum].id.toString())
         .then(data => {
           if (data.cast.length > 5) {
             setMovies(data.cast.filter((movie: CastMovieId) => movie.id != movieId).slice(0, 6));
@@ -47,7 +49,7 @@ const MovieDetailsStarring = ({ topCast } : Props) => {
     <section className="movie-details-starring-container">
       {dataLoaded && 
       <div>
-        <h2>{ `Movies Starring ${topCast[0].name}`}</h2>
+        <h2>{ `Movies Starring ${topCast[randomNum].name}`}</h2>
         <Swiper
           onBeforeInit={(swiper) => {
             swiperRef.current = swiper;
@@ -96,7 +98,6 @@ const MovieDetailsStarring = ({ topCast } : Props) => {
         </div>
       </div>
       }
-
     </section>
   );
 };
