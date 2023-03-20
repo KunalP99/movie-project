@@ -75,6 +75,20 @@ $border-radius: 16px;
   line-height: 32px;
 }
 
+/* Containers */
+@mixin rating-container-style {
+  position: absolute;
+  display: flex;
+  left: 8px;
+  top: 8px;
+  align-items: center;
+  gap: $spacing-04;
+  background: $rating-container-bg-colour;
+  border-radius: 8px;
+  padding: 0px $spacing-08;
+  color: $primary-font-colour;
+}
+
 /* Font Weights */
 $font-weight-light: 300;
 $font-weight-regular: 400;

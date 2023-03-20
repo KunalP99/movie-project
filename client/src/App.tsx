@@ -1,4 +1,4 @@
-import Home from './components/Home';
+import Home from './pages/Home';
 import Header from './components/Header';
 import { Route, Routes } from 'react-router-dom';
 import MovieDetails from './pages/MovieDetails';

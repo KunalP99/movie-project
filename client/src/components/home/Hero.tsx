@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getMoviesInTheatre } from '../api/api';
+import { getMoviesInTheatre } from '../../api/api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -7,12 +7,12 @@ import { Pagination, Autoplay } from 'swiper';
 import { Link } from 'react-router-dom';
 
 // Models
-import IHeroMovies from '../models/IHeroMovies';
+import IHeroMovies from '../../models/IHeroMovies';
 
 // Images
-import RatingStar from '../images/rating-star.svg';
-import WhitePlus from '../images/white-plus.svg';
-import WhiteArrow from '../images/white-arrow.svg';
+import RatingStar from '../../images/rating-star.svg';
+import WhitePlus from '../../images/white-plus.svg';
+import WhiteArrow from '../../images/white-arrow.svg';
 
 const Hero = () => {
   const [moviesInTheatre, setMoviesInTheatre] = useState<IHeroMovies[]>([]);

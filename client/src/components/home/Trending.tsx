@@ -1,15 +1,15 @@
 import { useEffect, useState, useRef } from 'react';
-import { getTrendingMovies } from '../api/api';
+import { getTrendingMovies } from '../../api/api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type SwiperCore from 'swiper';
 import { Link } from 'react-router-dom';
 
 // Models 
-import ISmallSwiperMovies from '../models/ISmallSwiperMovies';
+import ISmallSwiperMovies from '../../models/ISmallSwiperMovies';
 
 // Images
-import WhiteArrow from '../images/white-arrow.svg';
-import RatingStar from '../images/rating-star.svg';
+import WhiteArrow from '../../images/white-arrow.svg';
+import RatingStar from '../../images/rating-star.svg';
 
 const Trending = () => {
   const [trendingMovies, setTrendingMovies] = useState<ISmallSwiperMovies[]>();

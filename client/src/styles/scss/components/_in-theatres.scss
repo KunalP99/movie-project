@@ -1,20 +1,13 @@
 .in-theatres-container {
   @include container-spacing;
   position: relative;
+  
     h2 {
       @include h2-spacing;
     }
+
   .in-theatres-rating-container {
-    position: absolute;
-    display: flex;
-    left: 8px;
-    top: 8px;
-    align-items: center;
-    gap: $spacing-04;
-    background: $rating-container-bg-colour;
-    border-radius: 8px;
-    padding: 0px $spacing-08;
-    color: $primary-font-colour;
+    @include rating-container-style;
 
     p {
       font-size: pxToRem(10px);

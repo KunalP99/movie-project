@@ -1,6 +1,6 @@
-import Hero from './Hero';
-import Trending from './Trending';
-import InTheatres from './InTheatres';
+import Hero from '../components/home/Hero';
+import Trending from '../components/home/Trending';
+import InTheatres from '../components/home/InTheatres';
 
 const Home = () => {
   return (

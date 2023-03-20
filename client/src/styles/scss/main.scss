@@ -5,12 +5,18 @@
 // Components
 @import './components/small-swiper';
 @import './components/header';
-@import './components/hero';
-@import './components/in-theatres';
-@import './components/trending';
-@import './components/movie-details-top-cast';
-@import './components/movie-details-starring';
-@import './components/movie-details-more-like-this';
+
+// Home Page Components
+  @import './components/hero';
+  @import './components/in-theatres';
+  @import './components/trending';
 
 // Pages
 @import './pages/movie-details';
+
+  // Movie Details Components
+  @import './components/movie-details/movie-details-top-cast';
+  @import './components/movie-details/movie-details-starring';
+  @import './components/movie-details/movie-details-more-like-this';
+
+
