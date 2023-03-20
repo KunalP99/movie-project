@@ -28,9 +28,9 @@ const MovieDetailsStarring = ({ topCast } : Props) => {
   const swiperRef = useRef<SwiperCore>();
   const [movies, setMovies] = useState<IMoviesStarring[]>([]);
   const [dataLoaded, setDataLoaded] = useState<boolean>(false);
-  const [randomNum] = useState(randomNumber(0, 2));
+  const [randomNum] = useState(randomNumber(topCast));
 
-  useEffect(() => {
+  useEffect(() => {    
     // Once topcast has loaded check if the person is featured in at least 6 movies
     setDataLoaded(false);
     if (topCast.length > 0)  {
