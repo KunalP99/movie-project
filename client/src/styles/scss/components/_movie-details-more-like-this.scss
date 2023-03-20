@@ -1,0 +1,15 @@
+.movie-details-more-like-this-container {
+  margin-top: $spacing-64;
+  padding-left: $spacing-04;
+  position: relative;
+
+    h2 {
+      margin-bottom: $spacing-24;
+    }
+}
+
+@media (min-width: 1000px) {
+  .movie-details-more-like-this-container {
+    padding-left: 120px;
+  }
+}

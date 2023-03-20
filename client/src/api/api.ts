@@ -69,3 +69,15 @@ export const getPersonMovieCredits = (personId: string) => {
       return res.json();
     });
 };
+
+export const getMoviesByOnGenre = (genreId: string, page: number) => {
+  return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=${page}&with_genres=${genreId}`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(
+          `Error: Status code: ${res.status}`
+        );
+      }
+      return res.json();
+    });
+};

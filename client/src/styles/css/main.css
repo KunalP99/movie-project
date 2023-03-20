@@ -610,6 +610,20 @@ header nav .active {
     margin-top: 16px;
   }
 }
+.movie-details-more-like-this-container {
+  margin-top: 64px;
+  padding-left: 4px;
+  position: relative;
+}
+.movie-details-more-like-this-container h2 {
+  margin-bottom: 24px;
+}
+
+@media (min-width: 1000px) {
+  .movie-details-more-like-this-container {
+    padding-left: 120px;
+  }
+}
 .movie-details-container {
   margin-top: 100px;
 }

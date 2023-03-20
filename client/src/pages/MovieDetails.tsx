@@ -11,6 +11,7 @@ import MovieDetailsInformation from '../components/movie_details/MovieDetailsInf
 import MovieDetailsExtraInfo from '../components/movie_details/MovieDetailsExtraInfo';
 import MovieDetailsTopCast from '../components/movie_details/MovieDetailsTopCast';
 import MovieDetailsStarring from '../components/movie_details/MovieDetailsStarring';
+import MovieDetailsMoreLikeThis from '../components/movie_details/MovieDetailsMoreLikeThis';
 
 // Images
 import WhitePlus from '../images/white-plus.svg';
@@ -65,7 +66,6 @@ const MovieDetails = () => {
             <div className='movie-details-grid'>
               <div className='top-half'>
                 {videos.length !== 0 ? <iframe src={`https://www.youtube.com/embed/${videos[0].key}`} title="Youtube Video Player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> : <img className='no-video-found-img' src={VideoNotFound} />}
-
                 <div className='top-half-padded-content'>
                   <MovieDetailsInformation 
                     title={movieDetails.title} 
@@ -91,6 +91,7 @@ const MovieDetails = () => {
             </div>
             <MovieDetailsTopCast topCast={topCast} loading={loading} />
             <MovieDetailsStarring topCast={topCast} />
+            <MovieDetailsMoreLikeThis genres={genres} loading={loading} />
           </div>
           }
         </div>
