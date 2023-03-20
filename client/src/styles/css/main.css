@@ -178,6 +178,7 @@ p {
   }
   .swiper-button-prev-unique-container {
     left: 20px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.83) 0%, rgba(0, 0, 0, 0) 100%);
   }
   .swiper-button-prev-unique-container .swiper-button-prev-unique {
     cursor: pointer;
@@ -576,10 +577,10 @@ header nav .active {
 }
 .movie-details-starring-container {
   margin-top: 64px;
-  padding-left: 4px;
   position: relative;
 }
 .movie-details-starring-container h2 {
+  padding-left: 4px;
   margin-bottom: 24px;
 }
 .movie-details-starring-container .movie-details-starring-movie-container img {
@@ -602,7 +603,7 @@ header nav .active {
 }
 
 @media (min-width: 1000px) {
-  .movie-details-starring-container {
+  .movie-details-starring-container h2 {
     padding-left: 120px;
   }
   .movie-details-starring-container .movie-details-starring-movie-container p {
@@ -719,9 +720,9 @@ header nav .active {
 }
 @media (min-width: 750px) {
   .movie-details-container .movie-details-grid {
+    padding: 0px 4px;
     display: flex;
     justify-content: center;
-    padding: 0px 120px;
   }
   .movie-details-container .movie-details-grid .top-half .top-half-padded-content .movie-details-information-container .movie-details-title-rating-container .movie-details-rating {
     padding: 8px 16px;
@@ -737,16 +738,15 @@ header nav .active {
 }
 @media (min-width: 800px) {
   .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
-    height: 300px;
+    height: 350px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
-    height: 300px;
+    height: 350px;
   }
 }
 @media (min-width: 1000px) {
   .movie-details-container .movie-details-grid {
-    padding-left: 120px;
-    padding-right: 120px;
+    padding: 0px 120px;
     display: flex;
     justify-content: center;
   }
