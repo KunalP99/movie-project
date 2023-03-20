@@ -77,16 +77,20 @@ const MovieDetailsTopCast = ({ topCast, loading } : Props)  => {
           );
         })}
       </Swiper>
-      <div className='swiper-button-prev-unique-container'>
-        <button className='swiper-button-prev-unique' onClick={() => swiperRef.current?.slidePrev()}>
-          <img src={WhiteArrow} alt="Prev" />
-        </button>
-      </div>
-      <div className='swiper-button-next-unique-container'>
-        <button className='swiper-button-next-unique' onClick={() => swiperRef.current?.slideNext()}>
-          <img src={WhiteArrow} alt="Next" />
-        </button>
-      </div>
+      {topCast.length >= 4 && 
+        <div>
+          <div className='swiper-button-prev-unique-container'>
+            <button className='swiper-button-prev-unique' onClick={() => swiperRef.current?.slidePrev()}>
+              <img src={WhiteArrow} alt="Prev" />
+            </button>
+          </div>
+          <div className='swiper-button-next-unique-container'>
+            <button className='swiper-button-next-unique' onClick={() => swiperRef.current?.slideNext()}>
+              <img src={WhiteArrow} alt="Next" />
+            </button>
+          </div>
+        </div>
+      }
     </section>
   );
 };
