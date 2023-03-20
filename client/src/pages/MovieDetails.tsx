@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails, getMovieVideos, getMovieCredits } from '../api/api';
+
+// Models
 import IMovieDetails from '../models/IMovieDetails';
 import IGenres from '../models/IGenres';
 import IMovieVideos from '../models/IMovieVideos';
@@ -32,6 +34,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     setLoading(true);
+    
     // Get movie details for indiviual movie
     getMovieDetails(movieId || '')
       .then(data => {
@@ -41,7 +44,7 @@ const MovieDetails = () => {
       .catch(err => console.log(err.message)
       );
 
-    // Get trailers by filtering videos by Trailer
+    // Get trailers by filtering videos by type of Trailer
     getMovieVideos(movieId || '')
       .then(data => setVideos(data.results.filter((video: IMovieVideos) => video.type === 'Trailer'))
       )
@@ -49,10 +52,9 @@ const MovieDetails = () => {
         console.log(err.message);
       });
 
+    // Get credits for movie
     getMovieCredits(movieId || '')
-      .then(data => {
-        setTopCast(data.cast);
-      })
+      .then(data => setTopCast(data.cast))
       .catch(err => console.log(err));
     setLoading(false);
   }, [movieId]); 
@@ -65,7 +67,10 @@ const MovieDetails = () => {
           <div>
             <div className='movie-details-grid'>
               <div className='top-half'>
-                {videos.length !== 0 ? <iframe src={`https://www.youtube.com/embed/${videos[0].key}`} title="Youtube Video Player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> : <img className='no-video-found-img' src={VideoNotFound} />}
+                {videos.length !== 0 ? 
+                  <iframe src={`https://www.youtube.com/embed/${videos[0].key}`} title="Youtube Video Player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> 
+                  : 
+                  <img className='no-video-found-img' src={VideoNotFound} />}
                 <div className='top-half-padded-content'>
                   <MovieDetailsInformation 
                     title={movieDetails.title} 
@@ -99,4 +104,5 @@ const MovieDetails = () => {
     </section>
   );
 };
+
 export default MovieDetails;

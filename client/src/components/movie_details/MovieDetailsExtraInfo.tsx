@@ -1,3 +1,5 @@
+import formatToUsDollars from '../helpers/formatDollars';
+
 interface Props {
   release_date: string,
   runtime: number,
@@ -6,17 +8,15 @@ interface Props {
 }
 
 const MovieDetailsExtraInfo = ({ release_date, runtime, budget, revenue } : Props) => {
-  // Format number to US dollars
-  const formatToUsDollars = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
-
   return (
     <div className='movie-details-extra-movie-information'>
       <div>
         <p className='movie-details-extra-subtitle'>Release Date</p>
-        <p className='movie-details-extra-body'>{release_date}</p>
+        {release_date !== '' ? 
+          <p className='movie-details-extra-body'>{release_date}</p> 
+          : 
+          <p>TBD</p>
+        }
       </div>
       <div>
         <p className='movie-details-extra-subtitle'>Runtime</p>
@@ -24,13 +24,19 @@ const MovieDetailsExtraInfo = ({ release_date, runtime, budget, revenue } : Prop
       </div>
       <div>
         <p className='movie-details-extra-subtitle'>Budget</p>
-        {budget === 0 ? <p className='movie-details-extra-body'>Unknown</p> : 
-          <p className='movie-details-extra-body'>{`${formatToUsDollars.format(budget)}`}</p>}
+        {budget >= 0 ? 
+          <p className='movie-details-extra-body'>{`${formatToUsDollars.format(budget)}`}</p> 
+          : 
+          <p className='movie-details-extra-body'>Unknown</p>
+        }
       </div>
       <div>
         <p className='movie-details-extra-subtitle'>Revenue</p>
-        {revenue === 0 ? <p className='movie-details-extra-body'>Unknown</p> : 
-          <p className='movie-details-extra-body'>{`${formatToUsDollars.format(revenue)}`}</p>}
+        {revenue >= 0 ? 
+          <p className='movie-details-extra-body'>{`${formatToUsDollars.format(revenue)}`}</p>
+          : 
+          <p className='movie-details-extra-body'>Unknown</p> 
+        }
       </div>
     </div>
   );

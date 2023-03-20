@@ -3,6 +3,8 @@ import { getMoviesByOnGenre } from '../../api/api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import type SwiperCore from 'swiper';
+
+// Models
 import IGenres from '../../models/IGenres';
 import ISmallSwiperMovies from '../../models/ISmallSwiperMovies';
 
@@ -20,11 +22,9 @@ const MovieDetailsMoreLikeThis = ({ genres, loading } : Props) => {
   const swiperRef = useRef<SwiperCore>();
 
   useEffect(() => {
+    // Get random value based on the genres array length and get a random page from the list of movies
     getMoviesByOnGenre(genres[Math.floor(Math.random() * genres.length)].id.toString() || '', Math.floor(Math.random() * 21))
-      .then(data => {
-        console.log(data);
-        setMovies(data.results);
-      })
+      .then(data => setMovies(data.results))
       .catch(err => {
         console.log(err.message);
       });
@@ -103,7 +103,6 @@ const MovieDetailsMoreLikeThis = ({ genres, loading } : Props) => {
           <img src={WhiteArrow} alt="Next" />
         </button>
       </div>
-
     </section>
   );
 };

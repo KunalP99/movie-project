@@ -3,10 +3,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import type SwiperCore from 'swiper';
 import { getPersonMovieCredits } from '../../api/api';
-import ITopCast from '../../models/ITopCast';
-import IMoviesStarring from '../../models/IMoviesStarring';
 import { useParams } from 'react-router-dom';
 import randomNumber from '../helpers/randomNumber';
+
+// Models
+import ITopCast from '../../models/ITopCast';
+import IMoviesStarring from '../../models/IMoviesStarring';
 
 // Images 
 import WhiteArrow from '../../images/white-arrow.svg';
