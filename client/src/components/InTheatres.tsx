@@ -4,6 +4,8 @@ import { getMoviesInTheatre } from '../api/api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import type SwiperCore from 'swiper';
+import { Link } from 'react-router-dom';
+
 
 // Images
 import RatingStar from '../images/rating-star.svg';
@@ -79,13 +81,16 @@ const InTheatres = () => {
       >
         {!loading && inTheatres?.map(movie => (
           <SwiperSlide key={movie.id}>
-            <div>
-              <div className='in-theatres-rating-container'>
-                <img src={RatingStar} alt='Rating star' />
-                <p>{Math.round(movie.vote_average * 10) / 10}</p>
+            <Link to={`/movie/${movie.id}`}>
+              <div>
+                <div className='in-theatres-rating-container'>
+                  <img src={RatingStar} alt='Rating star' />
+                  <p>{Math.round(movie.vote_average * 10) / 10}</p>
+                </div>
+                <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} loading='lazy'/>
               </div>
-              <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} loading='lazy'/>
-            </div>
+            </Link>
+
           </SwiperSlide>   
         ))}
       </Swiper>

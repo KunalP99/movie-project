@@ -1,9 +1,16 @@
 @import './reset/reset';
 @import './variables/variables';
-@import './components/swiper';
 @import './app.scss';
+
+// Components
+@import './components/small-swiper';
 @import './components/header';
 @import './components/hero';
 @import './components/in-theatres';
 @import './components/trending';
+@import './components/movie-details-top-cast';
+@import './components/movie-details-starring';
+@import './components/movie-details-more-like-this';
 
+// Pages
+@import './pages/movie-details';

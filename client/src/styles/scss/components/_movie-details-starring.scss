@@ -1,0 +1,42 @@
+.movie-details-starring-container {
+    margin-top: $spacing-64;
+    position: relative;
+
+    h2 {
+      padding-left: $spacing-04;
+      margin-bottom: $spacing-24;
+    }
+    
+    .movie-details-starring-movie-container {
+      img {
+        object-fit: cover;
+        width: 100%;
+        cursor: pointer;
+      }
+
+      p {
+        @include subtitle;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        margin-top: $spacing-08;
+        color: $primary-font-colour;
+      }
+    }
+}
+
+@media (min-width: 1000px) {
+  .movie-details-starring-container {   
+    h2 {
+      padding-left: $spacing-120;
+    } 
+    .movie-details-starring-movie-container {
+      p {
+        margin-top: $spacing-16;
+      }
+    }
+  }
+}

@@ -21,3 +21,63 @@ export const getTrendingMovies = () => {
       return res.json();
     });
 };
+
+export const getMovieDetails = (movieId: string) => {
+  return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(
+          `Error: Status code: ${res.status}`
+        );
+      }
+      return res.json();
+    });
+};
+
+export const getMovieVideos = (movieId: string) => {
+  return fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(
+          `Error: Status code: ${res.status}`
+        );
+      }
+      return res.json();
+    });
+};
+
+export const getMovieCredits = (movieId: string) => {
+  return fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(
+          `Error: Status code: ${res.status}`
+        );
+      }
+      return res.json();
+    });
+};
+
+export const getPersonMovieCredits = (personId: string) => {
+  return fetch(`https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(
+          `Error: Status code: ${res.status}`
+        );
+      }
+      return res.json();
+    });
+};
+
+export const getMoviesByOnGenre = (genreId: string, page: number) => {
+  return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=${page}&with_genres=${genreId}`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(
+          `Error: Status code: ${res.status}`
+        );
+      }
+      return res.json();
+    });
+};

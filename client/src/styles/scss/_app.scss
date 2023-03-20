@@ -1,7 +1,3 @@
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: $main-font-family;
   color: $primary-font-colour;
@@ -27,12 +23,49 @@ p {
   @include body-regular;
 }
 
+.primary-btn {
+  @include main-btn-small;
+  background: $primary-colour;
+  display: flex;
+  align-items: center;
+  gap: $spacing-08;
+  color: $primary-font-colour;
+}
+.primary-btn:hover {
+  background: #48727a;
+}
+
+.secondary-btn {
+  @include main-btn-small;
+  background: $secondary-btn-bg-colour;
+  display: flex;
+  align-items: center;
+  color: $primary-font-colour;
+  gap: $spacing-08;  
+}
+.secondary-btn:hover {
+  background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
+}
+
+.link {
+  text-decoration: none;
+}
+
+
+@media (min-width: 500px) {
+  .primary-btn, .secondary-btn {
+    @include main-btn;
+  }
+  
+}
+
 @media (min-width: 2700px) {
   .content {
     width: 2700px;
     margin: 0 auto;
   }
 }
+
 
 @media (max-width: 320px) {
   p {

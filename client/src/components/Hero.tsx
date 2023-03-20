@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper';
+import { Link } from 'react-router-dom';
 
 // Images
 import RatingStar from '../images/rating-star.svg';
@@ -87,7 +88,10 @@ const Hero = () => {
                 <button className='add-to-watchlist-btn'>
                   Add to Watchlist 
                   <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} /></button>
-                <button className='view-more-btn'>View more <img src={WhiteArrow} alt={`View more information about ${movie.title}`} /></button>
+                <Link className='view-more-btn' to={`/movie/${movie.id}`}>
+                  View more 
+                  <img src={WhiteArrow} alt={`View more information about ${movie.title}`} />
+                </Link>
               </div>
             </div>
           </SwiperSlide>
