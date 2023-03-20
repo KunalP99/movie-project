@@ -50,12 +50,12 @@ const MovieDetails = () => {
 
     getMovieCredits(movieId || '')
       .then(data => {
-        setTopCast(data.cast.slice(0, 10));
+        setTopCast(data.cast);
       })
       .catch(err => console.log(err));
     setLoading(false);
   }, [movieId]); 
-    
+  
   return (
     <section className="movie-details-container">
       {movieDetails && 

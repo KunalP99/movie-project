@@ -75,12 +75,12 @@ const MovieDetailsStarring = ({ topCast } : Props) => {
         >
           {movies.map(movie => (
             <SwiperSlide key={movie.id}>
-              <Link className='link' to={`/movie/${movie.id}`}>
+              <a className='link' href={`/movie/${movie.id}`}>
                 <div className='movie-details-starring-movie-container'>
                   {movie.backdrop_path ? <img src={`http://image.tmdb.org/t/p/w780/${movie.backdrop_path}`} title={`${movie.title}`} alt={`Backdrop for ${movie.title}`} /> : <p>Image not found</p> }
                   <p>{movie.title}</p>
                 </div>
-              </Link>
+              </a>
             </SwiperSlide>
           ))}
         </Swiper>

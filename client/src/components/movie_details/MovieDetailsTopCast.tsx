@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef} from 'react';
 import ITopCast from '../../models/ITopCast';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import type SwiperCore from 'swiper';
@@ -9,7 +8,6 @@ import type SwiperCore from 'swiper';
 import ImageNotFound from '../../images/image-not-found.svg';
 import WhiteArrow from '../../images/white-arrow.svg';
 
-
 interface Props {
   topCast: ITopCast[]
   loading: boolean
@@ -17,7 +15,7 @@ interface Props {
 
 const MovieDetailsTopCast = ({ topCast, loading } : Props)  => {
   const swiperRef = useRef<SwiperCore>();
-
+  console.log(topCast);
   return (
     <section className='movie-details-top-cast-container'>
       <h2>Top Cast</h2>
@@ -67,15 +65,17 @@ const MovieDetailsTopCast = ({ topCast, loading } : Props)  => {
           }
         }}
       >
-        {!loading && topCast.map(person => (
-          <SwiperSlide key={person.id}>
-            <div className='movie-details-person-container'>
-              <img src={person.profile_path ? `http://image.tmdb.org/t/p/w342/${person.profile_path}` : ImageNotFound} alt={`Profile for ${person.name}`} loading='lazy' title={person.name} />
-              <p className='top-cast-name' title={person.name}>{person.name}</p>
-              <p title={person.character}>{person.character}</p>
-            </div>
-          </SwiperSlide>
-        ))}
+        {!loading && topCast.filter(person => person.order < 11).map(person => {
+          return (
+            <SwiperSlide key={person.id}>
+              <div className='movie-details-person-container'>
+                <img src={person.profile_path ? `http://image.tmdb.org/t/p/w342/${person.profile_path}` : ImageNotFound} alt={`Profile for ${person.name}`} loading='lazy' title={person.name} />
+                <p className='top-cast-name' title={person.name}>{person.name}</p>
+                <p title={person.character}>{person.character}</p>
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
       <div className='swiper-button-prev-unique-container'>
         <button className='swiper-button-prev-unique' onClick={() => swiperRef.current?.slidePrev()}>
