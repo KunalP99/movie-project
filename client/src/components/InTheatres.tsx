@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
-import ISmallSwiperMovies from '../models/ISmallSwiperMovies';
 import { getMoviesInTheatre } from '../api/api';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import type SwiperCore from 'swiper';
 import { Link } from 'react-router-dom';
 
+// Models
+import ISmallSwiperMovies from '../models/ISmallSwiperMovies';
 
 // Images
 import RatingStar from '../images/rating-star.svg';
@@ -18,18 +18,14 @@ const InTheatres = () => {
 
   useEffect(() => {
     setLoading(true);
+
+    // Get 15 movies in theatre
     getMoviesInTheatre(1)
-      .then(data => {
-        console.log(data.results.slice(5, 20));
-        setInTheatres(data.results.slice(5, 20));
-      })
-      .catch(err => {
-        console.log(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      .then(data => setInTheatres(data.results.slice(5, 20)))
+      .catch(err => console.log(err.message))
+      .finally(() => setLoading(false));
   },[]);
+
   return (
     <section className="in-theatres-container">
       <h2>In Theatres</h2>
@@ -87,10 +83,9 @@ const InTheatres = () => {
                   <img src={RatingStar} alt='Rating star' />
                   <p>{Math.round(movie.vote_average * 10) / 10}</p>
                 </div>
-                <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} loading='lazy'/>
+                <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} />
               </div>
             </Link>
-
           </SwiperSlide>   
         ))}
       </Swiper>

@@ -93,6 +93,7 @@ const MovieDetailsMoreLikeThis = ({ genres, loading } : Props) => {
           })}
         </Swiper>
       }
+      
       <div className='swiper-button-prev-unique-container'>
         <button className='swiper-button-prev-unique' onClick={() => swiperRef.current?.slidePrev()}>
           <img src={WhiteArrow} alt="Prev" />

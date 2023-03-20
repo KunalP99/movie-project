@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { getTrendingMovies } from '../api/api';
-import ISmallSwiperMovies from '../models/ISmallSwiperMovies';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import type SwiperCore from 'swiper';
 import { Link } from 'react-router-dom';
+
+// Models 
+import ISmallSwiperMovies from '../models/ISmallSwiperMovies';
 
 // Images
 import WhiteArrow from '../images/white-arrow.svg';
@@ -17,17 +18,12 @@ const Trending = () => {
 
   useEffect(() => {
     setLoading(true);
+
+    // Get 15 trending movies
     getTrendingMovies()
-      .then(data => {
-        console.log(data.results);
-        setTrendingMovies(data.results.slice(0, 15));
-      })
-      .catch(err => {
-        console.log(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      .then(data => setTrendingMovies(data.results.slice(0, 15)))
+      .catch(err => console.log(err.message))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -87,7 +83,7 @@ const Trending = () => {
                   <img src={RatingStar} alt='Rating star' />
                   <p>{Math.round(movie.vote_average * 10) / 10}</p>
                 </div>
-                <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} loading='lazy'/>
+                <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} />
               </div>
             </Link>
           </SwiperSlide>   
