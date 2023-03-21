@@ -20,13 +20,13 @@ const Header = () => {
 
     // Show X icon and Hamburger icon
     navbarLinks?.classList.toggle('active');
-    console.log('click');
   };
+  
   return (
     <header>
       <nav>
         <div className='header-logo'>
-          <a href="#">
+          <a href="/">
             <h2>Logo</h2>
           </a>
         </div>

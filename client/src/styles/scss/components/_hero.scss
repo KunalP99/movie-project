@@ -1,11 +1,13 @@
 .hero-container {
   position: relative;
   min-height: 700px;
+
   .hero-banner-img {
     object-fit: cover;
     width: 100vw;
     height: 700px;
   }
+
   .swiper {
     .banner-foreground-overlay {
       position: absolute;
@@ -13,6 +15,7 @@
       height: 700px;
       background: $foreground-overlay;
       }
+
     .swiper-pagination {
       padding-bottom: $spacing-08;
 
@@ -25,6 +28,7 @@
         background: $primary-colour; 
       }
     }
+    
     .hero-movie-information-container {
       display: flex;
       flex-direction: column;
@@ -75,15 +79,6 @@
         .add-to-watchlist-btn:hover {
           background: #48727a;
         }
-
-        .view-more-btn {
-          background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
-          color: $primary-font-colour;
-          backdrop-filter: blur(4px);
-        }
-        .view-more-btn:hover {
-          background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
-        }
       }
     }
   }
@@ -132,7 +127,6 @@
         
         .hero-overview {
           padding-right: 0px;
-          
         }
 
         .hero-rating-container {

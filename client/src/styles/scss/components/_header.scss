@@ -16,7 +16,7 @@ header {
 
     .navbar-links {
         display: none;
-        position: absolute;
+        position: fixed;
         background: black;
         right: 0;
         top: 0;
@@ -40,7 +40,11 @@ header {
     }
 
     .nav-btn {
-      z-index: 1;
+      position: fixed;
+      right: 0;
+      top: 16px;
+      right: 16px;
+      z-index: 100;
       @include reset-btn;
     }
 
@@ -52,11 +56,21 @@ header {
 
 @media (max-width: 300px) {
   header {
-   nav {
-    .navbar-links {
-      width: 250px;
+    nav {
+      .navbar-links {
+        width: 250px;
+      }
+    } 
+  }
+}
+
+@media (min-width: 600px) {
+  header {
+    nav {
+      .navbar-links {
+        width: 50%;
+      }
     }
-   } 
   }
 }
 

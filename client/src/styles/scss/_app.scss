@@ -1,7 +1,7 @@
 body {
   font-family: $main-font-family;
   color: $primary-font-colour;
-  background: $primary-bg-colour
+  background: $primary-bg-colour;
 }
 
 h1 {
@@ -41,7 +41,8 @@ p {
   display: flex;
   align-items: center;
   color: $primary-font-colour;
-  gap: $spacing-08;  
+  gap: $spacing-08;   
+  backdrop-filter: blur(2px);
 }
 .secondary-btn:hover {
   background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
@@ -51,12 +52,10 @@ p {
   text-decoration: none;
 }
 
-
 @media (min-width: 500px) {
   .primary-btn, .secondary-btn {
     @include main-btn;
   }
-  
 }
 
 @media (min-width: 2700px) {
@@ -65,7 +64,6 @@ p {
     margin: 0 auto;
   }
 }
-
 
 @media (max-width: 320px) {
   p {

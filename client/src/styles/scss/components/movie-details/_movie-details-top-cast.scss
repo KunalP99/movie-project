@@ -1,14 +1,14 @@
   .movie-details-top-cast-container {
-    margin-top: $spacing-64;
-    padding-left: $spacing-04;
+    @include container-spacing;
     position: relative;
 
     h2 {
-      margin-bottom: $spacing-24;
+      @include h2-spacing;
     }
 
     .movie-details-person-container {
       width: 120px;
+      
       > p {
         // Adds an ellipsis if the name goes over the second line
         display: -webkit-box;
@@ -18,6 +18,11 @@
         text-overflow: ellipsis;
         width: 110px;
         text-align: center;
+      }
+
+      .top-cast-character {
+        color: $transparent-white-font-colour;
+        font-size: clamp(pxToRem(12px), 2vw, pxToRem(16px));
       }
     }
   }
@@ -37,12 +42,6 @@
       .movie-details-person-container {
         width: 200px;
       }
-    }
-  }
-
-  @media (min-width: 1000px) {
-    .movie-details-top-cast-container {
-      padding-left: 120px;
     }
   }
 

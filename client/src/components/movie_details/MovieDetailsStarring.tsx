@@ -3,10 +3,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import type SwiperCore from 'swiper';
 import { getPersonMovieCredits } from '../../api/api';
+import { useParams } from 'react-router-dom';
+
+// Models
 import ITopCast from '../../models/ITopCast';
 import IMoviesStarring from '../../models/IMoviesStarring';
-import { useParams } from 'react-router-dom';
-import randomNumber from '../helpers/randomNumber';
 
 // Images 
 import WhiteArrow from '../../images/white-arrow.svg';
@@ -23,16 +24,27 @@ type MovieParams = {
   movieId: string;
 }
 
+const randomNumber = (topCastLength: number) => {
+  if (topCastLength < 2) {
+    return 0;
+  } else if (topCastLength === 2) {
+    return Math.floor(Math.random() * 1);
+  } else {
+    return Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+  } 
+};
+
 const MovieDetailsStarring = ({ topCast } : Props) => {
   const { movieId } = useParams<MovieParams>();
   const swiperRef = useRef<SwiperCore>();
   const [movies, setMovies] = useState<IMoviesStarring[]>([]);
   const [dataLoaded, setDataLoaded] = useState<boolean>(false);
-  const [randomNum] = useState(randomNumber(topCast));
+  const [randomNum] = useState(randomNumber(topCast.length));
 
   useEffect(() => {    
     // Once topcast has loaded check if the person is featured in at least 6 movies
     setDataLoaded(false);
+    
     if (topCast.length > 0)  {
       getPersonMovieCredits(topCast[randomNum].id.toString())
         .then(data => {
@@ -86,6 +98,7 @@ const MovieDetailsStarring = ({ topCast } : Props) => {
             </SwiperSlide>
           ))}
         </Swiper>
+        
         <div className='swiper-button-prev-unique-container'>
           <button className='swiper-button-prev-unique' onClick={() => swiperRef.current?.slidePrev()}>
             <img src={WhiteArrow} alt="Prev" />

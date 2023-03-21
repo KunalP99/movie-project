@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef} from 'react';
-import ITopCast from '../../models/ITopCast';
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import type SwiperCore from 'swiper';
+
+// Models
+import ITopCast from '../../models/ITopCast';
 
 // Images
 import ImageNotFound from '../../images/image-not-found.svg';
@@ -15,7 +16,7 @@ interface Props {
 
 const MovieDetailsTopCast = ({ topCast, loading } : Props)  => {
   const swiperRef = useRef<SwiperCore>();
-  console.log(topCast);
+  
   return (
     <section className='movie-details-top-cast-container'>
       <h2>Top Cast</h2>
@@ -69,28 +70,25 @@ const MovieDetailsTopCast = ({ topCast, loading } : Props)  => {
           return (
             <SwiperSlide key={person.id}>
               <div className='movie-details-person-container'>
-                <img src={person.profile_path ? `http://image.tmdb.org/t/p/w342/${person.profile_path}` : ImageNotFound} alt={`Profile for ${person.name}`} loading='lazy' title={person.name} />
+                <img src={person.profile_path ? `http://image.tmdb.org/t/p/w342/${person.profile_path}` : ImageNotFound} alt={`Profile for ${person.name}`} title={person.name} />
                 <p className='top-cast-name' title={person.name}>{person.name}</p>
-                <p title={person.character}>{person.character}</p>
+                <p className='top-cast-character' title={person.character}>{person.character}</p>
               </div>
             </SwiperSlide>
           );
         })}
       </Swiper>
-      {topCast.length >= 4 && 
-        <div>
-          <div className='swiper-button-prev-unique-container'>
-            <button className='swiper-button-prev-unique' onClick={() => swiperRef.current?.slidePrev()}>
-              <img src={WhiteArrow} alt="Prev" />
-            </button>
-          </div>
-          <div className='swiper-button-next-unique-container'>
-            <button className='swiper-button-next-unique' onClick={() => swiperRef.current?.slideNext()}>
-              <img src={WhiteArrow} alt="Next" />
-            </button>
-          </div>
-        </div>
-      }
+      
+      <div className='swiper-button-prev-unique-container'>
+        <button className='swiper-button-prev-unique' onClick={() => swiperRef.current?.slidePrev()}>
+          <img src={WhiteArrow} alt="Prev" />
+        </button>
+      </div>
+      <div className='swiper-button-next-unique-container'>
+        <button className='swiper-button-next-unique' onClick={() => swiperRef.current?.slideNext()}>
+          <img src={WhiteArrow} alt="Next" />
+        </button>
+      </div>
     </section>
   );
 };

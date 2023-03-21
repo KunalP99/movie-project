@@ -1,62 +1,31 @@
 import { useEffect, useState } from 'react';
-import { getMoviesInTheatre } from '../api/api';
-import IHeroMovies from '../models/IHeroMovies';
+import { getMoviesInTheatre } from '../../api/api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper';
 import { Link } from 'react-router-dom';
 
+// Models
+import IHeroMovies from '../../models/IHeroMovies';
+
 // Images
-import RatingStar from '../images/rating-star.svg';
-import WhitePlus from '../images/white-plus.svg';
-import WhiteArrow from '../images/white-arrow.svg';
-
-// Get width of the current window
-const getWindowDimensions = () => {
-  const { innerWidth: width } = window;
-  return {
-    width
-  };
-};
-
-// Fire resize event and set the dimensions each time resize event occurs
-const useWindowDimensions = () => {
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return windowDimensions;
-};
+import RatingStar from '../../images/rating-star.svg';
+import WhitePlus from '../../images/white-plus.svg';
+import WhiteArrow from '../../images/white-arrow.svg';
 
 const Hero = () => {
   const [moviesInTheatre, setMoviesInTheatre] = useState<IHeroMovies[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const { width } = useWindowDimensions();
 
-  // Fetch data from TMDB api
   useEffect(() => {
     setLoading(true);
+    
+    // Get 5 movies in theatre
     getMoviesInTheatre(1)
-      .then(data => {
-        console.log(data.results);
-        setMoviesInTheatre(data.results.slice(0, 5));
-      })
-      .catch(err => {
-        console.log(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      .then(data => setMoviesInTheatre(data.results.slice(0, 5)))
+      .catch(err => console.log(err.message))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -88,7 +57,7 @@ const Hero = () => {
                 <button className='add-to-watchlist-btn'>
                   Add to Watchlist 
                   <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} /></button>
-                <Link className='view-more-btn' to={`/movie/${movie.id}`}>
+                <Link className='view-more-btn secondary-btn' to={`/movie/${movie.id}`}>
                   View more 
                   <img src={WhiteArrow} alt={`View more information about ${movie.title}`} />
                 </Link>

@@ -1,0 +1,8 @@
+.movie-details-more-like-this-container {
+  @include container-spacing;
+  position: relative;
+
+  h2 {
+    @include h2-spacing;
+  }
+}
