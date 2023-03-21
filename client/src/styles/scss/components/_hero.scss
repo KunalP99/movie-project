@@ -1,11 +1,13 @@
 .hero-container {
   position: relative;
   min-height: 700px;
+
   .hero-banner-img {
     object-fit: cover;
     width: 100vw;
     height: 700px;
   }
+
   .swiper {
     .banner-foreground-overlay {
       position: absolute;
@@ -13,6 +15,7 @@
       height: 700px;
       background: $foreground-overlay;
       }
+
     .swiper-pagination {
       padding-bottom: $spacing-08;
 
@@ -25,6 +28,7 @@
         background: $primary-colour; 
       }
     }
+    
     .hero-movie-information-container {
       display: flex;
       flex-direction: column;

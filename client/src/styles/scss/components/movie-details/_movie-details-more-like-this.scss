@@ -2,7 +2,7 @@
   @include container-spacing;
   position: relative;
 
-    h2 {
-      @include h2-spacing;
-    }
+  h2 {
+    @include h2-spacing;
+  }
 }

@@ -8,6 +8,7 @@
 
     .movie-details-person-container {
       width: 120px;
+      
       > p {
         // Adds an ellipsis if the name goes over the second line
         display: -webkit-box;

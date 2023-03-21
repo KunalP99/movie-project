@@ -50,7 +50,7 @@
               padding: $spacing-04 $spacing-16;
               text-align: center;
 
-              >p {
+              > p {
                 font-weight: $font-weight-semi;
               }
             }
@@ -252,12 +252,12 @@
         }
         .top-half-padded-content {
           .movie-details-information-container {
-              .movie-details-overview-container {
-                > p {
-                  padding-right: $spacing-120;
-                }
+            .movie-details-overview-container {
+              > p {
+                padding-right: $spacing-120;
               }
             }
+          }
         }
       }
       
