@@ -57,7 +57,7 @@ const Hero = () => {
                 <button className='add-to-watchlist-btn'>
                   Add to Watchlist 
                   <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} /></button>
-                <Link className='view-more-btn' to={`/movie/${movie.id}`}>
+                <Link className='view-more-btn secondary-btn' to={`/movie/${movie.id}`}>
                   View more 
                   <img src={WhiteArrow} alt={`View more information about ${movie.title}`} />
                 </Link>

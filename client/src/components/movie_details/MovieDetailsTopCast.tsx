@@ -73,7 +73,7 @@ const MovieDetailsTopCast = ({ topCast, loading } : Props)  => {
               <div className='movie-details-person-container'>
                 <img src={person.profile_path ? `http://image.tmdb.org/t/p/w342/${person.profile_path}` : ImageNotFound} alt={`Profile for ${person.name}`} title={person.name} />
                 <p className='top-cast-name' title={person.name}>{person.name}</p>
-                <p title={person.character}>{person.character}</p>
+                <p className='top-cast-character' title={person.character}>{person.character}</p>
               </div>
             </SwiperSlide>
           );

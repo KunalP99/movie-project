@@ -18,6 +18,11 @@
         width: 110px;
         text-align: center;
       }
+
+      .top-cast-character {
+        color: $transparent-white-font-colour;
+        font-size: clamp(pxToRem(12px), 2vw, pxToRem(16px));
+      }
     }
   }
 

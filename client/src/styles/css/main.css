@@ -47,7 +47,9 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-} /* Typography */
+}
+
+/* Typography */
 /* Containers */
 /* Font Weights */
 body {
@@ -121,6 +123,8 @@ p {
   align-items: center;
   color: #FFFFFF;
   gap: 8px;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
 }
 
 .secondary-btn:hover {
@@ -327,7 +331,7 @@ header nav .active {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+  background: linear-gradient(90deg, rgba(117, 155, 163, 0.9) 0%, rgba(117, 155, 163, 0.6) 100%);
   width: 70px;
   padding: 4px;
   -webkit-backdrop-filter: blur(2px);
@@ -367,15 +371,6 @@ header nav .active {
 }
 .hero-container .swiper .hero-movie-information-container .hero-btn-container .add-to-watchlist-btn:hover {
   background: #48727a;
-}
-.hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn {
-  background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
-  color: #FFFFFF;
-  -webkit-backdrop-filter: blur(4px);
-          backdrop-filter: blur(4px);
-}
-.hero-container .swiper .hero-movie-information-container .hero-btn-container .view-more-btn:hover {
-  background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
 }
 
 @media (min-width: 500px) {
@@ -459,7 +454,7 @@ header nav .active {
   top: 8px;
   align-items: center;
   gap: 4px;
-  background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+  background: linear-gradient(90deg, rgba(117, 155, 163, 0.9) 0%, rgba(117, 155, 163, 0.6) 100%);
   border-radius: 8px;
   padding: 0px 8px;
   color: #FFFFFF;
@@ -513,7 +508,7 @@ header nav .active {
   top: 8px;
   align-items: center;
   gap: 4px;
-  background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+  background: linear-gradient(90deg, rgba(117, 155, 163, 0.9) 0%, rgba(117, 155, 163, 0.6) 100%);
   border-radius: 8px;
   padding: 0px 8px;
   color: #FFFFFF;
@@ -558,7 +553,7 @@ header nav .active {
 .movie-details-container .movie-details-grid .top-half .top-half-padded-content .movie-details-information-container .movie-details-title-rating-container .movie-details-rating {
   display: inline-block;
   vertical-align: middle;
-  background: linear-gradient(90deg, rgba(117, 155, 163, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+  background: linear-gradient(90deg, rgba(117, 155, 163, 0.9) 0%, rgba(117, 155, 163, 0.6) 100%);
   padding: 0px 16px;
   border-radius: 8px;
   margin-left: 8px;
@@ -776,6 +771,10 @@ header nav .active {
   text-overflow: ellipsis;
   width: 110px;
   text-align: center;
+}
+.movie-details-top-cast-container .movie-details-person-container .top-cast-character {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: clamp(0.75rem, 2vw, 1rem);
 }
 
 @media (min-width: 450px) {
