@@ -9,7 +9,7 @@ const WatchListMovieSchema = new Schema({
   overview: String,
   rating: Number,
   poster_path: String,
-  release_data: String
+  release_date: String
 });
 
 const WatchListMovieModel = mongoose.model('WatchlistMovie', WatchListMovieSchema);
