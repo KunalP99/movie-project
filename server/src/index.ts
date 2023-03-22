@@ -13,6 +13,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/watchlist-movies', async (req: Request, res: Response) => {
+  const watchlistMovies = await WatchListMovieModel.find();
+  console.log(watchlistMovies);
+  res.status(200).json(watchlistMovies);
+});
+
 app.post('/watchlist-movie', async (req: Request, res: Response) => {
   const { movieId, title, overview, rating, poster_path, release_date } = req.body;
 
