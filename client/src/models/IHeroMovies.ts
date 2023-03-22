@@ -5,6 +5,7 @@ interface IHeroMovies {
   title: string,
   overview: string,
   vote_average: number,
+  release_date: string
 }
 
 export default IHeroMovies;

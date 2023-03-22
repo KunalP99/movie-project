@@ -55,7 +55,14 @@ const Hero = ({ handleCreateWatchlistMovie } : IHandleCreateWatchlistMovie) => {
                 <p>{movie.overview}</p>
               </div>
               <div className='hero-btn-container'>
-                <button className='add-to-watchlist-btn'>
+                <button className='add-to-watchlist-btn' onClick={() => handleCreateWatchlistMovie(
+                  movie.id, 
+                  movie.title, 
+                  movie.overview, 
+                  movie.vote_average, 
+                  movie.poster_path, 
+                  movie.release_date
+                )}>
                   Add to Watchlist 
                   <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} /></button>
                 <Link className='view-more-btn secondary-btn' to={`/movie/${movie.id}`}>
