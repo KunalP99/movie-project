@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { getWatchlistMovies } from './api/mongoapi';
+import { getWatchlistMovies, createWatchlistMovie } from './api/mongoapi';
 
 // Components
 import Home from './pages/Home';
@@ -15,21 +15,18 @@ function App() {
   const [watchlist, setWatchlist] = useState<IHandleGetWatchlistMovies[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const handleCreateWatchlistMovie = (movieId: number, title: string, overview: string, rating: number, poster_path: string, release_date: string ) => {
-    fetch('http://localhost:5000/watchlist-movie', {
-      method: 'POST',
-      body: JSON.stringify({
-        movieId,
-        title,
-        overview,
-        rating,
-        poster_path, 
-        release_date
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
+  // Add movie to watchlist
+  const handleCreateWatchlistMovie = async (
+    movieId: number, 
+    title: string, 
+    overview: string, 
+    rating: number, 
+    poster_path: string, 
+    release_date: string 
+  ) => {
+    const watchlistMovie = await createWatchlistMovie(movieId, title, overview, rating, poster_path, release_date);
+    // Keep UI up to date when a new movie is added to watchlist 
+    setWatchlist([...watchlist, watchlistMovie]);
   };
 
   // Get watchlist movies from backend
