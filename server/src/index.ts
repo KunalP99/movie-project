@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import express, {Request, Response} from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import WatchListMovieModel from './models/WatchlistMovie';
 
@@ -9,6 +10,7 @@ import WatchListMovieModel from './models/WatchlistMovie';
 const app = express();
 
 // Middlewares
+app.use(cors());
 app.use(express.json());
 
 app.post('/watchlist-movie', async (req: Request, res: Response) => {

@@ -7,6 +7,7 @@ import IMovieDetails from '../models/IMovieDetails';
 import IGenres from '../models/IGenres';
 import IMovieVideos from '../models/IMovieVideos';
 import ITopCast from '../models/ITopCast';
+import IHandleCreateWatchlistMovie from '../models/IHandleCreateWatchlistMovie';
 
 // Components
 import MovieDetailsInformation from '../components/movie_details/MovieDetailsInformation';
@@ -24,7 +25,7 @@ type MovieParams = {
   movieId: string;
 }
 
-const MovieDetails = () => {
+const MovieDetails = ({ handleCreateWatchlistMovie } : IHandleCreateWatchlistMovie ) => {
   const { movieId } = useParams<MovieParams>();
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
   const [genres, setGenres] = useState<IGenres[]>([]);
@@ -80,7 +81,15 @@ const MovieDetails = () => {
                     overview={movieDetails.overview}  />
                 </div>
                 <div className='movie-details-btn-container'>
-                  <button className='primary-btn' type='button'>Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" /></button>
+                  <button className='primary-btn' type='button' onClick={() => 
+                    handleCreateWatchlistMovie(
+                      movieDetails.id, 
+                      movieDetails.title, 
+                      movieDetails.overview, 
+                      movieDetails.vote_average, 
+                      movieDetails.poster_path, 
+                      movieDetails.release_date
+                    )}>Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" /></button>
                   <button className='secondary-btn' type='button'>Add to History <img src={HistoryIcon} alt="Add to history" /></button>
                 </div>
               </div>
