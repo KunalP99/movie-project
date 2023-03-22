@@ -3,7 +3,7 @@ import Trending from '../components/home/Trending';
 import InTheatres from '../components/home/InTheatres';
 
 // Models
-import IHandleCreateWatchlistMovie from '../models/IHandleCreateWatchlistMovie';
+import { IHandleCreateWatchlistMovie } from '../models/IWatchlist';
 
 const Home = ({ handleCreateWatchlistMovie } : IHandleCreateWatchlistMovie) => {
   return (

@@ -7,7 +7,7 @@ import IMovieDetails from '../models/IMovieDetails';
 import IGenres from '../models/IGenres';
 import IMovieVideos from '../models/IMovieVideos';
 import ITopCast from '../models/ITopCast';
-import IHandleCreateWatchlistMovie from '../models/IHandleCreateWatchlistMovie';
+import { IHandleCreateWatchlistMovie } from '../models/IWatchlist';
 
 // Components
 import MovieDetailsInformation from '../components/movie_details/MovieDetailsInformation';

@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+// Components
 import Home from './pages/Home';
 import Header from './components/Header';
 import MovieDetails from './pages/MovieDetails';
@@ -8,7 +11,6 @@ function App() {
   const handleCreateWatchlistMovie = (movieId: number, title: string, overview: string, rating: number, poster_path: string, release_date: string ) => {
     fetch('http://localhost:5000/watchlist-movie', {
       method: 'POST',
-      
       body: JSON.stringify({
         movieId,
         title,
@@ -22,6 +24,13 @@ function App() {
       }
     });
   };
+
+  useEffect(() => {
+
+    fetch('http://localhost:5000/watchlist-movies'); 
+
+
+  }, []);
 
   return (
     <div className="main-container">

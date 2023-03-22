@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 // Models
 import IHeroMovies from '../../models/IHeroMovies';
-import IHandleCreateWatchlistMovie from '../../models/IHandleCreateWatchlistMovie';
+import { IHandleCreateWatchlistMovie } from '../../models/IWatchlist';
 
 // Images
 import RatingStar from '../../images/rating-star.svg';
