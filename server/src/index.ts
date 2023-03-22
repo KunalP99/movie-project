@@ -14,17 +14,19 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/watchlist-movie', async (req: Request, res: Response) => {
+  const { movieId, title, overview, rating, poster_path, release_date } = req.body;
+
   const newWatchlistMovie = new WatchListMovieModel({
-    movieId: req.body.movieId,
-    title: req.body.title,
-    overview: req.body.overview,
-    rating: req.body.rating,
-    poster_path: req.body.poster_path,
-    release_date: req.body.release_date
+    movieId,
+    title,
+    overview,
+    rating,
+    poster_path,
+    release_date
   });
 
   const createdWatchlistMovie = await newWatchlistMovie.save();
-  res.json(createdWatchlistMovie);
+  res.status(200).json(createdWatchlistMovie);
 });
 
 // Connect to database and then start up server
