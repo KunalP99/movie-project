@@ -8,14 +8,14 @@ import { Link } from 'react-router-dom';
 
 // Models
 import IHeroMovies from '../../models/IHeroMovies';
-import { IHandleCreateWatchlistMovie } from '../../models/IWatchlist';
+import { WatchlistProps } from '../../models/IWatchlist';
 
 // Images
 import RatingStar from '../../images/rating-star.svg';
 import WhitePlus from '../../images/white-plus.svg';
 import WhiteArrow from '../../images/white-arrow.svg';
 
-const Hero = ({ handleCreateWatchlistMovie } : IHandleCreateWatchlistMovie) => {
+const Hero = ({ handleCreateWatchlistMovie, watchlist } : WatchlistProps) => {
   const [moviesInTheatre, setMoviesInTheatre] = useState<IHeroMovies[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 

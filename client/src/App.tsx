@@ -43,8 +43,8 @@ function App() {
       <Header />
       <div className='content'>
         <Routes>
-          <Route path='/' element={<Home handleCreateWatchlistMovie={handleCreateWatchlistMovie} />} />
-          <Route path='/movie/:movieId' element={<MovieDetails handleCreateWatchlistMovie={handleCreateWatchlistMovie} />} />
+          <Route path='/' element={<Home handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
+          <Route path='/movie/:movieId' element={<MovieDetails handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
           <Route path='/watchlist' element={<Watchlist watchlist={watchlist} loading={loading} />} />
         </Routes>
       </div>

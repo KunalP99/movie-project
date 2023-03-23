@@ -3,13 +3,13 @@ import Trending from '../components/home/Trending';
 import InTheatres from '../components/home/InTheatres';
 
 // Models
-import { IHandleCreateWatchlistMovie } from '../models/IWatchlist';
+import { WatchlistProps } from '../models/IWatchlist';
 
-const Home = ({ handleCreateWatchlistMovie } : IHandleCreateWatchlistMovie) => {
+const Home = ({ handleCreateWatchlistMovie, watchlist } : WatchlistProps) => {
   return (
     <div className='content'>
       <section className="home-container">
-        <Hero handleCreateWatchlistMovie={handleCreateWatchlistMovie} />
+        <Hero handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />
         <div className='home-content-container'>
           <Trending />
           <InTheatres />

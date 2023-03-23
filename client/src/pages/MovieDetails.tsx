@@ -7,7 +7,8 @@ import IMovieDetails from '../models/IMovieDetails';
 import IGenres from '../models/IGenres';
 import IMovieVideos from '../models/IMovieVideos';
 import ITopCast from '../models/ITopCast';
-import { IHandleCreateWatchlistMovie } from '../models/IWatchlist';
+import { WatchlistProps } from '../models/IWatchlist';
+
 
 // Components
 import MovieDetailsInformation from '../components/movie_details/MovieDetailsInformation';
@@ -25,7 +26,7 @@ type MovieParams = {
   movieId: string;
 }
 
-const MovieDetails = ({ handleCreateWatchlistMovie } : IHandleCreateWatchlistMovie ) => {
+const MovieDetails = ({ handleCreateWatchlistMovie, watchlist } : WatchlistProps ) => {
   const { movieId } = useParams<MovieParams>();
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
   const [genres, setGenres] = useState<IGenres[]>([]);
