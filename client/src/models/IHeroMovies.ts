@@ -5,7 +5,8 @@ interface IHeroMovies {
   title: string,
   overview: string,
   vote_average: number,
-  release_date: string
+  release_date: string,
+  inWatchlist: boolean
 }
 
 export default IHeroMovies;

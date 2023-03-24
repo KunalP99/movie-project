@@ -444,7 +444,7 @@ header nav .active {
 }
 @media (min-width: 1000px) {
   .in-theatres-container {
-    padding-left: 120px;
+    padding-left: 180px;
     margin-top: 120px;
   }
 }
@@ -498,7 +498,7 @@ header nav .active {
 }
 @media (min-width: 1000px) {
   .trending-container {
-    padding-left: 120px;
+    padding-left: 180px;
     margin-top: 120px;
   }
 }
@@ -757,7 +757,7 @@ header nav .active {
 }
 @media (min-width: 1000px) {
   .movie-details-top-cast-container {
-    padding-left: 120px;
+    padding-left: 180px;
     margin-top: 120px;
   }
 }
@@ -850,7 +850,7 @@ header nav .active {
 }
 @media (min-width: 1000px) {
   .movie-details-more-like-this-container {
-    padding-left: 120px;
+    padding-left: 180px;
     margin-top: 120px;
   }
 }
