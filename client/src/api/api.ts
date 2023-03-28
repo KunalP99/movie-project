@@ -81,3 +81,15 @@ export const getMoviesByOnGenre = (genreId: string, page: number) => {
       return res.json();
     });
 };
+
+export const searchForMovie = (searchQuery: string) => {
+  return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchQuery}&page=1&include_adult=false`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(
+          `Error: Status code: ${res.status}`
+        );
+      }
+      return res.json();
+    });
+};
