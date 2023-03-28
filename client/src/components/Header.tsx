@@ -39,7 +39,7 @@ const Header = () => {
             </li>
             <li>
               <img src={WatchlistIcon} alt="View your watchlist" />
-              <Link to={'/watchlist'}>Watchlist</Link>
+              <a href="/watchlist">Watchlist</a>
             </li>
             <li>
               <img src={HistoryIcon} alt="View your watch history" />

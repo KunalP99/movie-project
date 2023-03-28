@@ -28,7 +28,7 @@ const Hero = ({ handleCreateWatchlistMovie, watchlist } : WatchlistProps) => {
       setMoviesInTheatre(prevState => prevState.map(movieInTheatre => movieInTheatre.id === watchlistMovie.movieId ? 
         {...movieInTheatre, inWatchlist: true} : movieInTheatre));
     });
-  }, [watchlist, moviesInTheatre]);
+  }, [watchlist]);
 
   return (
     <section className="hero-container">
