@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import HambugerIcon from '../images/hamburger-menu.svg';
 import SearchIcon from '../images/sidebar/search-icon.svg';
 import WatchlistIcon from '../images/sidebar/watchlist-icon.svg';
@@ -38,7 +39,7 @@ const Header = () => {
             </li>
             <li>
               <img src={WatchlistIcon} alt="View your watchlist" />
-              <a href="#">Watchlist</a>
+              <a href="/watchlist">Watchlist</a>
             </li>
             <li>
               <img src={HistoryIcon} alt="View your watch history" />
