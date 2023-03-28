@@ -4,29 +4,31 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper';
-import { Link } from 'react-router-dom';
+
+// Components 
+import HeroMovies from '../hero/HeroMovies';
 
 // Models
 import IHeroMovies from '../../models/IHeroMovies';
+import { WatchlistProps } from '../../models/IWatchlist';
 
-// Images
-import RatingStar from '../../images/rating-star.svg';
-import WhitePlus from '../../images/white-plus.svg';
-import WhiteArrow from '../../images/white-arrow.svg';
-
-const Hero = () => {
+const Hero = ({ handleCreateWatchlistMovie, watchlist } : WatchlistProps) => {
   const [moviesInTheatre, setMoviesInTheatre] = useState<IHeroMovies[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setLoading(true);
-    
     // Get 5 movies in theatre
     getMoviesInTheatre(1)
       .then(data => setMoviesInTheatre(data.results.slice(0, 5)))
-      .catch(err => console.log(err.message))
-      .finally(() => setLoading(false));
+      .catch(err => console.log(err.message));
   }, []);
+
+  // Check if movie on the hero component is inside the watchlist; if it is, add a property 'inWatchlist' set to true else just return original object
+  useEffect(() => {
+    watchlist.map(watchlistMovie => {
+      setMoviesInTheatre(prevState => prevState.map(movieInTheatre => movieInTheatre.id === watchlistMovie.movieId ? 
+        {...movieInTheatre, inWatchlist: true} : movieInTheatre));
+    });
+  }, [watchlist]);
 
   return (
     <section className="hero-container">
@@ -38,31 +40,9 @@ const Hero = () => {
           delay: 9000
         }}
       >
-        {!loading && moviesInTheatre.map(movie => (
+        {moviesInTheatre && moviesInTheatre.map(movie => (
           <SwiperSlide key={movie.id}>
-            <div className='banner-foreground-overlay'></div>
-            <img className='hero-banner-img' src={`http://image.tmdb.org/t/p/original/${movie.backdrop_path}`}/>
-            <div className='hero-movie-information-container'>
-              <div className='hero-rating-container'>
-                <img src={RatingStar} alt='Rating star' />
-                <p>{movie.vote_average}</p>
-              </div>
-              <div className='hero-title'>
-                <h1>{movie.title}</h1>
-              </div>
-              <div className='hero-overview'>
-                <p>{movie.overview}</p>
-              </div>
-              <div className='hero-btn-container'>
-                <button className='add-to-watchlist-btn'>
-                  Add to Watchlist 
-                  <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} /></button>
-                <Link className='view-more-btn secondary-btn' to={`/movie/${movie.id}`}>
-                  View more 
-                  <img src={WhiteArrow} alt={`View more information about ${movie.title}`} />
-                </Link>
-              </div>
-            </div>
+            <HeroMovies movie={movie} handleCreateWatchlistMovie={handleCreateWatchlistMovie} />
           </SwiperSlide>
         ))}
       </Swiper>
