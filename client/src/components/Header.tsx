@@ -1,13 +1,19 @@
 import { useState } from 'react';
+import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import jwt_decode from 'jwt-decode';
+
+// Images
 import HambugerIcon from '../images/hamburger-menu.svg';
 import SearchIcon from '../images/sidebar/search-icon.svg';
 import WatchlistIcon from '../images/sidebar/watchlist-icon.svg';
 import HistoryIcon from '../images/sidebar/history-icon.svg';
-import ProfileIcon from '../images/sidebar/profile-icon.svg';
+// import ProfileIcon from '../images/sidebar/profile-icon.svg';
 import CloseIcon from '../images/sidebar/x.svg';
+
 
 const Header = () => {
   const [navIcon, setNavIcon] = useState(HambugerIcon);
+  const user = false;
 
   const toggleMenu = () => {
     const navbarLinks = document.querySelector('.navbar-links');
@@ -45,8 +51,16 @@ const Header = () => {
               <a href="#">History</a>
             </li>
             <li>
-              <img src={ProfileIcon} alt="View your profile" />
-              <a href="#">Name</a>
+              {user ? 
+                <div>Logged in</div>
+                :
+                <GoogleLogin 
+                  onSuccess={(res) => {
+                    console.log(res);
+                  }}
+                  onError={() => console.log('Failed to Login')}
+                />
+              }
             </li>
           </ul>
         </div>
