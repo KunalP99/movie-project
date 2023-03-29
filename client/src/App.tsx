@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import MovieDetails from './pages/MovieDetails';
 import Watchlist from './pages/Watchlist';
+import Search from './pages/Search';
 
 // Models
 import { IHandleGetWatchlistMovies } from './models/IWatchlist';
@@ -46,6 +47,7 @@ function App() {
           <Route path='/' element={<Home handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
           <Route path='/movie/:movieId' element={<MovieDetails handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
           <Route path='/watchlist' element={<Watchlist watchlist={watchlist} loading={loading} />} />
+          <Route path='/search' element={<Search />} />
         </Routes>
       </div>
     </div>

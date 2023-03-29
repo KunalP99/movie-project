@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import HambugerIcon from '../images/hamburger-menu.svg';
 import SearchIcon from '../images/sidebar/search-icon.svg';
 import WatchlistIcon from '../images/sidebar/watchlist-icon.svg';
@@ -35,7 +34,7 @@ const Header = () => {
           <ul>
             <li>
               <img src={SearchIcon} alt="Search for a movie" />
-              <a href="#">Search</a>
+              <a href="/search">Search</a>
             </li>
             <li>
               <img src={WatchlistIcon} alt="View your watchlist" />
