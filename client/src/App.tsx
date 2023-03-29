@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { getWatchlistMovies, createWatchlistMovie } from './api/mongoapi';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // Components
 import Home from './pages/Home';
+import Login from './pages/Login';
 import Header from './components/Header';
 import MovieDetails from './pages/MovieDetails';
 import Watchlist from './pages/Watchlist';
@@ -41,10 +43,13 @@ function App() {
 
   return (
     <div className="main-container">
-      <Header />
+      <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}>
+        <Header />
+      </GoogleOAuthProvider>
       <div className='content'>
         <Routes>
           <Route path='/' element={<Home handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/movie/:movieId' element={<MovieDetails handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
           <Route path='/watchlist' element={<Watchlist watchlist={watchlist} loading={loading} />} />
           <Route path='/search' element={<Search />} />
