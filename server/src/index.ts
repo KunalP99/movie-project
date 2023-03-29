@@ -1,10 +1,9 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
-import express, {Request, Response} from 'express';
+import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-
-import WatchListMovieModel from './models/WatchlistMovie';
+import watchlistRoutes from './routes/watchlist';
 
 // Create express app
 const app = express();
@@ -13,28 +12,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Get movies from watchlist
-app.get('/watchlist-movies', async (req: Request, res: Response) => {
-  const watchlistMovies = await WatchListMovieModel.find();
-  res.status(200).json(watchlistMovies);
-});
-
-// Add new movie to watchlist
-app.post('/watchlist-movie', async (req: Request, res: Response) => {
-  const { movieId, title, overview, rating, poster_path, release_date } = req.body;
-
-  const newWatchlistMovie = new WatchListMovieModel({
-    movieId,
-    title,
-    overview,
-    rating,
-    poster_path,
-    release_date
-  });
-
-  const createdWatchlistMovie = await newWatchlistMovie.save();
-  res.status(200).json(createdWatchlistMovie);
-});
+// Routes
+app.use('/watchlist-movies', watchlistRoutes);
 
 // Connect to database and then start up server
 mongoose.connect(process.env.MONGO_URL!).then(() => {
