@@ -18,7 +18,7 @@ export const createWatchlistMovie = (
   poster_path: string, 
   release_date: string
 ) => {
-  return fetch('http://localhost:5000/watchlist-movie', {
+  return fetch('http://localhost:5000/watchlist-movies', {
     method: 'POST',
     body: JSON.stringify({
       movieId,
