@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
 
@@ -24,7 +24,15 @@ interface GoogleUserInfo {
 const Header = () => {
   const [navIcon, setNavIcon] = useState(HambugerIcon);
   const {user, setUser} = useContext(UserContext);
-  console.log(user);
+
+  // Get local storage item data when component mounts if there is data
+  useEffect(() => {
+    const data = window.localStorage.getItem('POPCORN_USER');
+    if (data !== null) {
+      console.log(data);
+      setUser(JSON.parse(data));
+    }
+  }, []); 
 
   const toggleMenu = () => {
     const navbarLinks = document.querySelector('.navbar-links');
@@ -71,8 +79,10 @@ const Header = () => {
                   useOneTap
                   auto_select
                   onSuccess={(res) => {
+                    // Decodes token to get user data
                     const decoded: GoogleUserInfo = jwt_decode(res.credential || '');
                     setUser(decoded);
+                    window.localStorage.setItem('POPCORN_USER', JSON.stringify(decoded));
                   }}
                   onError={() => console.log('Failed to Login')}
                 />
