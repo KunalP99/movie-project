@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
 
@@ -10,10 +10,21 @@ import HistoryIcon from '../images/sidebar/history-icon.svg';
 // import ProfileIcon from '../images/sidebar/profile-icon.svg';
 import CloseIcon from '../images/sidebar/x.svg';
 
+// Context
+import { UserContext } from './context/UserContext';
+
+interface GoogleUserInfo {
+  email: string,
+  given_name: string,
+  sub: string,
+  name: string,
+  picture: string
+}
 
 const Header = () => {
   const [navIcon, setNavIcon] = useState(HambugerIcon);
-  const user = false;
+  const {user, setUser} = useContext(UserContext);
+  console.log(user);
 
   const toggleMenu = () => {
     const navbarLinks = document.querySelector('.navbar-links');
@@ -51,12 +62,17 @@ const Header = () => {
               <a href="#">History</a>
             </li>
             <li>
-              {user ? 
-                <div>Logged in</div>
+              {user.email !== '' ? 
+                <div>
+                  <a>{user.given_name}</a>
+                </div>
                 :
                 <GoogleLogin 
+                  useOneTap
+                  auto_select
                   onSuccess={(res) => {
-                    console.log(res);
+                    const decoded: GoogleUserInfo = jwt_decode(res.credential || '');
+                    setUser(decoded);
                   }}
                   onError={() => console.log('Failed to Login')}
                 />

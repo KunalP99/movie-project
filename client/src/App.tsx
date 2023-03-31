@@ -5,7 +5,6 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // Components
 import Home from './pages/Home';
-import Login from './pages/Login';
 import Header from './components/Header';
 import MovieDetails from './pages/MovieDetails';
 import Watchlist from './pages/Watchlist';
@@ -13,6 +12,9 @@ import Search from './pages/Search';
 
 // Models
 import { IHandleGetWatchlistMovies } from './models/IWatchlist';
+
+// Context
+import UserProvider from './components/context/UserContext';
 
 function App() {
   const [watchlist, setWatchlist] = useState<IHandleGetWatchlistMovies[]>([]);
@@ -43,18 +45,19 @@ function App() {
 
   return (
     <div className="main-container">
-      <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}>
-        <Header />
-      </GoogleOAuthProvider>
-      <div className='content'>
-        <Routes>
-          <Route path='/' element={<Home handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/movie/:movieId' element={<MovieDetails handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
-          <Route path='/watchlist' element={<Watchlist watchlist={watchlist} loading={loading} />} />
-          <Route path='/search' element={<Search />} />
-        </Routes>
-      </div>
+      <UserProvider>
+        <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}>
+          <Header />
+          <div className='content'>
+            <Routes>
+              <Route path='/' element={<Home handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
+              <Route path='/movie/:movieId' element={<MovieDetails handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
+              <Route path='/watchlist' element={<Watchlist watchlist={watchlist} loading={loading} />} />
+              <Route path='/search' element={<Search />} />
+            </Routes>
+          </div>
+        </GoogleOAuthProvider>
+      </UserProvider>
     </div>
   );
 }
