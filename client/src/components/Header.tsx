@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
+import { addUser } from '../api/mongoapi';
 
 // Images
 import HambugerIcon from '../images/hamburger-menu.svg';
@@ -92,6 +93,13 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
                     setUser(decoded);
                     window.localStorage.setItem('POPCORN_USER', JSON.stringify(decoded));
                     setWatchlist([...watchlist]);
+                    addUser(
+                      decoded.email,
+                      decoded.given_name,
+                      decoded.name,
+                      decoded.picture,
+                      decoded.sub
+                    );
                   }}
                   onError={() => console.log('Failed to Login')}
                 />
