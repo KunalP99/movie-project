@@ -10,9 +10,11 @@ import HistoryIcon from '../images/sidebar/history-icon.svg';
 // import ProfileIcon from '../images/sidebar/profile-icon.svg';
 import CloseIcon from '../images/sidebar/x.svg';
 
+// Models
+import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
+
 // Context
 import { UserContext } from './context/UserContext';
-import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
 
 interface Props {
   watchlist: IHandleGetWatchlistMovies[],
