@@ -10,7 +10,7 @@ export const getWatchlist = async (req: Request, res: Response) => {
 
 // Adds a movie to the database with the request body information
 export const addToWatchlist = async (req: Request, res: Response) => {
-  const { movieId, title, overview, rating, poster_path, release_date } = req.body;
+  const { movieId, title, overview, rating, poster_path, release_date, user_id } = req.body;
 
   try {
     const newWatchlistMovie = new WatchListMovieModel({
@@ -19,7 +19,8 @@ export const addToWatchlist = async (req: Request, res: Response) => {
       overview,
       rating,
       poster_path,
-      release_date
+      release_date,
+      user_id
     });
     
     const createdWatchlistMovie = await newWatchlistMovie.save();
