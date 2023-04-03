@@ -12,6 +12,12 @@ import CloseIcon from '../images/sidebar/x.svg';
 
 // Context
 import { UserContext } from './context/UserContext';
+import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
+
+interface Props {
+  watchlist: IHandleGetWatchlistMovies[],
+  setWatchlist: React.Dispatch<React.SetStateAction<IHandleGetWatchlistMovies[]>>
+}
 
 interface GoogleUserInfo {
   email: string,
@@ -21,7 +27,7 @@ interface GoogleUserInfo {
   picture: string
 }
 
-const Header = () => {
+const Header = ({ watchlist, setWatchlist } : Props) => {
   const [navIcon, setNavIcon] = useState(HambugerIcon);
   const {user, setUser} = useContext(UserContext);
 
@@ -83,6 +89,7 @@ const Header = () => {
                     const decoded: GoogleUserInfo = jwt_decode(res.credential || '');
                     setUser(decoded);
                     window.localStorage.setItem('POPCORN_USER', JSON.stringify(decoded));
+                    setWatchlist([...watchlist]);
                   }}
                   onError={() => console.log('Failed to Login')}
                 />

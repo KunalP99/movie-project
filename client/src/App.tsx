@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="main-container">
       <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}>
-        <Header />
+        <Header watchlist={watchlist} setWatchlist={setWatchlist} />
         <div className='content'>
           <Routes>
             <Route path='/' element={<Home handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
