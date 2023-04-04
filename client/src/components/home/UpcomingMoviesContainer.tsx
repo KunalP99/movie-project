@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getMovieVideos } from '../../api/api';
+import { format, parseISO } from 'date-fns';
 
 // Models
 import IMovieVideos from '../../models/IMovieVideos';
@@ -25,6 +26,7 @@ const UpcomingMoviesContainer = ({ movie } : Props) => {
       {video &&
       <>
         <img src={`https://img.youtube.com/vi/${video.key}/0.jpg`} alt={video.name} title={video.name} />
+        <p>{format(parseISO(`${video.published_at}`), 'd LLLL')}</p>
         <h3>{video.name}</h3>
       </>
       }
