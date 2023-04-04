@@ -9,7 +9,8 @@ interface IMovieDetails {
   release_date: string,
   runtime: number,
   budget: number,
-  revenue: number
+  revenue: number,
+  inWatchlist?: boolean
 }
 
 export default IMovieDetails;

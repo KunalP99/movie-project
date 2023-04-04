@@ -28,7 +28,7 @@ type MovieParams = {
   movieId: string;
 }
 
-const MovieDetails = ({ handleCreateWatchlistMovie } : WatchlistProps ) => {
+const MovieDetails = ({ watchlist, handleCreateWatchlistMovie } : WatchlistProps ) => {
   const { movieId } = useParams<MovieParams>();
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
   const [genres, setGenres] = useState<IGenres[]>([]);
@@ -64,7 +64,15 @@ const MovieDetails = ({ handleCreateWatchlistMovie } : WatchlistProps ) => {
       .catch(err => console.log(err));
     setLoading(false);
   }, [movieId]); 
-  
+
+  // Check if movie is already in watchlist 
+  useEffect(() => {
+    watchlist.filter(person => person.user_id === user.sub).map(watchlistMovie => {
+      setMovieDetails(prevState => prevState?.id === watchlistMovie.movieId  
+        ? {...prevState, inWatchlist: true} : prevState);
+    });
+  }, [watchlist]);
+
   return (
     <section className="movie-details-container">
       {movieDetails && 
@@ -86,16 +94,21 @@ const MovieDetails = ({ handleCreateWatchlistMovie } : WatchlistProps ) => {
                     overview={movieDetails.overview}  />
                 </div>
                 <div className='movie-details-btn-container'>
-                  <button className='primary-btn' type='button' onClick={() => 
-                    handleCreateWatchlistMovie(
-                      movieDetails.id, 
-                      movieDetails.title, 
-                      movieDetails.overview, 
-                      movieDetails.vote_average, 
-                      movieDetails.poster_path, 
-                      movieDetails.release_date,
-                      user.sub
-                    )}>Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" /></button>
+                  {!movieDetails.inWatchlist ? 
+                    <button className='primary-btn' type='button' onClick={() => 
+                      handleCreateWatchlistMovie(
+                        movieDetails.id, 
+                        movieDetails.title, 
+                        movieDetails.overview, 
+                        movieDetails.vote_average, 
+                        movieDetails.poster_path, 
+                        movieDetails.release_date,
+                        user.sub
+                      )}>Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" /></button>
+                    :
+                    <button>Already in Watchlist</button>
+                  }
+
                   <button className='secondary-btn' type='button'>Add to History <img src={HistoryIcon} alt="Add to history" /></button>
                 </div>
               </div>
