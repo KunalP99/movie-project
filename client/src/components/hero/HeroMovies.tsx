@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 // Images
@@ -8,6 +9,9 @@ import WhiteArrow from '../../images/white-arrow.svg';
 // Models
 import IHeroMovies from '../../models/IHeroMovies';
 
+// Context
+import { UserContext } from '../context/UserContext';
+
 interface Props {
   movie: IHeroMovies,
   handleCreateWatchlistMovie(
@@ -16,10 +20,13 @@ interface Props {
     overview: string, 
     rating: number, 
     poster_path: string, 
-    release_date: string): Promise<void>,
+    release_date: string,
+    user_id: string): Promise<void>,
 }
 
 const HeroMovies = ({ movie, handleCreateWatchlistMovie } : Props) => {
+  const { user } = useContext(UserContext);
+
   return (
     <>
       <div className='banner-foreground-overlay'></div>
@@ -44,7 +51,8 @@ const HeroMovies = ({ movie, handleCreateWatchlistMovie } : Props) => {
                 movie.overview, 
                 movie.vote_average, 
                 movie.poster_path, 
-                movie.release_date) }>
+                movie.release_date,
+                user.sub) }>
               Add to Watchlist 
               <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} /></button> 
             :

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails, getMovieVideos, getMovieCredits } from '../api/api';
 
@@ -8,7 +8,6 @@ import IGenres from '../models/IGenres';
 import IMovieVideos from '../models/IMovieVideos';
 import ITopCast from '../models/ITopCast';
 import { WatchlistProps } from '../models/IWatchlist';
-
 
 // Components
 import MovieDetailsInformation from '../components/movie_details/MovieDetailsInformation';
@@ -22,17 +21,22 @@ import WhitePlus from '../images/white-plus.svg';
 import HistoryIcon from '../images/white-history-icon.svg';
 import VideoNotFound from '../images/video-not-found.svg';
 
+// Context
+import { UserContext } from '../components/context/UserContext';
+
 type MovieParams = {
   movieId: string;
 }
 
-const MovieDetails = ({ handleCreateWatchlistMovie, watchlist } : WatchlistProps ) => {
+const MovieDetails = ({ handleCreateWatchlistMovie } : WatchlistProps ) => {
   const { movieId } = useParams<MovieParams>();
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
   const [genres, setGenres] = useState<IGenres[]>([]);
   const [videos, setVideos] = useState<IMovieVideos[]>([]);
   const [topCast, setTopCast] = useState<ITopCast[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const { user } = useContext(UserContext);
+
 
   useEffect(() => {
     setLoading(true);
@@ -89,7 +93,8 @@ const MovieDetails = ({ handleCreateWatchlistMovie, watchlist } : WatchlistProps
                       movieDetails.overview, 
                       movieDetails.vote_average, 
                       movieDetails.poster_path, 
-                      movieDetails.release_date
+                      movieDetails.release_date,
+                      user.sub
                     )}>Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" /></button>
                   <button className='secondary-btn' type='button'>Add to History <img src={HistoryIcon} alt="Add to history" /></button>
                 </div>

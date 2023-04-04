@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
+import { addUser } from '../api/mongoapi';
 
 // Images
 import HambugerIcon from '../images/hamburger-menu.svg';
@@ -10,8 +11,16 @@ import HistoryIcon from '../images/sidebar/history-icon.svg';
 // import ProfileIcon from '../images/sidebar/profile-icon.svg';
 import CloseIcon from '../images/sidebar/x.svg';
 
+// Models
+import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
+
 // Context
 import { UserContext } from './context/UserContext';
+
+interface Props {
+  watchlist: IHandleGetWatchlistMovies[],
+  setWatchlist: React.Dispatch<React.SetStateAction<IHandleGetWatchlistMovies[]>>
+}
 
 interface GoogleUserInfo {
   email: string,
@@ -21,7 +30,7 @@ interface GoogleUserInfo {
   picture: string
 }
 
-const Header = () => {
+const Header = ({ watchlist, setWatchlist } : Props) => {
   const [navIcon, setNavIcon] = useState(HambugerIcon);
   const {user, setUser} = useContext(UserContext);
 
@@ -83,6 +92,14 @@ const Header = () => {
                     const decoded: GoogleUserInfo = jwt_decode(res.credential || '');
                     setUser(decoded);
                     window.localStorage.setItem('POPCORN_USER', JSON.stringify(decoded));
+                    setWatchlist([...watchlist]);
+                    addUser(
+                      decoded.email,
+                      decoded.given_name,
+                      decoded.name,
+                      decoded.picture,
+                      decoded.sub
+                    );
                   }}
                   onError={() => console.log('Failed to Login')}
                 />

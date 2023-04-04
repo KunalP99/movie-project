@@ -13,9 +13,6 @@ import Search from './pages/Search';
 // Models
 import { IHandleGetWatchlistMovies } from './models/IWatchlist';
 
-// Context
-import UserProvider from './components/context/UserContext';
-
 function App() {
   const [watchlist, setWatchlist] = useState<IHandleGetWatchlistMovies[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -27,9 +24,10 @@ function App() {
     overview: string, 
     rating: number, 
     poster_path: string, 
-    release_date: string 
+    release_date: string,
+    user_id: string
   ) => {
-    const watchlistMovie = await createWatchlistMovie(movieId, title, overview, rating, poster_path, release_date);
+    const watchlistMovie = await createWatchlistMovie(movieId, title, overview, rating, poster_path, release_date, user_id);
     // Keep UI up to date when a new movie is added to watchlist 
     setWatchlist([...watchlist, watchlistMovie]);
   };
@@ -45,19 +43,17 @@ function App() {
 
   return (
     <div className="main-container">
-      <UserProvider>
-        <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}>
-          <Header />
-          <div className='content'>
-            <Routes>
-              <Route path='/' element={<Home handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
-              <Route path='/movie/:movieId' element={<MovieDetails handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
-              <Route path='/watchlist' element={<Watchlist watchlist={watchlist} loading={loading} />} />
-              <Route path='/search' element={<Search />} />
-            </Routes>
-          </div>
-        </GoogleOAuthProvider>
-      </UserProvider>
+      <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}>
+        <Header watchlist={watchlist} setWatchlist={setWatchlist} />
+        <div className='content'>
+          <Routes>
+            <Route path='/' element={<Home handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
+            <Route path='/movie/:movieId' element={<MovieDetails handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
+            <Route path='/watchlist' element={<Watchlist watchlist={watchlist} loading={loading} />} />
+            <Route path='/search' element={<Search />} />
+          </Routes>
+        </div>
+      </GoogleOAuthProvider>
     </div>
   );
 }

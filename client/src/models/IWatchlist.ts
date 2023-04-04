@@ -5,7 +5,8 @@ export interface IHandleCreateWatchlistMovie {
     overview: string, 
     rating: number, 
     poster_path: string, 
-    release_date: string) : void
+    release_date: string,
+    user_id: string) : void
 }
 
 export interface IHandleGetWatchlistMovies {
@@ -14,7 +15,8 @@ export interface IHandleGetWatchlistMovies {
     overview: string, 
     rating: number, 
     poster_path: string, 
-    release_date: string
+    release_date: string,
+    user_id: string
 }
 
 export interface WatchlistProps {
@@ -24,6 +26,7 @@ export interface WatchlistProps {
     overview: string, 
     rating: number, 
     poster_path: string, 
-    release_date: string): Promise<void>,
+    release_date: string,
+    user_id: string): Promise<void>,
   watchlist: IHandleGetWatchlistMovies[]
 }
