@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUser {
   email: string,
@@ -8,7 +8,7 @@ export interface IUser {
   sub: string
 }
 
-export interface UserDocument extends IUser, mongoose.Document {
+export interface UserDocument extends IUser, Document {
   createdAt: Date,
   updatedAt: Date
 }

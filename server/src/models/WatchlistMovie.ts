@@ -1,7 +1,19 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-const Schema = mongoose.Schema;
-// const ObjectId = mongoose.Types.ObjectId;
+export interface IWatchlist {
+  movieId: number,
+  title: string,
+  overview: string,
+  rating: number,
+  poster_path: string,
+  release_date: string,
+  user_id: string
+}
+
+export interface WatchlistDocument extends IWatchlist, Document {
+  createdAt: Date,
+  updatedAt: Date
+}
 
 const WatchListMovieSchema = new Schema({
   movieId: Number,
@@ -14,8 +26,8 @@ const WatchListMovieSchema = new Schema({
     type: String,
     required: true
   }
-});
+}, {timestamps: true});
 
-const WatchListMovieModel = mongoose.model('WatchlistMovie', WatchListMovieSchema);
+const WatchListMovieModel = mongoose.model<WatchlistDocument>('WatchlistMovie', WatchListMovieSchema);
 
 export default WatchListMovieModel;

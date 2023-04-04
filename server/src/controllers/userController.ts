@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { Request, Response } from 'express';
-import UserModel, { UserDocument } from '../models/User';
+import UserModel from '../models/User';
 
 // Add user to database only if they are not already in it
 export const signUpUser = async (req: Request, res: Response) => {
