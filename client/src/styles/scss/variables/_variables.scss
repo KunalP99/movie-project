@@ -64,10 +64,11 @@ $border-radius: 16px;
 }
 
 @mixin subtitle2 {
-  font-size: clamp(pxToRem(10px), 6vw, pxToRem(18px));
+  font-size: clamp(pxToRem(10px), 3vw, pxToRem(18px));
   font-weight: $font-weight-regular;
   letter-spacing: 0.4px;
-  text-transform: capitalize;
+  color: $transparent-white-font-colour;
+  text-transform: uppercase;
 }
 
 @mixin body-regular {

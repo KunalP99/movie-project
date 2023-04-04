@@ -31,53 +31,31 @@ const LatestVideos = () => {
   }, []);
   
   return (
-    <section className="trailers-container">
+    <section className="latest-videos-container">
       <h2>Latest Videos</h2>
       <Swiper
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
         }}
-        slidesPerView={2.5}
+        slidesPerView={'auto'}
+        spaceBetween={16}
         loop={true}
-        className='small-swiper'
         breakpoints={{
-          200: {
-            slidesPerView: 1.3
-          },
-          300: {
-            slidesPerView: 2.3
-          },
           375: {
-            slidesPerView: 2.5
+            slidesPerView: 1.1
           },
           500: {
-            slidesPerView: 2.2
+            slidesPerView: 1.4
           },
-          650: {
-            slidesPerView: 2.6
+          900: {
+            slidesPerView: 2.1
           },
-          800: {
-            slidesPerView: 3.3
-          },
-          1000: {
-            slidesPerView: 3.8
-          },
-          1250: {
-            slidesPerView: 4.8
-          },
-          1500: {
-            slidesPerView: 3.5
-          },
-          1600: {
-            slidesPerView: 4.3
-          },
-          1700: {
-            slidesPerView: 4.5
-          },
-          2300: {
-            slidesPerView: 5.5
+          1300: {
+            slidesPerView: 2.5,
+            spaceBetween: 90
           }
         }}
+  
       >
         {!loading && 
         <>
