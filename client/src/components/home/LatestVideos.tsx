@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type SwiperCore from 'swiper';
-import { getUpcomingMovies, getMovieVideos } from '../../api/api';
+import { getUpcomingMovies } from '../../api/api';
 
 // Components
 import UpcomingMoviesContainer from './UpcomingMoviesContainer';
 
-// Models
-import IMovieVideos from '../../models/IMovieVideos';
+// Images
+import WhiteArrow from '../../images/white-arrow.svg';
 
 export interface IUpcomingMovies {
   title: string,
@@ -25,7 +25,7 @@ const LatestVideos = () => {
     setLoading(true);
 
     getUpcomingMovies()
-      .then(data => setUpcomingMovies(data.results))
+      .then(data => setUpcomingMovies(data.results.slice(4, 15)))
       .catch(err => console.log(err.message))
       .finally(() => setLoading(false));
   }, []);
@@ -89,6 +89,16 @@ const LatestVideos = () => {
         </>
         }
       </Swiper>
+      <div className='swiper-button-prev-unique-container'>
+        <button className='swiper-button-prev-unique' onClick={() => swiperRef.current?.slidePrev()}>
+          <img src={WhiteArrow} alt="Prev" />
+        </button>
+      </div>
+      <div className='swiper-button-next-unique-container'>
+        <button className='swiper-button-next-unique' onClick={() => swiperRef.current?.slideNext()}>
+          <img src={WhiteArrow} alt="Next" />
+        </button>
+      </div>
     </section>
   );
 };
