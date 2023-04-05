@@ -22,6 +22,16 @@ export const getTrendingMovies = () => {
     });
 };
 
+export const getUpcomingMovies = async () => {
+  const res = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
+  if (!res.ok) {
+    throw new Error(
+      `Error: Status code: ${res.status}`
+    );
+  }
+  return await res.json();
+};
+
 export const getMovieDetails = (movieId: string) => {
   return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
     .then(res => {
