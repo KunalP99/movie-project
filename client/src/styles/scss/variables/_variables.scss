@@ -54,7 +54,7 @@ $border-radius: 16px;
 }
 
 @mixin h3 {
-  font-size: clamp(pxToRem(18px), 6vw, pxToRem(40px));
+  font-size: clamp(pxToRem(18px), 6vw, pxToRem(35px));
   font-weight: $font-weight-bold;
 }
 

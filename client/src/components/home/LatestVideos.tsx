@@ -51,7 +51,7 @@ const LatestVideos = () => {
             slidesPerView: 2.1
           },
           1300: {
-            slidesPerView: 2.5,
+            slidesPerView: 3.5,
             spaceBetween: 90
           }
         }}
