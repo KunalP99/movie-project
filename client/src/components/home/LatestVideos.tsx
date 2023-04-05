@@ -4,7 +4,7 @@ import type SwiperCore from 'swiper';
 import { getUpcomingMovies } from '../../api/api';
 
 // Components
-import UpcomingMoviesContainer from './UpcomingMoviesContainer';
+import LatestVideo from './LatestVideo';
 
 // Images
 import WhiteArrow from '../../images/white-arrow.svg';
@@ -52,10 +52,10 @@ const LatestVideos = () => {
           },
           1300: {
             slidesPerView: 2.5,
-            spaceBetween: 90
           },
           1500: {
-            slidesPerView: 3.5
+            slidesPerView: 3.5,
+            spaceBetween: 60
           }
         }}
   
@@ -64,7 +64,7 @@ const LatestVideos = () => {
         <>
           {upcomingMovies.map(movie => (
             <SwiperSlide key={movie.id}>
-              <UpcomingMoviesContainer movie={movie} />
+              <LatestVideo movie={movie} />
             </SwiperSlide>
           ))}
         </>
