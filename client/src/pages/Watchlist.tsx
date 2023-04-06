@@ -20,7 +20,7 @@ const Watchlist = ({ watchlist, loading} : Props) => {
 
   return (
     <section className="watchlist-container">
-      <ProfileWidget />
+      <ProfileWidget watchlist={watchlist}/>
       <h2>Your Watchlist</h2>
       <div className='watchlist-movies-container'>
         {!loading && watchlist.filter(person => person.user_id === user.sub).map(movie => (

@@ -1,16 +1,29 @@
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
+
+// Models 
+import { IHandleGetWatchlistMovies } from '../../models/IWatchlist';
 
 // Context
 import { UserContext } from '../context/UserContext';
 
-const ProfileWidget = () => {
+interface Props {
+  watchlist: IHandleGetWatchlistMovies[],
+}
+
+const ProfileWidget = ({ watchlist } : Props) => {
+  const [watchlistLength, setWatchlistLength] = useState<number>(0);
   const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    const userWatchlist = watchlist.filter(person => person.user_id === user.sub);
+    setWatchlistLength(userWatchlist.length);
+  }, [watchlist]);
 
   return (
     <div className="profile-widget-container">
       <img src={user.picture} alt="User profile picture" />
       <div className='profile-widget-text'>
-        <h3>1</h3>
+        <h3>{watchlistLength}</h3>
         <p>Watchlist</p>
       </div>
       <div className='profile-widget-text'> 
