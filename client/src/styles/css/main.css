@@ -812,6 +812,9 @@ header nav .active {
   }
 }
 @media (min-width: 1000px) {
+  .movie-details-container {
+    margin-top: 200px;
+  }
   .movie-details-container .movie-details-grid {
     padding: 0px 180px;
     display: flex;
@@ -934,14 +937,11 @@ header nav .active {
 
 @media (min-width: 1000px) {
   .watchlist-container {
-    margin-top: 150px;
+    margin-top: 200px;
     padding: 0px 180px;
   }
 }
 @media (min-width: 1300px) {
-  .watchlist-container {
-    margin-top: 150px;
-  }
   .watchlist-container .watchlist-movies-container {
     grid-template-columns: repeat(6, 1fr);
     gap: 16px;
