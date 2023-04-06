@@ -299,7 +299,7 @@ header nav .active {
     display: none;
   }
 }
-@media (min-width: 1100px) {
+@media (min-width: 1000px) {
   header nav {
     padding: 32px 120px;
   }
@@ -813,7 +813,7 @@ header nav .active {
 }
 @media (min-width: 1000px) {
   .movie-details-container .movie-details-grid {
-    padding: 0px 120px;
+    padding: 0px 180px;
     display: flex;
     justify-content: center;
   }
@@ -844,10 +844,19 @@ header nav .active {
 }
 @media (min-width: 1400px) {
   .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
-    height: 500px;
+    height: 450px;
   }
   .movie-details-container .movie-details-grid .top-half .top-half-padded-content .movie-details-information-container .movie-details-overview-container > p {
     padding-right: 120px;
+  }
+  .movie-details-container .movie-details-grid .bottom-half img {
+    width: 300px;
+    height: 450px;
+  }
+}
+@media (min-width: 1600px) {
+  .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
+    height: 500px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
     width: 350px;
@@ -856,22 +865,31 @@ header nav .active {
 }
 @media (min-width: 1800px) {
   .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
-    height: 700px;
+    height: 600px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
-    width: 450px;
-    height: 700px;
+    width: 420px;
+    height: 600px;
   }
 }
 @media (min-width: 2133px) {
   .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
-    height: 800px;
+    height: 750px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
-    height: 800px;
+    height: 750px;
   }
 }
 @media (min-width: 2400px) {
+  .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
+    height: 800px;
+  }
+  .movie-details-container .movie-details-grid .bottom-half img {
+    width: 550px;
+    height: 800px;
+  }
+}
+@media (min-width: 2560px) {
   .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 900px;
   }
@@ -917,13 +935,12 @@ header nav .active {
 @media (min-width: 1000px) {
   .watchlist-container {
     margin-top: 150px;
-    padding: 0px 120px;
+    padding: 0px 180px;
   }
 }
 @media (min-width: 1300px) {
   .watchlist-container {
     margin-top: 150px;
-    padding: 0px 120px;
   }
   .watchlist-container .watchlist-movies-container {
     grid-template-columns: repeat(6, 1fr);

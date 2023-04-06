@@ -32,14 +32,13 @@
 @media (min-width: 1000px) {
   .watchlist-container {
     margin-top: 150px;
-    padding: 0px $spacing-120;
+    padding: 0px 180px;
   }
 }
 
 @media (min-width: 1300px) {
     .watchlist-container {
     margin-top: 150px;
-    padding: 0px $spacing-120;
 
     .watchlist-movies-container {
     grid-template-columns: repeat((6, 1fr));
