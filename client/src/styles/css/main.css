@@ -1049,3 +1049,45 @@ header nav .active {
     margin-bottom: 40px;
   }
 }
+
+.profile-widget-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  gap: 24px;
+  background: #131313;
+  overflow: auto;
+  padding: 16px;
+  border-radius: 16px;
+}
+.profile-widget-container img {
+  width: 36px;
+  height: 36px;
+  border-radius: 80px;
+}
+.profile-widget-container .profile-widget-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.profile-widget-container .profile-widget-text p {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: clamp(1rem, 2vw, 1.75rem);
+}
+
+@media (min-width: 600px) {
+  .profile-widget-container img {
+    width: 63px;
+    height: 63px;
+  }
+}
+@media (min-width: 1400px) {
+  .profile-widget-container {
+    padding: 16px 120px;
+  }
+  .profile-widget-container img {
+    width: 63px;
+    height: 63px;
+  }
+}

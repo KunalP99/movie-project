@@ -1,6 +1,9 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+// Components
+import ProfileWidget from '../components/widgets/ProfileWidget';
+
 // Models
 import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
 
@@ -17,6 +20,7 @@ const Watchlist = ({ watchlist, loading} : Props) => {
 
   return (
     <section className="watchlist-container">
+      <ProfileWidget />
       <h2>Your Watchlist</h2>
       <div className='watchlist-movies-container'>
         {!loading && watchlist.filter(person => person.user_id === user.sub).map(movie => (
