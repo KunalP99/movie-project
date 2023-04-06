@@ -1,0 +1,52 @@
+.profile-widget-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  gap: $spacing-24;
+  background: #131313;
+  overflow: auto;
+  padding: $spacing-16;
+  border-radius: 16px;
+  margin-bottom: $spacing-64;
+
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: 80px;
+  }
+
+  .profile-widget-item {
+    @include flex-center;
+    flex-direction: column;
+
+    p {
+      color: $transparent-white-font-colour;
+      font-size: clamp(pxToRem(16px), 2vw, pxToRem(28px));
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .profile-widget-container {
+    img {
+      width: 63px;
+      height: 63px;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .profile-widget-container {
+    margin-bottom: $spacing-120;
+  }
+}
+
+@media (min-width: 1400px) {
+  .profile-widget-container {
+    padding: $spacing-16 $spacing-120;
+    img {
+      width: 63px;
+      height: 63px;
+    }
+  }
+}
