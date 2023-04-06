@@ -1059,19 +1059,20 @@ header nav .active {
   overflow: auto;
   padding: 16px;
   border-radius: 16px;
+  margin-bottom: 64px;
 }
 .profile-widget-container img {
   width: 36px;
   height: 36px;
   border-radius: 80px;
 }
-.profile-widget-container .profile-widget-text {
+.profile-widget-container .profile-widget-item {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.profile-widget-container .profile-widget-text p {
+.profile-widget-container .profile-widget-item p {
   color: rgba(255, 255, 255, 0.48);
   font-size: clamp(1rem, 2vw, 1.75rem);
 }
@@ -1080,6 +1081,11 @@ header nav .active {
   .profile-widget-container img {
     width: 63px;
     height: 63px;
+  }
+}
+@media (min-width: 1000px) {
+  .profile-widget-container {
+    margin-bottom: 120px;
   }
 }
 @media (min-width: 1400px) {
