@@ -20,12 +20,15 @@ const Watchlist = ({ watchlist, loading} : Props) => {
 
   return (
     <section className="watchlist-container">
-      <h1 style={{ marginTop: '200px' }}>Watchlist</h1>
-      {!loading && watchlist.filter(person => person.user_id === user.sub).map(movie => (
-        <>
-          <p key={movie.movieId}>{movie.title}</p>
-        </>
-      ))}
+      <h2>Your Watchlist</h2>
+      <div className='watchlist-movies-container'>
+        {!loading && watchlist.filter(person => person.user_id === user.sub).map(movie => (
+          <div className='watchlist-movie-container' key={movie.movieId} title={movie.title}>
+            <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} />
+          </div>
+        ))}
+      </div>
+
     </section> 
   );
 };
