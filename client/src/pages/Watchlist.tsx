@@ -1,4 +1,5 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 // Models
 import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
@@ -14,18 +15,17 @@ interface Props {
 const Watchlist = ({ watchlist, loading} : Props) => {
   const { user } = useContext(UserContext);
 
-  useEffect(() => {
-    console.log(watchlist);
-  }, [watchlist]);
-
   return (
     <section className="watchlist-container">
-      <h1 style={{ marginTop: '200px' }}>Watchlist</h1>
-      {!loading && watchlist.filter(person => person.user_id === user.sub).map(movie => (
-        <>
-          <p key={movie.movieId}>{movie.title}</p>
-        </>
-      ))}
+      <h2>Your Watchlist</h2>
+      <div className='watchlist-movies-container'>
+        {!loading && watchlist.filter(person => person.user_id === user.sub).map(movie => (
+          <Link to={`/movie/${movie.movieId}`} className='watchlist-movie-container' key={movie.movieId} title={movie.title}>
+            <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} />
+          </Link>
+        ))}
+      </div>
+
     </section> 
   );
 };

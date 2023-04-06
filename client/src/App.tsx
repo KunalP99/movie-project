@@ -29,7 +29,7 @@ function App() {
   ) => {
     const watchlistMovie = await createWatchlistMovie(movieId, title, overview, rating, poster_path, release_date, user_id);
     // Keep UI up to date when a new movie is added to watchlist 
-    setWatchlist([...watchlist, watchlistMovie]);
+    setWatchlist([watchlistMovie, ...watchlist]);
   };
 
   // Get watchlist movies from backend
