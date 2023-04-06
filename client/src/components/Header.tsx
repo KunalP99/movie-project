@@ -61,7 +61,7 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
       <nav>
         <div className='header-logo'>
           <a href="/">
-            <h2>Logo</h2>
+            <h2>Popcorn<span>.</span></h2>
           </a>
         </div>
         <div className='navbar-links'>

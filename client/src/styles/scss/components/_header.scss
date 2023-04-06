@@ -14,6 +14,14 @@ header {
     justify-content: space-between;
     padding: $spacing-16;
 
+    .header-logo {
+      h2 {
+        span {
+          color: $primary-colour;
+        }
+      }
+    }
+
     .navbar-links {
         display: none;
         position: fixed;

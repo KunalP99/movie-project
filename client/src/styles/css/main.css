@@ -229,6 +229,9 @@ header nav {
   justify-content: space-between;
   padding: 16px;
 }
+header nav .header-logo h2 span {
+  color: #70A7B2;
+}
 header nav .navbar-links {
   display: none;
   position: fixed;
