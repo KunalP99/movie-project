@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { getWatchlistMovies, createWatchlistMovie } from './api/mongoapi';
+import { getWatchlistMovies, createWatchlistMovie, deleteWatchlistMovie } from './api/mongoapi';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // Components
@@ -32,6 +32,11 @@ function App() {
     setWatchlist([watchlistMovie, ...watchlist]);
   };
 
+  // Delete movie from watchlist
+  const handleDeleteWatchlistMovie =  async (userId: string, movieId: number) => {
+    await deleteWatchlistMovie(userId, movieId);
+  };
+
   // Get watchlist movies from backend
   useEffect(() => {
     setLoading(true);
@@ -47,9 +52,26 @@ function App() {
         <Header watchlist={watchlist} setWatchlist={setWatchlist} />
         <div className='content'>
           <Routes>
-            <Route path='/' element={<Home handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
-            <Route path='/movie/:movieId' element={<MovieDetails handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />} />
-            <Route path='/watchlist' element={<Watchlist watchlist={watchlist} loading={loading} />} />
+            <Route 
+              path='/' 
+              element=
+                {<Home 
+                  handleCreateWatchlistMovie={handleCreateWatchlistMovie} 
+                  handleDeleteWatchlistMovie={handleDeleteWatchlistMovie} 
+                  watchlist={watchlist} />} />
+            <Route 
+              path='/movie/:movieId' 
+              element=
+                {<MovieDetails 
+                  handleCreateWatchlistMovie={handleCreateWatchlistMovie} 
+                  handleDeleteWatchlistMovie={handleDeleteWatchlistMovie} 
+                  watchlist={watchlist} />} />
+            <Route 
+              path='/watchlist' 
+              element=
+                {<Watchlist 
+                  watchlist={watchlist} 
+                  loading={loading} />} />
             <Route path='/search' element={<Search />} />
           </Routes>
         </div>

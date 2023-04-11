@@ -28,15 +28,15 @@ type MovieParams = {
   movieId: string;
 }
 
-const MovieDetails = ({ watchlist, handleCreateWatchlistMovie } : WatchlistProps ) => {
+const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatchlistMovie } : WatchlistProps ) => {
   const { movieId } = useParams<MovieParams>();
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
   const [genres, setGenres] = useState<IGenres[]>([]);
   const [videos, setVideos] = useState<IMovieVideos[]>([]);
   const [topCast, setTopCast] = useState<ITopCast[]>([]);
+  const [inWatchlist, setInWatchlist] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const { user } = useContext(UserContext);
-
 
   useEffect(() => {
     setLoading(true);
@@ -68,10 +68,35 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie } : WatchlistProps
   // Check if movie is already in watchlist 
   useEffect(() => {
     watchlist.filter(person => person.user_id === user.sub).map(watchlistMovie => {
-      setMovieDetails(prevState => prevState?.id === watchlistMovie.movieId  
-        ? {...prevState, inWatchlist: true} : prevState);
+      if (movieDetails?.id === watchlistMovie.movieId) {
+        setInWatchlist(true);
+      }
     });
   }, [watchlist]);
+
+  // Handle adding movie to watchlist
+  const handleAddToWatchlist = () => {
+    if (movieDetails !== undefined) {
+      handleCreateWatchlistMovie(
+        movieDetails.id, 
+        movieDetails.title, 
+        movieDetails.overview, 
+        movieDetails.vote_average, 
+        movieDetails.poster_path, 
+        movieDetails.release_date,
+        user.sub
+      );
+      setInWatchlist(true);
+    }
+  };
+
+  // Handle deleting movie from watchlist
+  const handleDeleteFromWatchlist = () => {
+    if (movieDetails !== undefined) {
+      handleDeleteWatchlistMovie(user.sub, movieDetails.id);
+      setInWatchlist(false);
+    }
+  };
 
   return (
     <section className="movie-details-container">
@@ -82,7 +107,11 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie } : WatchlistProps
             <div className='movie-details-grid'>
               <div className='top-half'>
                 {videos.length !== 0 ? 
-                  <iframe src={`https://www.youtube.com/embed/${videos[0].key}`} title="Youtube Video Player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> 
+                  <iframe 
+                    src={`https://www.youtube.com/embed/${videos[0].key}`} 
+                    title="Youtube Video Player" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowFullScreen></iframe> 
                   : 
                   <img className='no-video-found-img' src={VideoNotFound} />}
                 <div className='top-half-padded-content'>
@@ -94,22 +123,26 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie } : WatchlistProps
                     overview={movieDetails.overview}  />
                 </div>
                 <div className='movie-details-btn-container'>
-                  {!movieDetails.inWatchlist ? 
-                    <button className='primary-btn' type='button' onClick={() => 
-                      handleCreateWatchlistMovie(
-                        movieDetails.id, 
-                        movieDetails.title, 
-                        movieDetails.overview, 
-                        movieDetails.vote_average, 
-                        movieDetails.poster_path, 
-                        movieDetails.release_date,
-                        user.sub
-                      )}>Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" /></button>
+                  {!inWatchlist ? 
+                    <button 
+                      className='primary-btn' 
+                      type='button' 
+                      onClick={handleAddToWatchlist}>
+                        Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" />
+                    </button>
                     :
-                    <button className='remove-from-watchlist-btn primary-btn'>Remove from Watchlist</button>
+                    <button 
+                      className='remove-from-watchlist-btn primary-btn' 
+                      onClick={handleDeleteFromWatchlist}>
+                        Remove from Watchlist
+                    </button>
                   }
 
-                  <button className='secondary-btn' type='button'>Add to History <img src={HistoryIcon} alt="Add to history" /></button>
+                  <button 
+                    className='secondary-btn' 
+                    type='button'>
+                      Add to History <img src={HistoryIcon} alt="Add to history" />
+                  </button>
                 </div>
               </div>
               <div className='bottom-half'>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { getMoviesInTheatre } from '../../api/api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -12,26 +12,14 @@ import HeroMovies from '../hero/HeroMovies';
 import IHeroMovies from '../../models/IHeroMovies';
 import { WatchlistProps } from '../../models/IWatchlist';
 
-// Context
-import { UserContext } from '../context/UserContext';
-
-const Hero = ({ handleCreateWatchlistMovie, watchlist } : WatchlistProps) => {
+const Hero = ({ handleCreateWatchlistMovie, handleDeleteWatchlistMovie, watchlist } : WatchlistProps) => {
   const [moviesInTheatre, setMoviesInTheatre] = useState<IHeroMovies[]>([]);
-  const { user } = useContext(UserContext);
 
   useEffect(() => {
     // Get 5 movies in theatre
     getMoviesInTheatre(1)
       .then(data => setMoviesInTheatre(data.results.slice(0, 5)))
       .catch(err => console.log(err.message));
-  }, []);
-
-  // Check if movie on the hero component is inside the watchlist; if it is, add a property 'inWatchlist' set to true else just return original object
-  useEffect(() => {
-    watchlist.filter(person => person.user_id === user.sub).map(watchlistMovie => {
-      setMoviesInTheatre(prevState => prevState.map(movieInTheatre => movieInTheatre.id === watchlistMovie.movieId ? 
-        {...movieInTheatre, inWatchlist: true} : movieInTheatre));
-    });
   }, [watchlist]);
 
   return (
@@ -46,7 +34,11 @@ const Hero = ({ handleCreateWatchlistMovie, watchlist } : WatchlistProps) => {
       >
         {moviesInTheatre && moviesInTheatre.map(movie => (
           <SwiperSlide key={movie.id}>
-            <HeroMovies movie={movie} handleCreateWatchlistMovie={handleCreateWatchlistMovie} />
+            <HeroMovies 
+              movie={movie} 
+              handleCreateWatchlistMovie={handleCreateWatchlistMovie} 
+              handleDeleteWatchlistMovie={handleDeleteWatchlistMovie} 
+              watchlist={watchlist} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -6,11 +6,14 @@ import Trailers from '../components/home/LatestVideos';
 // Models
 import { WatchlistProps } from '../models/IWatchlist';
 
-const Home = ({ handleCreateWatchlistMovie, watchlist } : WatchlistProps) => {
+const Home = ({ handleCreateWatchlistMovie, handleDeleteWatchlistMovie, watchlist } : WatchlistProps) => {
   return (
     <div className='content'>
       <section className="home-container">
-        <Hero handleCreateWatchlistMovie={handleCreateWatchlistMovie} watchlist={watchlist} />
+        <Hero 
+          handleCreateWatchlistMovie={handleCreateWatchlistMovie} 
+          handleDeleteWatchlistMovie={handleDeleteWatchlistMovie} 
+          watchlist={watchlist} />
         <div className='home-content-container'>
           <Trending />
           <InTheatres />

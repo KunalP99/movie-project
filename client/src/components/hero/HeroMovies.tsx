@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 // Images
 import RatingStar from '../../images/rating-star.svg';
@@ -7,6 +7,7 @@ import WhiteArrow from '../../images/white-arrow.svg';
 
 // Models
 import IHeroMovies from '../../models/IHeroMovies';
+import { IHandleGetWatchlistMovies } from '../../models/IWatchlist';
 
 // Context
 import { UserContext } from '../context/UserContext';
@@ -21,10 +22,48 @@ interface Props {
     poster_path: string, 
     release_date: string,
     user_id: string): Promise<void>,
+    handleDeleteWatchlistMovie(
+      userId: string,
+      movieId: number
+    ): Promise<void>,
+    watchlist: IHandleGetWatchlistMovies[]
 }
 
-const HeroMovies = ({ movie, handleCreateWatchlistMovie } : Props) => {
+const HeroMovies = ({ movie, handleCreateWatchlistMovie, handleDeleteWatchlistMovie, watchlist } : Props) => {
+  const [inWatchlist, setInWatchlist] = useState(false);
   const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    watchlist.filter(person => person.user_id === user.sub).map(watchlistMovie => {
+      if (movie.id === watchlistMovie.movieId) {
+        setInWatchlist(true);
+      }
+    });
+  }, [watchlist]);
+
+  // Handle adding movie to watchlist
+  const handleAddToWatchlist = () => {
+    if (movie !== undefined) {
+      handleCreateWatchlistMovie(
+        movie.id, 
+        movie.title, 
+        movie.overview, 
+        movie.vote_average, 
+        movie.poster_path, 
+        movie.release_date,
+        user.sub
+      );
+      setInWatchlist(true);
+    }
+  };
+
+  // Handle deleting movie from watchlist
+  const handleDeleteFromWatchlist = () => {
+    if (movie !== undefined) {
+      handleDeleteWatchlistMovie(user.sub, movie.id);
+      setInWatchlist(false);
+    }
+  };
 
   return (
     <>
@@ -42,20 +81,16 @@ const HeroMovies = ({ movie, handleCreateWatchlistMovie } : Props) => {
           <p>{movie.overview}</p>
         </div>
         <div className='hero-btn-container'>
-          {!movie.inWatchlist ?
-            <button className='add-to-watchlist-btn primary-btn' onClick={() => 
-              handleCreateWatchlistMovie(
-                movie.id, 
-                movie.title, 
-                movie.overview, 
-                movie.vote_average, 
-                movie.poster_path, 
-                movie.release_date,
-                user.sub) }>
+          {!inWatchlist ?
+            <button className='add-to-watchlist-btn primary-btn' onClick={handleAddToWatchlist}>
               Add to Watchlist 
               <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} /></button> 
             :
-            <button className='remove-from-watchlist-btn primary-btn'>Remove from watchlist</button>
+            <button 
+              className='remove-from-watchlist-btn primary-btn' 
+              onClick={handleDeleteFromWatchlist}>
+                Remove from watchlist
+            </button>
           }
           <a className='view-more-btn secondary-btn' href={`/movie/${movie.id}`}>
             View more 
