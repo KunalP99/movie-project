@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 
 // Images
 import RatingStar from '../../images/rating-star.svg';
@@ -58,10 +57,10 @@ const HeroMovies = ({ movie, handleCreateWatchlistMovie } : Props) => {
             :
             <button className='remove-from-watchlist-btn primary-btn'>Remove from watchlist</button>
           }
-          <Link className='view-more-btn secondary-btn' to={`/movie/${movie.id}`}>
+          <a className='view-more-btn secondary-btn' href={`/movie/${movie.id}`}>
             View more 
             <img src={WhiteArrow} alt={`View more information about ${movie.title}`} />
-          </Link>
+          </a>
         </div>
       </div>
     </>

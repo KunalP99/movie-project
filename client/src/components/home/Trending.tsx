@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from 'react';
 import { getTrendingMovies } from '../../api/api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type SwiperCore from 'swiper';
-import { Link } from 'react-router-dom';
 
 // Models 
 import ISmallSwiperMovies from '../../models/ISmallSwiperMovies';
@@ -77,7 +76,7 @@ const Trending = () => {
       >
         {!loading && trendingMovies?.map(movie => (
           <SwiperSlide key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>
+            <a href={`/movie/${movie.id}`}>
               <div>
                 <div className='trending-movies-rating-container'>
                   <img src={RatingStar} alt='Rating star' />
@@ -85,7 +84,7 @@ const Trending = () => {
                 </div>
                 <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} />
               </div>
-            </Link>
+            </a>
           </SwiperSlide>   
         ))}
       </Swiper>
