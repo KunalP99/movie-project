@@ -195,8 +195,9 @@
 
 @media (min-width: 1000px) {
   .movie-details-container {
+    margin-top: 200px;
     .movie-details-grid {
-      padding: 0px $spacing-120;
+      padding: 0px 180px;
       display: flex;
       justify-content: center;
 
@@ -248,7 +249,7 @@
     .movie-details-grid {
       .top-half {
         iframe, .no-video-found-img {
-          height: 500px;
+          height: 450px;
         }
         .top-half-padded-content {
           .movie-details-information-container {
@@ -263,6 +264,25 @@
       
       .bottom-half {
         img {
+          width: 300px;
+          height: 450px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .movie-details-container {
+    .movie-details-grid {
+      .top-half {
+        iframe, .no-video-found-img {
+          height: 500px;
+        }
+      }
+      
+      .bottom-half {
+        img {
           width: 350px;
           height: 500px;
         }
@@ -271,19 +291,21 @@
   }
 }
 
+
+
 @media (min-width: 1800px) {
   .movie-details-container {
     .movie-details-grid {
       .top-half {
         iframe, .no-video-found-img {
-          height: 700px;
+          height: 600px;
         }
       }
       
       .bottom-half {
         img {
-          width: 450px;
-          height: 700px;
+          width: 420px;
+          height: 600px;
         }
       }
     }
@@ -295,13 +317,13 @@
     .movie-details-grid {
       .top-half {
         iframe, .no-video-found-img {
-          height: 800px;
+          height: 750px;
         }
       }
 
       .bottom-half {
         img {
-          height: 800px;
+          height: 750px;
         }
       }
     }
@@ -309,6 +331,25 @@
 }
 
 @media (min-width: 2400px) {
+  .movie-details-container {
+    .movie-details-grid {
+      .top-half {
+        iframe, .no-video-found-img {
+          height: 800px;
+        }
+      }
+
+      .bottom-half {
+        img {
+          width: 550px;
+          height: 800px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 2560px) {
   .movie-details-container {
     .movie-details-grid {
       .top-half {
