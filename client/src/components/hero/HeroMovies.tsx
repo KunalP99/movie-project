@@ -33,6 +33,7 @@ const HeroMovies = ({ movie, handleCreateWatchlistMovie, handleDeleteWatchlistMo
   const [inWatchlist, setInWatchlist] = useState(false);
   const { user } = useContext(UserContext);
 
+  // Check if movie is already in watchlist 
   useEffect(() => {
     watchlist.filter(person => person.user_id === user.sub).map(watchlistMovie => {
       if (movie.id === watchlistMovie.movieId) {
