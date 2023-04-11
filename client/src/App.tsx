@@ -71,7 +71,10 @@ function App() {
               element=
                 {<Watchlist 
                   watchlist={watchlist} 
-                  loading={loading} />} />
+                  loading={loading}
+                  handleDeleteWatchlistMovie={handleDeleteWatchlistMovie}
+                  setWatchlist={setWatchlist}
+                />} />
             <Route path='/search' element={<Search />} />
           </Routes>
         </div>
