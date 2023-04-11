@@ -66,6 +66,7 @@
         flex-direction: column;
         align-items: center;
         gap: $spacing-08;
+        margin-bottom: $spacing-24;
         button {
           display: flex;
           justify-content: space-around;
@@ -231,6 +232,12 @@
       .top-half {
         iframe, .no-video-found-img {
           height: 400px;
+        }
+
+        .movie-details-btn-container {
+          .remove-from-watchlist-btn {
+            width: 280px;
+          }
         }
       }
       

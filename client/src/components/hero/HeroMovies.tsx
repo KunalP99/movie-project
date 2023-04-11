@@ -44,7 +44,7 @@ const HeroMovies = ({ movie, handleCreateWatchlistMovie } : Props) => {
         </div>
         <div className='hero-btn-container'>
           {!movie.inWatchlist ?
-            <button className='add-to-watchlist-btn' onClick={() => 
+            <button className='add-to-watchlist-btn primary-btn' onClick={() => 
               handleCreateWatchlistMovie(
                 movie.id, 
                 movie.title, 
@@ -56,7 +56,7 @@ const HeroMovies = ({ movie, handleCreateWatchlistMovie } : Props) => {
               Add to Watchlist 
               <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} /></button> 
             :
-            <button>Already on watchlist</button>
+            <button className='remove-from-watchlist-btn primary-btn'>Remove from watchlist</button>
           }
           <Link className='view-more-btn secondary-btn' to={`/movie/${movie.id}`}>
             View more 

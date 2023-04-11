@@ -106,7 +106,7 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie } : WatchlistProps
                         user.sub
                       )}>Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" /></button>
                     :
-                    <button>Already in Watchlist</button>
+                    <button className='remove-from-watchlist-btn primary-btn'>Remove from Watchlist</button>
                   }
 
                   <button className='secondary-btn' type='button'>Add to History <img src={HistoryIcon} alt="Add to history" /></button>

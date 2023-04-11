@@ -60,24 +60,8 @@
       .hero-btn-container {
         display: flex;
         gap: $spacing-24;
-
-        button, .view-more-btn {
-          display: flex;
-          align-items: center;
-          gap: $spacing-08;
-          @include main-btn-small;
-        }
-
         .view-more-btn {
           text-decoration: none;
-        }
-
-        .add-to-watchlist-btn {
-          background: $primary-colour;
-          color: $primary-font-colour;
-        }
-        .add-to-watchlist-btn:hover {
-          background: #48727a;
         }
       }
     }
@@ -91,11 +75,6 @@
         .hero-overview {
           display: flex;
           padding-right: $spacing-24
-        }
-        .hero-btn-container {
-          button, .view-more-btn  {
-            @include main-btn;
-          }
         }
       }
     }

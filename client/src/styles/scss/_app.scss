@@ -23,6 +23,10 @@ p {
   @include body-regular;
 }
 
+button {
+  cursor: pointer;
+}
+
 .primary-btn {
   @include main-btn-small;
   background: $primary-colour;
@@ -46,6 +50,15 @@ p {
 }
 .secondary-btn:hover {
   background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
+}
+
+.remove-from-watchlist-btn {
+  @include main-btn-small;
+  background: #B27070;
+  color: $primary-font-colour;
+}
+.remove-from-watchlist-btn:hover {
+  background: #734949;
 }
 
 .link {
