@@ -9,6 +9,6 @@ router.get('/', getWatchlist);
 // POST new movie to watchlist
 router.post('/', addToWatchlist);
 
-router.delete('/:id', deleteFromWatchlist);
+router.delete('/:user_id/:id', deleteFromWatchlist);
 
 export default router;
