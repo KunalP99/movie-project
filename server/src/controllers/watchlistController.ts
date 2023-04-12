@@ -36,3 +36,12 @@ export const addToWatchlist = async (req: Request, res: Response) => {
     res.status(400).json({ error: err });
   }
 }
+
+export const deleteFromWatchlist = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const user_id = req.params.user_id;
+
+  const movie = await WatchListMovieModel.findOneAndDelete({'movieId': id, 'user_id': user_id});
+  res.json(movie);
+
+}

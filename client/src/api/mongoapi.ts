@@ -44,6 +44,12 @@ export const createWatchlistMovie = (
     });
 };
 
+export const deleteWatchlistMovie = async (userId: string ,movieId: number) => {
+  return await fetch(`http://localhost:5000/watchlist-movies/${userId}/${movieId}`, {
+    method: 'DELETE',
+  });
+};
+
 export const addUser = (
   email: string,
   given_name: string,

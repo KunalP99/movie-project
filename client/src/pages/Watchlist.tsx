@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 
 // Components
 import ProfileWidget from '../components/widgets/ProfileWidget';
+import WatchlistMovie from '../components/watchlist/WatchlistMovie';
 
 // Models
 import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
@@ -12,10 +12,15 @@ import { UserContext } from '../components/context/UserContext';
 
 interface Props {
   watchlist: IHandleGetWatchlistMovies[],
+  setWatchlist: React.Dispatch<React.SetStateAction<IHandleGetWatchlistMovies[]>>,
   loading: boolean,
+  handleDeleteWatchlistMovie(
+      userId: string,
+      movieId: number
+    ): Promise<void>,
 }
 
-const Watchlist = ({ watchlist, loading} : Props) => {
+const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovie} : Props) => {
   const { user } = useContext(UserContext);
 
   return (
@@ -24,12 +29,14 @@ const Watchlist = ({ watchlist, loading} : Props) => {
       <h2>Your Watchlist</h2>
       <div className='watchlist-movies-container'>
         {!loading && watchlist.filter(person => person.user_id === user.sub).map(movie => (
-          <Link to={`/movie/${movie.movieId}`} className='watchlist-movie-container' key={movie.movieId} title={movie.title}>
-            <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} />
-          </Link>
+          <WatchlistMovie
+            key={movie.movieId} 
+            movie={movie} 
+            handleDeleteWatchlistMovie={handleDeleteWatchlistMovie} 
+            watchlist={watchlist}
+            setWatchlist={setWatchlist} />
         ))}
       </div>
-
     </section> 
   );
 };
