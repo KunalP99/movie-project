@@ -16,17 +16,18 @@ export const getHistory = async (req: Request, res: Response) => {
 // Adds a movie to the history collection
 export const addToHistory = async (req: Request, res: Response) => {
   const { movie_id, title, user_rating, poster_path, watch_date, rewatch, points, user_id } : 
-  { movie_id: number,
+  { user_id: string 
+    movie_id: number,
     title: string,
     user_rating: number,
     poster_path: string, 
     watch_date: Date,
     rewatch: boolean,
-    points: number,
-    user_id: string } = req.body
+    points: number } = req.body
 
     try {
       const newHistoryMovie = new HistoryModel({
+        user_id,
         movie_id,
         title,
         user_rating,
@@ -34,7 +35,6 @@ export const addToHistory = async (req: Request, res: Response) => {
         watch_date,
         rewatch,
         points,
-        user_id
       });
 
       const createdHistoryMovie = await newHistoryMovie.save();
