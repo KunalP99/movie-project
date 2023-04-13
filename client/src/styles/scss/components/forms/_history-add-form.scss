@@ -1,11 +1,11 @@
-.form-modal-background {
+.form-modal {
   background: $form-bg-colour;
   width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
   z-index: 105;
-  overflow-y: auto;
+  overflow-x: auto;
   #history-add-form {
     .close-btn {
       @include reset-btn;
@@ -76,7 +76,6 @@
           margin-top: $spacing-08;
           .history-add-item {
             display: flex;
-            justify-content: center;
             input[type="radio"] {
               -webkit-appearance: none;
               appearance: none;
@@ -99,7 +98,7 @@
               }
 
               p {
-                font-size: 10px;
+                font-size: pxToRem(10px);
                 font-weight: $font-weight-semi;
               }
             }
@@ -175,3 +174,78 @@
     height: 100%;
   }
 }
+
+@media (min-width: 1000px) {
+  .form-modal {
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    #history-add-form {
+      @include flex-center;
+      gap: $spacing-80;
+      h3 {
+        margin-top: 0px;
+        text-align: left;
+      }
+      .history-form-top-half {
+        img {
+          width: 350px;
+        }
+      }
+
+      .history-form-container {
+        .history-form-date-container {
+          input[type="date"] {
+            font-size: pxToRem(16px);
+            width: 350px;
+          }
+        }
+
+        .history-form-rating-container {
+          width: 382px;
+          .history-add-rating-item-container {
+            .history-add-item {
+              .history-add-rating-label {
+                p {
+                  font-size: pxToRem(16px);
+                }
+              }
+            }
+          }
+        }
+        .history-form-submit-btn {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  .form-modal-background {
+    background: rgba(0, 0, 0, 0.753);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100vw;
+    height: 105vh;
+    z-index: 100;
+  }
+
+    .form-modal {
+      width: 1000px;
+      height: 700px;
+      border-radius: 16px;
+    #history-add-form {
+      .history-form-top-half {
+        img {
+          width: 300px;
+        }
+      }
+    }
+  }
+}
+
