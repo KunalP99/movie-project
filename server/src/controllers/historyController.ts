@@ -4,8 +4,13 @@ import HistoryModel from '../models/History';
 
 // Get the list of movies in history from database
 export const getHistory = async (req: Request, res: Response) => {
-  const historyMovies = await HistoryModel.find().sort({"createdAt": -1});
-  res.status(200).json(historyMovies);
+  try {
+    const historyMovies = await HistoryModel.find().sort({"createdAt": -1});
+    res.status(200).json(historyMovies);
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
+
 }
 
 // Adds a movie to the history collection
@@ -35,7 +40,7 @@ export const addToHistory = async (req: Request, res: Response) => {
       const createdHistoryMovie = await newHistoryMovie.save();
       res.status(200).json(createdHistoryMovie);
     } catch (err) {
-      res.status(400).json({ error: err});
+      res.status(400).json({ error: err });
     }
 }
 
@@ -51,16 +56,19 @@ export const updateMovieInHistory = async (req: Request, res: Response) => {
 
       res.status(200).json(movieToUpdate);
   } catch (err) {
-      res.status(400).json({ error: err});
+      res.status(400).json({ error: err });
   }
 
 }
 
 // Deletes one movie from the history collection based on object and user id
 export const deleteFromHistory = async (req: Request, res: Response) => {
-  const _id = req.params.id;
-  const user_id = req.params.user_id;
+  const { _id, user_id } = req.params;
 
-  const movie = await HistoryModel.findOneAndDelete({'_id:' : _id, 'user_id': user_id});
-  res.json(movie);
+  try {
+    const movie = await HistoryModel.findOneAndDelete({'_id:' : _id, 'user_id': user_id});
+    res.status(200).json(movie);
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
 }
