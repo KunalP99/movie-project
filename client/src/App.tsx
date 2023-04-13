@@ -9,6 +9,7 @@ import Header from './components/Header';
 import MovieDetails from './pages/MovieDetails';
 import Watchlist from './pages/Watchlist';
 import Search from './pages/Search';
+import History from './pages/History';
 
 // Models
 import { IHandleGetWatchlistMovies } from './models/IWatchlist';
@@ -76,6 +77,7 @@ function App() {
                   setWatchlist={setWatchlist}
                 />} />
             <Route path='/search' element={<Search />} />
+            <Route path='/history' element={<History />} />
           </Routes>
         </div>
       </GoogleOAuthProvider>

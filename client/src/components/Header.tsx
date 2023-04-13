@@ -76,7 +76,7 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
             </li>
             <li>
               <img src={HistoryIcon} alt="View your watch history" />
-              <a href="#">History</a>
+              <a href="/history">History</a>
             </li>
             <li>
               {user.email !== '' ? 
