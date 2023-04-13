@@ -22,6 +22,9 @@ h5 {
 p {
   @include body-regular;
 }
+label {
+  @include body-regular;
+}
 
 button {
   cursor: pointer;

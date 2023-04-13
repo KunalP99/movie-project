@@ -92,6 +92,12 @@ p {
   line-height: 32px;
 }
 
+label {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 32px;
+}
+
 button {
   cursor: pointer;
 }
@@ -104,7 +110,7 @@ button {
   font-weight: bold;
   border-radius: 16px;
   border: none;
-  background: #70A7B2;
+  background: #0068C1;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -250,7 +256,7 @@ header nav {
   padding: 16px;
 }
 header nav .header-logo h2 span {
-  color: #70A7B2;
+  color: #0068C1;
 }
 header nav .navbar-links {
   display: none;
@@ -349,7 +355,7 @@ header nav .active {
   background: rgba(50, 50, 50, 0.61);
 }
 .hero-container .swiper .swiper-pagination .swiper-pagination-bullet-active {
-  background: #70A7B2;
+  background: #0068C1;
 }
 .hero-container .swiper .hero-movie-information-container {
   display: flex;
@@ -576,7 +582,7 @@ header nav .active {
   width: 100%;
   height: 180px;
   border-radius: 20px;
-  border: 3px solid #70A7B2;
+  border: 3px solid #0068C1;
 }
 .latest-videos-container p {
   font-size: clamp(0.625rem, 3vw, 1.125rem);
@@ -1050,6 +1056,188 @@ header nav .active {
   }
 }
 
+.form-modal-background {
+  background: linear-gradient(180deg, #1C1C1C 0%, #000000 55.73%);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 105;
+  overflow-y: auto;
+}
+.form-modal-background #history-add-form .close-btn {
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 16px;
+  font-weight: 400;
+}
+.form-modal-background #history-add-form h3 {
+  font-size: clamp(1.25rem, 6vw, 1.75rem);
+  font-weight: 400;
+  margin-top: 40px;
+  text-align: center;
+}
+.form-modal-background #history-add-form .history-form-top-half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-modal-background #history-add-form .history-form-top-half img {
+  border-radius: 16px;
+  margin-top: 24px;
+  width: 90px;
+}
+.form-modal-background #history-add-form .history-form-top-half p {
+  margin-top: 16px;
+  font-weight: 500;
+}
+.form-modal-background #history-add-form .history-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-date-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 24px;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-date-container input[type=date] {
+  margin-top: 8px;
+  background: #1C1C1C;
+  border: none;
+  color: #FFFFFF;
+  padding: 16px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  width: 290px;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-date-container input[type=date]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-rating-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  width: 322px;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-rating-container .history-add-rating-item-container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-rating-container .history-add-rating-item-container .history-add-item {
+  display: flex;
+  justify-content: center;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-rating-container .history-add-rating-item-container .history-add-item input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background-color: #fff;
+  margin: 0;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-rating-container .history-add-rating-item-container .history-add-item input[type=radio]:checked + label {
+  background: linear-gradient(90deg, #003E73 0%, #006FCF 100%);
+}
+.form-modal-background #history-add-form .history-form-container .history-form-rating-container .history-add-rating-item-container .history-add-item .history-add-rating-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: #1C1C1C;
+  width: 58px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-rating-container .history-add-rating-item-container .history-add-item .history-add-rating-label:hover {
+  background: #242424;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-rating-container .history-add-rating-item-container .history-add-item .history-add-rating-label p {
+  font-size: 10px;
+  font-weight: 600;
+}
+.form-modal-background #history-add-form .history-form-container .history-rewatch-form-container {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+.form-modal-background #history-add-form .history-form-container .history-rewatch-form-container input[type=checkbox] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background-color: #1C1C1C;
+  border: none;
+  border-radius: 6px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.form-modal-background #history-add-form .history-form-container .history-rewatch-form-container input[type=checkbox]:hover {
+  background: #242424;
+}
+.form-modal-background #history-add-form .history-form-container .history-rewatch-form-container input[type=checkbox]:checked {
+  background-color: #5BCF6D;
+}
+.form-modal-background #history-add-form .history-form-container .history-rewatch-form-container input[type=checkbox]:checked:after {
+  content: url("https://gistcdn.githack.com/KunalP99/909ff4e406ccbeb233aa6c244696cc9c/raw/e098738fb4d2c932055cc40ea902b4c0ec93658f/white-tick.svg");
+}
+.form-modal-background #history-add-form .history-form-container .history-form-points-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 32px;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-points-container :first-child {
+  color: rgba(255, 255, 255, 0.48);
+}
+.form-modal-background #history-add-form .history-form-container .history-form-points-container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-points-container > div p {
+  font-size: 1.875rem;
+}
+.form-modal-background #history-add-form .history-form-container .history-form-submit-btn {
+  padding: 9px 8px;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 32px;
+  font-weight: bold;
+  border-radius: 16px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 80%;
+  padding: 8px 0px;
+  border-radius: 8px;
+  background: #0068C1;
+  color: #FFFFFF;
+  border: none;
+  margin-top: 32px;
+  margin-bottom: 56px;
+}
+
+@media (max-width: 330px) {
+  .form-modal-background {
+    width: 330px;
+    height: 100%;
+  }
+}
 .watchlist-movie-container {
   position: relative;
   max-width: 200px;

@@ -5,14 +5,20 @@
 $main-font-family: 'Red Hat Display', sans-serif;
 
 // BG Colours 
-$primary-colour: #70A7B2;
+$primary-colour: #0068C1;
 $primary-bg-colour: #000000;
 $secondary-btn-bg-colour: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+$dark-grey: #1C1C1C;
+$blue-linear: linear-gradient(90deg, #003E73 0%, #006FCF 100%);
 $rating-container-bg-colour: linear-gradient(90deg, rgba(117, 155, 163, 0.9) 0%, rgba(117, 155, 163, 0.6) 100%);
 $foreground-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000 100%);
 $genre-bg-colour: linear-gradient(90deg, rgba(199, 199, 199, 0.37) 0%, rgba(153, 153, 153, 0.37) 99.48%);
 $watchlist-movie-bg-colour: linear-gradient(90deg, rgba(28, 28, 28, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+$form-bg-colour: linear-gradient(180deg, #1C1C1C 0%, #000000 55.73%);
 
+// Form Colours
+$green-colour: #5BCF6D;
+$input-hover-colour: #242424;
 // Font colours
 $primary-font-colour: #FFFFFF;
 $transparent-white-font-colour: rgba(255, 255, 255, 0.48);

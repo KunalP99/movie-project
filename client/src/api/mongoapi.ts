@@ -79,3 +79,39 @@ export const addUser = (
       return res.json();
     });
 };
+
+export const addMovieToHistory = (
+  user_id: string,
+  movie_id: number,
+  title: string,
+  user_rating: number,
+  poster_path: string,
+  watch_date: Date,
+  rewatch: boolean,
+  points: number
+) => {
+  return fetch('http://localhost:5000/history', {
+    method: 'POST',
+    body: JSON.stringify({
+      user_id,
+      movie_id,
+      title,
+      user_rating,
+      poster_path,
+      watch_date,
+      rewatch,
+      points
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(
+          `Error: Status code: ${res.status}`
+        );
+      }
+      return res.json();
+    });
+};

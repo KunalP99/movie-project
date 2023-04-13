@@ -15,6 +15,7 @@ import MovieDetailsExtraInfo from '../components/movie_details/MovieDetailsExtra
 import MovieDetailsTopCast from '../components/movie_details/MovieDetailsTopCast';
 import MovieDetailsStarring from '../components/movie_details/MovieDetailsStarring';
 import MovieDetailsMoreLikeThis from '../components/movie_details/MovieDetailsMoreLikeThis';
+import HistoryAddForm from '../components/forms/HistoryAddForm';
 
 // Images
 import WhitePlus from '../images/white-plus.svg';
@@ -35,6 +36,7 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
   const [videos, setVideos] = useState<IMovieVideos[]>([]);
   const [topCast, setTopCast] = useState<ITopCast[]>([]);
   const [inWatchlist, setInWatchlist] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const { user } = useContext(UserContext);
 
@@ -140,7 +142,8 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
 
                   <button 
                     className='secondary-btn' 
-                    type='button'>
+                    type='button'
+                    onClick={() => setShowModal(true)}>
                       Add to History <img src={HistoryIcon} alt="Add to history" />
                   </button>
                 </div>
@@ -159,6 +162,13 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
             <MovieDetailsStarring topCast={topCast} />
             <MovieDetailsMoreLikeThis genres={genres} loading={loading} />
           </div>
+          }
+          {showModal && 
+            <HistoryAddForm
+              setShowModal={setShowModal}
+              title={movieDetails.title} 
+              poster_path={movieDetails.poster_path} 
+              runtime={movieDetails.runtime}/>
           }
         </div>
       }

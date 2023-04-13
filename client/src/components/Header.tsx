@@ -9,7 +9,7 @@ import SearchIcon from '../images/sidebar/search-icon.svg';
 import WatchlistIcon from '../images/sidebar/watchlist-icon.svg';
 import HistoryIcon from '../images/sidebar/history-icon.svg';
 // import ProfileIcon from '../images/sidebar/profile-icon.svg';
-import CloseIcon from '../images/sidebar/x.svg';
+import CloseIcon from '../images/x.svg';
 
 // Models
 import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
