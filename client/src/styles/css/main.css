@@ -49,6 +49,10 @@ table {
   border-spacing: 0;
 }
 
+:root {
+  --toastify-color-success: #0068C1;
+}
+
 /* Typography */
 /* Containers */
 /* Font Weights */

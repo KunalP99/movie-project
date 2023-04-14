@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { addMovieToHistory } from '../../api/mongoapi';
 
 // Images
@@ -15,36 +15,47 @@ import { UserContext } from '../../components/context/UserContext';
 
 interface Props {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
-  movieDetails: IMovieDetails
+  movieDetails: IMovieDetails,
+  setFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  setError: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-const HistoryForm = ({ setShowModal, movieDetails} : Props) => {
+const HistoryForm = ({ setShowModal, movieDetails, setFormSubmitted, setError } : Props) => {
   const [userRating, setUserRating] = useState<number>(1);
   const [watchDate, setWatchDate] = useState<Date>(new Date());
   const [rewatch, setRewatch] = useState<boolean>(false);
   const { user } = useContext(UserContext);
 
+  useEffect(() => {
+    setFormSubmitted(false);
+  }, []);
+
   const handleAddMovieToHistory = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    try {
+      if (movieDetails !== undefined) {
+        addMovieToHistory(
+          user.sub,
+          movieDetails.id,
+          movieDetails.title,
+          userRating,
+          movieDetails.poster_path,
+          watchDate,
+          rewatch,
+          movieDetails.runtime
+        );
 
-    if (movieDetails !== undefined) {
-      addMovieToHistory(
-        user.sub,
-        movieDetails.id,
-        movieDetails.title,
-        userRating,
-        movieDetails.poster_path,
-        watchDate,
-        rewatch,
-        movieDetails.runtime
-      );
+        // Reset values after submit
+        setShowModal(false);
+        setUserRating(1);
+        setWatchDate(new Date());
+        setRewatch(false);
+        setFormSubmitted(true);
+      }
+    } catch (err) {
+      console.log(err);
+      setError(true);
     }
-
-    // Reset values after submit
-    setShowModal(false);
-    setUserRating(1);
-    setWatchDate(new Date());
-    setRewatch(false);
   };  
 
   return (

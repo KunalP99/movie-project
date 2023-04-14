@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails, getMovieVideos, getMovieCredits } from '../api/api';
+import { ToastContainer, toast,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Models
 import IMovieDetails from '../models/IMovieDetails';
@@ -37,8 +39,12 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
   const [topCast, setTopCast] = useState<ITopCast[]>([]);
   const [inWatchlist, setInWatchlist] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
   const { user } = useContext(UserContext);
+
+  const successNotif = () => toast.success(`You earned ${movieDetails?.runtime} points`);
 
   useEffect(() => {
     setLoading(true);
@@ -75,6 +81,21 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
       }
     });
   }, [watchlist]);
+
+  // Checks to see if form is submitted and shows toast if true
+  useEffect(() => {
+    if (formSubmitted) {
+      successNotif();
+      setFormSubmitted(false);
+    }
+  }, [formSubmitted]);
+
+  useEffect(() => {
+    if (error) {
+      // Notify
+      setError(false);
+    }
+  }, [error]);
 
   // Handle adding movie to watchlist
   const handleAddToWatchlist = () => {
@@ -166,10 +187,27 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
           {showModal && 
             <HistoryAddForm
               setShowModal={setShowModal}
-              movieDetails={movieDetails}/>
+              movieDetails={movieDetails}
+              setFormSubmitted={setFormSubmitted}
+              setError={setError} />
           }
         </div>
       }
+      {!error ? 
+        <ToastContainer 
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          pauseOnFocusLoss
+          pauseOnHover
+          theme="dark"
+        />
+        :
+        <p>error</p>
+      }
+
     </section>
   );
 };
