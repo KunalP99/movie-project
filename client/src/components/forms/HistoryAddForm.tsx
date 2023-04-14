@@ -217,7 +217,6 @@ const HistoryForm = ({ setShowModal, movieDetails} : Props) => {
                 <p>{movieDetails.runtime}</p>
               </div>
             </div>
-
             <button className='history-form-submit-btn'><img src={WhitePlus} alt="Add to history" /> Submit</button>
           </div>
         </form>

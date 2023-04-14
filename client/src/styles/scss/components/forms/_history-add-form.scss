@@ -155,7 +155,7 @@
         @include main-btn-small;
         @include flex-center;
         gap: $spacing-08;
-        width: 80%;
+        width: 322px;
         padding: $spacing-08 0px;
         border-radius: 8px;
         background: $primary-colour;
@@ -169,13 +169,13 @@
 }
 
 @media (max-width: 330px) {
-  .form-modal-background {
+  .form-modal {
     width: 330px;
     height: 100%;
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 750px) {
   .form-modal {
     display: flex;
     justify-content: center;
@@ -191,7 +191,7 @@
       }
       .history-form-top-half {
         img {
-          width: 350px;
+          width: 250px;
         }
       }
 
@@ -216,7 +216,20 @@
           }
         }
         .history-form-submit-btn {
+          width: 382px;
           margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+    .form-modal {
+    #history-add-form {
+      .history-form-top-half {
+        img {
+          width: 350px;
         }
       }
     }

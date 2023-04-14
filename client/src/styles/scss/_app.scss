@@ -30,6 +30,10 @@ button {
   cursor: pointer;
 }
 
+input[type="date"] {
+  font-family: $main-font-family;
+}
+
 .primary-btn {
   @include main-btn-small;
   background: $primary-colour;
