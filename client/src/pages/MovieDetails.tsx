@@ -166,9 +166,7 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
           {showModal && 
             <HistoryAddForm
               setShowModal={setShowModal}
-              title={movieDetails.title} 
-              poster_path={movieDetails.poster_path} 
-              runtime={movieDetails.runtime}/>
+              movieDetails={movieDetails}/>
           }
         </div>
       }
