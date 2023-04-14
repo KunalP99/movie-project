@@ -40,7 +40,11 @@ const HistoryForm = ({ setShowModal, movieDetails} : Props) => {
       );
     }
 
-
+    // Reset values after submit
+    setShowModal(false);
+    setUserRating(1);
+    setWatchDate(new Date());
+    setRewatch(false);
   };  
 
   return (
