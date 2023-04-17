@@ -2,22 +2,28 @@ import { useState, useEffect, useContext } from 'react';
 
 // Models 
 import { IHandleGetWatchlistMovies } from '../../models/IWatchlist';
+import IHistory from '../../models/IHistory';
 
 // Context
 import { UserContext } from '../context/UserContext';
 
 interface Props {
   watchlist: IHandleGetWatchlistMovies[],
+  history: IHistory[],
 }
 
-const ProfileWidget = ({ watchlist } : Props) => {
+const ProfileWidget = ({ watchlist, history } : Props) => {
   const [watchlistLength, setWatchlistLength] = useState<number>(0);
+  const [historyLength, setHistoryLength] = useState<number>(0);
+
   const { user } = useContext(UserContext);
 
   useEffect(() => {
     const userWatchlist = watchlist.filter(person => person.user_id === user.sub);
+
     setWatchlistLength(userWatchlist.length);
-  }, [watchlist]);
+    setHistoryLength(history.length);
+  }, [watchlist, history]);
 
   return (
     <div className="profile-widget-container">
@@ -29,7 +35,7 @@ const ProfileWidget = ({ watchlist } : Props) => {
         <p>Watchlist</p>
       </div>
       <div className='profile-widget-item'> 
-        <h3>25</h3>
+        <h3>{historyLength}</h3>
         <p>Watched</p>
       </div>
       <div className='profile-widget-item'>

@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { 
   getWatchlistMovies, 
   createWatchlistMovie, 
-  deleteWatchlistMovie } from './api/mongoapi';
+  deleteWatchlistMovie,
+  getHistoryMovies } from './api/mongoapi';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // Components
@@ -18,10 +19,14 @@ import History from './pages/History';
 import { IHandleGetWatchlistMovies } from './models/IWatchlist';
 import IHistory from './models/IHistory';
 
+// Context
+import { UserContext } from './components/context/UserContext';
+
 function App() {
   const [watchlist, setWatchlist] = useState<IHandleGetWatchlistMovies[]>([]);
   const [history, setHistory] = useState<IHistory[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const { user } = useContext(UserContext);
 
   // Add movie to watchlist
   const handleCreateWatchlistMovie = async (
@@ -48,9 +53,13 @@ function App() {
     setLoading(true);
     getWatchlistMovies()
       .then(data => setWatchlist(data))
-      .catch(err => console.log(err.message))
-      .finally(() => setLoading(false));
-  }, []);
+      .catch(err => console.log(err.message));
+
+    getHistoryMovies(user.sub)
+      .then(data => setHistory(data))
+      .catch(err => console.log(err.message));
+    setLoading(false);
+  }, [user]);
 
   return (
     <div className="main-container">
@@ -82,11 +91,12 @@ function App() {
                   loading={loading}
                   handleDeleteWatchlistMovie={handleDeleteWatchlistMovie}
                   setWatchlist={setWatchlist}
+                  history={history}
                 />} />
             <Route path='/search' element={<Search />} />
             <Route path='/history' element={<History 
               history={history}
-              setHistory={setHistory}
+              watchlist={watchlist}
             />} />
           </Routes>
         </div>

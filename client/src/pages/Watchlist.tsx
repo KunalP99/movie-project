@@ -6,6 +6,7 @@ import WatchlistMovie from '../components/watchlist/WatchlistMovie';
 
 // Models
 import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
+import IHistory from '../models/IHistory';
 
 // Context
 import { UserContext } from '../components/context/UserContext';
@@ -18,14 +19,17 @@ interface Props {
       userId: string,
       movieId: number
     ): Promise<void>,
+  history: IHistory[]
 }
 
-const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovie} : Props) => {
+const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovie, history} : Props) => {
   const { user } = useContext(UserContext);
 
   return (
     <section className="watchlist-container">
-      <ProfileWidget watchlist={watchlist}/>
+      <ProfileWidget 
+        watchlist={watchlist} 
+        history={history} />
       <h2>Your Watchlist</h2>
       <div className='watchlist-movies-container'>
         {!loading && watchlist.filter(person => person.user_id === user.sub).map(movie => (
