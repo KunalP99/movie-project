@@ -4,7 +4,7 @@ import {  getHistory, addToHistory, updateMovieInHistory } from '../controllers/
 const router = express.Router();
 
 // GET history collection
-router.get('/', getHistory);
+router.get('/:user_id', getHistory);
 
 // POST new movie to history collection
 router.post('/', addToHistory);

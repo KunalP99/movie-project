@@ -4,8 +4,9 @@ import HistoryModel from '../models/History';
 
 // Get the list of movies in history from database
 export const getHistory = async (req: Request, res: Response) => {
+  const user_id = req.params.user_id;
   try {
-    const historyMovies = await HistoryModel.find().sort({"createdAt": -1});
+    const historyMovies = await HistoryModel.find({user_id: user_id}).sort({"createdAt": -1});
     res.status(200).json(historyMovies);
   } catch (err) {
     res.status(400).json({ error: err });
