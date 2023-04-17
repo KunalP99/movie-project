@@ -80,6 +80,18 @@ export const addUser = (
     });
 };
 
+export const getHistoryMovies = (userId: string) => {
+  return fetch(`http://localhost:5000/history/${userId}`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(
+          `Error: Status code: ${res.status}`
+        );
+      }
+      return res.json();
+    });
+};
+
 export const addMovieToHistory = (
   user_id: string,
   movie_id: number,

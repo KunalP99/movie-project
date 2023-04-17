@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { getWatchlistMovies, createWatchlistMovie, deleteWatchlistMovie } from './api/mongoapi';
+import { 
+  getWatchlistMovies, 
+  createWatchlistMovie, 
+  deleteWatchlistMovie } from './api/mongoapi';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // Components
@@ -81,7 +84,10 @@ function App() {
                   setWatchlist={setWatchlist}
                 />} />
             <Route path='/search' element={<Search />} />
-            <Route path='/history' element={<History />} />
+            <Route path='/history' element={<History 
+              history={history}
+              setHistory={setHistory}
+            />} />
           </Routes>
         </div>
       </GoogleOAuthProvider>

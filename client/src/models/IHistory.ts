@@ -1,4 +1,5 @@
 interface IHistory {
+  _id: string,
   user_id: string,
   movie_id: number,
   title: string,
