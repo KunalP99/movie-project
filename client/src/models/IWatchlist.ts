@@ -24,7 +24,7 @@ export interface IHandleDeleteWatchlistMovie {
 }
 
 export interface WatchlistProps {
-    handleCreateWatchlistMovie(
+  handleCreateWatchlistMovie(
     movieId: number, 
     title: string, 
     overview: string, 
@@ -36,5 +36,5 @@ export interface WatchlistProps {
       userId: string,
       movieId: number
     ): Promise<void>,
-  watchlist: IHandleGetWatchlistMovies[]
+    watchlist: IHandleGetWatchlistMovies[],
 }

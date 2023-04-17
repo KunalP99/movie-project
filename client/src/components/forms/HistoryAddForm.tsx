@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { addMovieToHistory } from '../../api/mongoapi';
+import { handleAddMovieToHistory } from '../../helpers/historyHelpers';
 
 // Images
 import RatingStar from '../../images/rating-star.svg';
@@ -9,6 +9,7 @@ import CloseIcon from '../../images/x.svg';
 
 // Models
 import IMovieDetails from '../../models/IMovieDetails';
+import IHistory from '../../models/IHistory';
 
 // Context 
 import { UserContext } from '../../components/context/UserContext';
@@ -17,10 +18,12 @@ interface Props {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
   movieDetails: IMovieDetails,
   setFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  history: IHistory[],
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>,
   setError: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-const HistoryForm = ({ setShowModal, movieDetails, setFormSubmitted, setError } : Props) => {
+const HistoryForm = ({ setShowModal, movieDetails, setFormSubmitted, history, setHistory, setError } : Props) => {
   const [userRating, setUserRating] = useState<number>(1);
   const [watchDate, setWatchDate] = useState<Date>(new Date());
   const [rewatch, setRewatch] = useState<boolean>(false);
@@ -30,11 +33,13 @@ const HistoryForm = ({ setShowModal, movieDetails, setFormSubmitted, setError } 
     setFormSubmitted(false);
   }, []);
 
-  const handleAddMovieToHistory = (e: React.SyntheticEvent) => {
+  const addMovieToHistory = (e: React.SyntheticEvent) => {
     e.preventDefault();
     try {
       if (movieDetails !== undefined) {
-        addMovieToHistory(
+        handleAddMovieToHistory(
+          history,
+          setHistory,
           user.sub,
           movieDetails.id,
           movieDetails.title,
@@ -62,7 +67,7 @@ const HistoryForm = ({ setShowModal, movieDetails, setFormSubmitted, setError } 
     <>
       <div className='form-modal-background' onClick={() => setShowModal(false)}></div>
       <div className='form-modal'>
-        <form id="history-add-form" onSubmit={handleAddMovieToHistory}>
+        <form id="history-add-form" onSubmit={addMovieToHistory}>
           <button className='close-btn' type='button' onClick={() => setShowModal(false)}>
             <img src={CloseIcon} alt="Close form" />
           </button>

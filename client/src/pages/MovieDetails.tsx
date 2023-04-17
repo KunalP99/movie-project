@@ -9,7 +9,8 @@ import IMovieDetails from '../models/IMovieDetails';
 import IGenres from '../models/IGenres';
 import IMovieVideos from '../models/IMovieVideos';
 import ITopCast from '../models/ITopCast';
-import { WatchlistProps } from '../models/IWatchlist';
+import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
+import IHistory from '../models/IHistory';
 
 // Components
 import MovieDetailsInformation from '../components/movie_details/MovieDetailsInformation';
@@ -31,7 +32,25 @@ type MovieParams = {
   movieId: string;
 }
 
-const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatchlistMovie } : WatchlistProps ) => {
+interface Props {
+  handleCreateWatchlistMovie(
+    movieId: number, 
+    title: string, 
+    overview: string, 
+    rating: number, 
+    poster_path: string, 
+    release_date: string,
+    user_id: string): Promise<void>,
+    handleDeleteWatchlistMovie(
+      userId: string,
+      movieId: number
+    ): Promise<void>,
+  watchlist: IHandleGetWatchlistMovies[],
+  history: IHistory[],
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>
+}
+
+const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatchlistMovie, history, setHistory } : Props ) => {
   const { movieId } = useParams<MovieParams>();
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
   const [genres, setGenres] = useState<IGenres[]>([]);
@@ -189,6 +208,8 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
               setShowModal={setShowModal}
               movieDetails={movieDetails}
               setFormSubmitted={setFormSubmitted}
+              history={history}
+              setHistory={setHistory}
               setError={setError} />
           }
         </div>

@@ -13,9 +13,11 @@ import History from './pages/History';
 
 // Models
 import { IHandleGetWatchlistMovies } from './models/IWatchlist';
+import IHistory from './models/IHistory';
 
 function App() {
   const [watchlist, setWatchlist] = useState<IHandleGetWatchlistMovies[]>([]);
+  const [history, setHistory] = useState<IHistory[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   // Add movie to watchlist
@@ -66,7 +68,9 @@ function App() {
                 {<MovieDetails 
                   handleCreateWatchlistMovie={handleCreateWatchlistMovie} 
                   handleDeleteWatchlistMovie={handleDeleteWatchlistMovie} 
-                  watchlist={watchlist} />} />
+                  watchlist={watchlist}
+                  history={history}
+                  setHistory={setHistory} />} />
             <Route 
               path='/watchlist' 
               element=
