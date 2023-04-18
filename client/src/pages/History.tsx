@@ -2,6 +2,7 @@ import { format, parseISO } from 'date-fns';
 
 // Components
 import ProfileWidget from '../components/widgets/ProfileWidget';
+import HistoryMovieDesktop from '../components/history/HistoryMovieDesktop';
 
 // Images
 import RatingStar from '../images/rating-star.svg';
@@ -55,26 +56,7 @@ const History = ({ history, watchlist } : Props) => {
                 <p className='history-movie-title'>{movie.title}</p>
               </div>
             </div>
-            <div className='history-item-container-desktop'>
-              <div className='history-img-title-container-desktop'>
-                <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
-                <p className='history-movie-title-desktop'>{movie.title}</p>
-              </div>
-              <p className='history-watch-date-container-desktop'>{format(parseISO(`${movie.watch_date}`), 'd LLL yyyy')}</p>
-              <div className='history-points-container-desktop'>
-                <img src={PopcornPoints} alt="Popcorn points"/>
-                <p>{movie.points}</p>
-              </div>
-              <div className='history-rating-container-desktop'>
-                <img src={RatingStar} alt="Rating star" />
-                <p>{movie.user_rating}</p>
-              </div>
-              {movie.rewatch &&
-              <div className='history-rewatch-container-desktop'>
-                <img src={WhiteTick} alt="Rewatch" />
-              </div>
-              }
-            </div>
+            <HistoryMovieDesktop movie={movie} />
             <div className='white-underline'></div>
           </>
         ))}

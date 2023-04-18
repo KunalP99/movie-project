@@ -1045,6 +1045,7 @@ header nav .active {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     padding: 16px 0px 16px 8px;
+    position: relative;
   }
   .history-item-container-desktop .history-img-title-container-desktop {
     display: flex;
@@ -1084,6 +1085,50 @@ header nav .active {
   .history-item-container-desktop:hover {
     background: linear-gradient(90deg, rgba(117, 155, 163, 0.1541) 0%, rgba(134, 167, 174, 0.23) 100%);
   }
+  .history-item-container-desktop .history-white-dots {
+    border: none;
+    background: transparent;
+    display: none;
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .history-item-container-desktop:hover > .history-white-dots {
+    display: flex;
+  }
+  .history-item-container-desktop .history-dropdown-container {
+    position: absolute;
+    right: 0px;
+    top: -35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    height: 70px;
+    border-radius: 8px;
+    background-color: #131313;
+    padding: 4px;
+  }
+  .history-item-container-desktop .history-dropdown-container button {
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #FFFFFF;
+    gap: 8px;
+  }
+  .history-item-container-desktop .history-dropdown-container button img {
+    width: 20px;
+  }
+  .active {
+    background: linear-gradient(90deg, rgba(117, 155, 163, 0.1541) 0%, rgba(134, 167, 174, 0.23) 100%);
+  }
+  .white-dots-active {
+    display: flex;
+  }
 }
 @media (min-width: 1000px) {
   .history-container {
@@ -1113,6 +1158,13 @@ header nav .active {
   }
   .history-item-container-desktop .history-rewatch-container-desktop img {
     width: 45px;
+  }
+  .history-item-container-desktop .history-white-dots img {
+    width: 35px;
+  }
+  .history-item-container-desktop .history-dropdown-container {
+    padding: 16px;
+    top: -28px;
   }
 }
 .movie-details-top-cast-container {
