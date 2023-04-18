@@ -23,13 +23,24 @@ const History = ({ history, watchlist } : Props) => {
       <ProfileWidget watchlist={watchlist} history={history} />
       <h2>History</h2>
       <div className='history-grid-container'>
+        <div className='history-grid-headings'>
+          <h3>Movie</h3>
+          <h3>Date</h3>
+          <h3>Points</h3>
+          <h3>My Rating</h3>
+          <h3>Rewatch</h3>
+        </div>
         {history && history.map((movie) => (
           <>
             <div key={movie._id} className='history-item-container'>
-              <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
+              <img src={`https://image.tmdb.org/t/p/w92/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
               <div className='history-item-info-container'>
                 <div className='history-item-main-info-container'>
                   <p className='history-watch-date'>{format(parseISO(`${movie.watch_date}`), 'd LLL yyyy')}</p>
+                  <div className='history-points-container'>
+                    <img src={PopcornPoints} alt="Popcorn points"/>
+                    <p>{movie.points}</p>
+                  </div>
                   <div className='history-rating-container'>
                     <img src={RatingStar} alt="Rating star" />
                     <p>{movie.user_rating}</p>
@@ -40,20 +51,34 @@ const History = ({ history, watchlist } : Props) => {
                       <p>Rewatch</p>
                     </div>
                   }
-                  <div className='history-points-container'>
-                    <img src={PopcornPoints} alt="Popcorn points"/>
-                    <p>{movie.points}</p>
-                  </div>
                 </div>
                 <p className='history-movie-title'>{movie.title}</p>
               </div>
             </div>
+            <div className='history-item-container-desktop'>
+              <div className='history-img-title-container-desktop'>
+                <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
+                <p className='history-movie-title-desktop'>{movie.title}</p>
+              </div>
+              <p className='history-watch-date-container-desktop'>{format(parseISO(`${movie.watch_date}`), 'd LLL yyyy')}</p>
+              <div className='history-points-container-desktop'>
+                <img src={PopcornPoints} alt="Popcorn points"/>
+                <p>{movie.points}</p>
+              </div>
+              <div className='history-rating-container-desktop'>
+                <img src={RatingStar} alt="Rating star" />
+                <p>{movie.user_rating}</p>
+              </div>
+              {movie.rewatch &&
+              <div className='history-rewatch-container-desktop'>
+                <img src={WhiteTick} alt="Rewatch" />
+              </div>
+              }
+            </div>
             <div className='white-underline'></div>
           </>
-
         ))}
       </div>
-
     </section>
   );
 };
