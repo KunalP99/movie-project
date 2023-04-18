@@ -55,9 +55,12 @@ function App() {
       .then(data => setWatchlist(data))
       .catch(err => console.log(err.message));
 
-    getHistoryMovies(user.sub)
-      .then(data => setHistory(data))
-      .catch(err => console.log(err.message));
+    if (user.sub !== '') {
+      getHistoryMovies(user.sub)
+        .then(data => setHistory(data))
+        .catch(err => console.log(err.message));
+    }
+
     setLoading(false);
   }, [user]);
 
