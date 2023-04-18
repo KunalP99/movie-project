@@ -1,0 +1,65 @@
+.history-container {
+  margin-top: 100px;
+  padding: 0px $spacing-16;
+
+  h2 {
+    @include h2-spacing;
+  }
+
+  .history-grid-container {
+    display: grid;
+    gap: $spacing-16;
+
+    .history-item-container {
+      display: flex;
+      align-items: center;
+      gap: $spacing-16;
+
+      > img {
+        width: 42px;
+        border-radius: 4px;
+      }
+
+      .history-item-info-container {
+        .history-item-main-info-container {
+          display: flex;
+          align-items: center;
+          gap: $spacing-16;
+          color: $transparent-white-font-colour;
+
+          .history-watch-date {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          }
+
+          .history-rating-container, 
+          .history-points-container,
+          .history-rewatch-container { 
+            display: flex;
+            gap: 2px;
+            
+            > img {
+              width: 13px;
+            }
+          }
+        }
+        .history-movie-title {
+          font-size: pxToRem(22px);
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+  .white-underline {
+    height: 1px;
+    width: 100%;
+    background: white;
+  }
+}

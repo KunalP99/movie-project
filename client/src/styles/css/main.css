@@ -49,10 +49,6 @@ table {
   border-spacing: 0;
 }
 
-:root {
-  --toastify-color-success: #0068C1;
-}
-
 /* Typography */
 /* Containers */
 /* Font Weights */
@@ -951,6 +947,69 @@ header nav .active {
     grid-template-columns: repeat(11, 1fr);
   }
 }
+.history-container {
+  margin-top: 100px;
+  padding: 0px 16px;
+}
+.history-container h2 {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .history-container h2 {
+    margin-bottom: 40px;
+  }
+}
+.history-container .history-grid-container {
+  display: grid;
+  gap: 16px;
+}
+.history-container .history-grid-container .history-item-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.history-container .history-grid-container .history-item-container > img {
+  width: 42px;
+  border-radius: 4px;
+}
+.history-container .history-grid-container .history-item-container .history-item-info-container .history-item-main-info-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.48);
+}
+.history-container .history-grid-container .history-item-container .history-item-info-container .history-item-main-info-container .history-watch-date {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.history-container .history-grid-container .history-item-container .history-item-info-container .history-item-main-info-container .history-rating-container,
+.history-container .history-grid-container .history-item-container .history-item-info-container .history-item-main-info-container .history-points-container,
+.history-container .history-grid-container .history-item-container .history-item-info-container .history-item-main-info-container .history-rewatch-container {
+  display: flex;
+  gap: 2px;
+}
+.history-container .history-grid-container .history-item-container .history-item-info-container .history-item-main-info-container .history-rating-container > img,
+.history-container .history-grid-container .history-item-container .history-item-info-container .history-item-main-info-container .history-points-container > img,
+.history-container .history-grid-container .history-item-container .history-item-info-container .history-item-main-info-container .history-rewatch-container > img {
+  width: 13px;
+}
+.history-container .history-grid-container .history-item-container .history-item-info-container .history-movie-title {
+  font-size: 1.375rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.history-container .white-underline {
+  height: 1px;
+  width: 100%;
+  background: white;
+}
+
 .movie-details-top-cast-container {
   margin-top: 64px;
   padding-left: 16px;
