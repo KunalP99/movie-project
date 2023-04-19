@@ -46,11 +46,12 @@ interface Props {
       movieId: number
     ): Promise<void>,
   watchlist: IHandleGetWatchlistMovies[],
+  setWatchlist: React.Dispatch<React.SetStateAction<IHandleGetWatchlistMovies[]>>
   history: IHistory[],
   setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>
 }
 
-const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatchlistMovie, history, setHistory } : Props ) => {
+const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, handleDeleteWatchlistMovie, history, setHistory } : Props ) => {
   const { movieId } = useParams<MovieParams>();
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
   const [genres, setGenres] = useState<IGenres[]>([]);
@@ -59,6 +60,7 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
   const [inWatchlist, setInWatchlist] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const fromWatchlist = false;
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const { user } = useContext(UserContext);
@@ -206,11 +208,17 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
           {showModal && 
             <HistoryAddForm
               setShowModal={setShowModal}
-              movieDetails={movieDetails}
+              id={movieDetails.id}
+              title={movieDetails.title}
+              posterPath={movieDetails.poster_path}
+              runtime={movieDetails.runtime}
               setFormSubmitted={setFormSubmitted}
+              watchlist={watchlist}
+              setWatchlist={setWatchlist}
               history={history}
               setHistory={setHistory}
-              setError={setError} />
+              setError={setError}
+              fromWatchlist={fromWatchlist} />
           }
         </div>
       }

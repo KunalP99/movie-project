@@ -16,6 +16,7 @@ export interface IHandleGetWatchlistMovies {
     rating: number, 
     poster_path: string, 
     release_date: string,
+    runtime: number,
     user_id: string
 }
 

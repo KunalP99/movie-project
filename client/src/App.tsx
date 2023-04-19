@@ -84,6 +84,7 @@ function App() {
                   handleCreateWatchlistMovie={handleCreateWatchlistMovie} 
                   handleDeleteWatchlistMovie={handleDeleteWatchlistMovie} 
                   watchlist={watchlist}
+                  setWatchlist={setWatchlist}
                   history={history}
                   setHistory={setHistory} />} />
             <Route 
@@ -95,6 +96,7 @@ function App() {
                   handleDeleteWatchlistMovie={handleDeleteWatchlistMovie}
                   setWatchlist={setWatchlist}
                   history={history}
+                  setHistory={setHistory}
                 />} />
             <Route path='/search' element={<Search />} />
             <Route path='/history' element={<History 

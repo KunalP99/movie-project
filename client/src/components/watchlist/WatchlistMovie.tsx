@@ -1,9 +1,15 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { IHandleGetWatchlistMovies } from '../../models/IWatchlist';
+
+// Components
+import HistoryAddForm from '../forms/HistoryAddForm';
 
 // Images
 import HistoryIcon from '../../images/white-history-icon.svg';
 import DeleteIcon from '../../images/delete-icon.svg';
+
+// Models
+import IHistory from '../../models/IHistory';
 
 // Context
 import { UserContext } from '../context/UserContext';
@@ -16,9 +22,15 @@ interface Props {
     userId: string,
     movieId: number
   ): Promise<void>,
+  history: IHistory[],
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>
 }
 
-const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatchlist } : Props) => {
+const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatchlist, history, setHistory } : Props) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const fromWatchlist = true;
   const { user } = useContext(UserContext);
 
   // Handle deleting movie from watchlist
@@ -44,11 +56,27 @@ const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatch
           <button type='button' onClick={handleDeleteFromWatchlist}>
             <img src={DeleteIcon} alt="Delete movie from watchlist" />
           </button>
-          <button type='button'>
+          <button type='button' onClick={() => setShowModal(true)}>
             <img src={HistoryIcon} alt="Add movie to history" />
           </button>
         </div>
       </div>
+      {showModal &&
+        <HistoryAddForm 
+          setShowModal={setShowModal} 
+          id={movie.movieId}
+          title={movie.title}
+          posterPath={movie.poster_path}
+          runtime={movie.runtime}
+          setFormSubmitted={setFormSubmitted}
+          watchlist={watchlist}
+          setWatchlist={setWatchlist}
+          history={history}
+          setHistory={setHistory}
+          setError={setError}
+          fromWatchlist={fromWatchlist}
+        />
+      }
     </>
   );
 };

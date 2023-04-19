@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { handleAddMovieToHistory } from '../../helpers/historyHelpers';
+import { deleteWatchlistMovie } from '../../api/mongoapi';
 
 // Images
 import RatingStar from '../../images/rating-star.svg';
@@ -8,22 +9,28 @@ import PopcornPoints from '../../images/popcorn-points.svg';
 import CloseIcon from '../../images/x.svg';
 
 // Models
-import IMovieDetails from '../../models/IMovieDetails';
 import IHistory from '../../models/IHistory';
+import { IHandleGetWatchlistMovies } from '../../models/IWatchlist';
 
 // Context 
 import { UserContext } from '../../components/context/UserContext';
 
 interface Props {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
-  movieDetails: IMovieDetails,
+  id: number,
+  title: string,
+  posterPath: string,
+  runtime: number,
   setFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  watchlist: IHandleGetWatchlistMovies[],
+  setWatchlist: React.Dispatch<React.SetStateAction<IHandleGetWatchlistMovies[]>>
   history: IHistory[],
   setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>,
   setError: React.Dispatch<React.SetStateAction<boolean>>,
+  fromWatchlist: boolean
 }
 
-const HistoryForm = ({ setShowModal, movieDetails, setFormSubmitted, history, setHistory, setError } : Props) => {
+const HistoryForm = ({ setShowModal, id, title, posterPath, runtime, setFormSubmitted, watchlist, setWatchlist, history, setHistory, setError, fromWatchlist } : Props) => {
   const [userRating, setUserRating] = useState<number>(1);
   const [watchDate, setWatchDate] = useState<Date>(new Date());
   const [rewatch, setRewatch] = useState<boolean>(false);
@@ -36,26 +43,32 @@ const HistoryForm = ({ setShowModal, movieDetails, setFormSubmitted, history, se
   const addMovieToHistory = (e: React.SyntheticEvent) => {
     e.preventDefault();
     try {
-      if (movieDetails !== undefined) {
-        handleAddMovieToHistory(
-          history,
-          setHistory,
-          user.sub,
-          movieDetails.id,
-          movieDetails.title,
-          userRating,
-          movieDetails.poster_path,
-          watchDate,
-          rewatch,
-          movieDetails.runtime
-        );
+      handleAddMovieToHistory(
+        history,
+        setHistory,
+        user.sub,
+        id,
+        title,
+        userRating,
+        posterPath,
+        watchDate,
+        rewatch,
+        runtime
+      );
 
-        // Reset values after submit
-        setShowModal(false);
-        setUserRating(1);
-        setWatchDate(new Date());
-        setRewatch(false);
-        setFormSubmitted(true);
+      // Reset values after submit
+      setShowModal(false);
+      setUserRating(1);
+      setWatchDate(new Date());
+      setRewatch(false);
+      setFormSubmitted(true);
+
+      // Remove from watchlist if movie is being added to history from watchlist
+      if (fromWatchlist) {
+        deleteWatchlistMovie(user.sub, id);
+        console.log('deleted');
+        setWatchlist(watchlist.filter(person => person.user_id === user.sub)
+          .filter(watchlistMovie => watchlistMovie.movieId !== id));
       }
     } catch (err) {
       console.log(err);
@@ -74,8 +87,8 @@ const HistoryForm = ({ setShowModal, movieDetails, setFormSubmitted, history, se
           <div>
             <h3>Add to History</h3>
             <div className='history-form-top-half'>
-              <img src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`} alt="Poster for movie" />
-              <p>{movieDetails.title}</p>
+              <img src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt="Poster for movie" />
+              <p>{title}</p>
             </div>
           </div>
           <div className='history-form-container'>
@@ -229,8 +242,8 @@ const HistoryForm = ({ setShowModal, movieDetails, setFormSubmitted, history, se
             <div className='history-form-points-container'>
               <p>YOU&apos;LL EARN</p>
               <div>
-                <img src={PopcornPoints} alt={`You will earn ${movieDetails.runtime} points`} />
-                <p>{movieDetails.runtime}</p>
+                <img src={PopcornPoints} alt={`You will earn ${runtime} points`} />
+                <p>{runtime}</p>
               </div>
             </div>
             <button className='history-form-submit-btn'><img src={WhitePlus} alt="Add to history" /> Submit</button>
@@ -242,3 +255,7 @@ const HistoryForm = ({ setShowModal, movieDetails, setFormSubmitted, history, se
 };
 
 export default HistoryForm;
+
+function handleDeleteWatchlistMovie(sub: string, id: number) {
+  throw new Error('Function not implemented.');
+}

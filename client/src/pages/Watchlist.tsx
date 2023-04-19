@@ -19,10 +19,11 @@ interface Props {
       userId: string,
       movieId: number
     ): Promise<void>,
-  history: IHistory[]
+  history: IHistory[],
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>
 }
 
-const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovie, history} : Props) => {
+const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovie, history, setHistory } : Props) => {
   const { user } = useContext(UserContext);
 
   return (
@@ -38,7 +39,9 @@ const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovi
             movie={movie} 
             handleDeleteWatchlistMovie={handleDeleteWatchlistMovie} 
             watchlist={watchlist}
-            setWatchlist={setWatchlist} />
+            setWatchlist={setWatchlist}
+            history={history}
+            setHistory={setHistory} />
         ))}
       </div>
     </section> 
