@@ -1,5 +1,6 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { IHandleGetWatchlistMovies } from '../../models/IWatchlist';
+import { getMovieDetails } from '../../api/api';
 
 // Components
 import HistoryAddForm from '../forms/HistoryAddForm';
@@ -29,9 +30,15 @@ interface Props {
 const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatchlist, history, setHistory } : Props) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [runtime, setRuntime] = useState<number>(0);
   const [error, setError] = useState<boolean>(false);
   const fromWatchlist = true;
   const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    getMovieDetails(movie.movieId.toString())
+      .then(data => setRuntime(data.runtime));
+  }, [movie]);
 
   // Handle deleting movie from watchlist
   const handleDeleteFromWatchlist = () => {
@@ -67,7 +74,7 @@ const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatch
           id={movie.movieId}
           title={movie.title}
           posterPath={movie.poster_path}
-          runtime={movie.runtime}
+          runtime={runtime}
           setFormSubmitted={setFormSubmitted}
           watchlist={watchlist}
           setWatchlist={setWatchlist}

@@ -6,6 +6,7 @@ export interface IHandleCreateWatchlistMovie {
     rating: number, 
     poster_path: string, 
     release_date: string,
+    runtime: number,
     user_id: string) : void
 }
 
@@ -32,6 +33,7 @@ export interface WatchlistProps {
     rating: number, 
     poster_path: string, 
     release_date: string,
+    runtime: number,
     user_id: string): Promise<void>,
     handleDeleteWatchlistMovie(
       userId: string,

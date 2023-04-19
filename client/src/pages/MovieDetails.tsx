@@ -40,6 +40,7 @@ interface Props {
     rating: number, 
     poster_path: string, 
     release_date: string,
+    runtime: number,
     user_id: string): Promise<void>,
     handleDeleteWatchlistMovie(
       userId: string,
@@ -128,6 +129,7 @@ const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, han
         movieDetails.vote_average, 
         movieDetails.poster_path, 
         movieDetails.release_date,
+        movieDetails.runtime,
         user.sub
       );
       setInWatchlist(true);

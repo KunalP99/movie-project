@@ -66,7 +66,6 @@ const HistoryForm = ({ setShowModal, id, title, posterPath, runtime, setFormSubm
       // Remove from watchlist if movie is being added to history from watchlist
       if (fromWatchlist) {
         deleteWatchlistMovie(user.sub, id);
-        console.log('deleted');
         setWatchlist(watchlist.filter(person => person.user_id === user.sub)
           .filter(watchlistMovie => watchlistMovie.movieId !== id));
       }

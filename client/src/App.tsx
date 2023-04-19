@@ -36,9 +36,10 @@ function App() {
     rating: number, 
     poster_path: string, 
     release_date: string,
+    runtime: number,
     user_id: string
   ) => {
-    const watchlistMovie = await createWatchlistMovie(movieId, title, overview, rating, poster_path, release_date, user_id);
+    const watchlistMovie = await createWatchlistMovie(movieId, title, overview, rating, poster_path, release_date, runtime, user_id);
     // Keep UI up to date when a new movie is added to watchlist 
     setWatchlist([watchlistMovie, ...watchlist]);
   };
