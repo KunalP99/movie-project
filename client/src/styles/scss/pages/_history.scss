@@ -170,9 +170,20 @@
       display: flex;
     }
 
+    .history-dropdown-background {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.077);
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, 0);
+      z-index: 2;
+    }
+
     .history-dropdown-container {
       position: absolute;
-      right: 0px;
+      right: 7px;
       top: -35px;
       display: flex;
       flex-direction: column;
@@ -182,6 +193,7 @@
       border-radius: 8px;
       background-color: $dark-grey;
       padding: $spacing-04;
+      z-index: 3;
 
       button {
         @include reset-btn;

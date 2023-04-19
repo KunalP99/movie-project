@@ -33,6 +33,9 @@ const HistoryMovieDesktop = ({ movie, history, setHistory } : Props) => {
       // Update UI to show array with removed movie
       setHistory(history.filter(person => person.user_id === user.sub)
         .filter(historyMovie => historyMovie._id !== movie._id));
+
+      // Hide dropdown once delete is clicked
+      setShowDropdown(false);
     }
   };
 
@@ -63,6 +66,8 @@ const HistoryMovieDesktop = ({ movie, history, setHistory } : Props) => {
         <img  src={WhiteDots} alt="Open dropdown" />
       </button>
       {showDropdown && 
+      <>
+        <div className='history-dropdown-background' onClick={() => setShowDropdown(false)}></div>
         <div className='history-dropdown-container'>
           <button className='history-dropdown-button' type='button'>
             <img src={EditIcon} alt="Edit movie" />
@@ -73,6 +78,8 @@ const HistoryMovieDesktop = ({ movie, history, setHistory } : Props) => {
             <p>Delete</p> 
           </button>
         </div>
+      </>
+
       }
     </div>
   );

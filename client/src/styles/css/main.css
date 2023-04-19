@@ -49,6 +49,10 @@ table {
   border-spacing: 0;
 }
 
+:root {
+  --toastify-color-success: #0068C1;
+}
+
 /* Typography */
 /* Containers */
 /* Font Weights */
@@ -1098,9 +1102,19 @@ header nav .active {
   .history-item-container-desktop:hover > .history-white-dots {
     display: flex;
   }
+  .history-item-container-desktop .history-dropdown-background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.077);
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+    z-index: 2;
+  }
   .history-item-container-desktop .history-dropdown-container {
     position: absolute;
-    right: 0px;
+    right: 7px;
     top: -35px;
     display: flex;
     flex-direction: column;
@@ -1110,6 +1124,7 @@ header nav .active {
     border-radius: 8px;
     background-color: #131313;
     padding: 4px;
+    z-index: 3;
   }
   .history-item-container-desktop .history-dropdown-container button {
     border: none;
@@ -1317,6 +1332,8 @@ header nav .active {
 .form-modal #history-add-form .history-form-top-half p {
   margin-top: 16px;
   font-weight: 500;
+  text-align: center;
+  width: 280px;
 }
 .form-modal #history-add-form .history-form-container {
   display: flex;
@@ -1332,7 +1349,7 @@ header nav .active {
 }
 .form-modal #history-add-form .history-form-container .history-form-date-container input[type=date] {
   margin-top: 8px;
-  background: #131313;
+  background: #303030;
   border: none;
   color: #FFFFFF;
   padding: 16px;
@@ -1375,7 +1392,7 @@ header nav .active {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  background: #131313;
+  background: #303030;
   width: 58px;
   border-radius: 8px;
   cursor: pointer;
@@ -1399,7 +1416,7 @@ header nav .active {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
-  background-color: #131313;
+  background-color: #303030;
   border: none;
   border-radius: 6px;
   width: 24px;
