@@ -1,4 +1,6 @@
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Components
 import ProfileWidget from '../components/widgets/ProfileWidget';
@@ -24,7 +26,25 @@ interface Props {
 }
 
 const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovie, history, setHistory } : Props) => {
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const { user } = useContext(UserContext);
+
+  const successNotif = () => toast.success('Movie added to History!');
+  const errorNotif = () => toast.error('Something went wrong!');
+
+  // Checks to see if form is submitted and shows toast if true
+  useEffect(() => {
+    if (formSubmitted) {
+      if (!error) {
+        successNotif();
+      } else {
+        errorNotif();
+        setError(false);
+      }
+      setFormSubmitted(false);
+    }
+  }, [formSubmitted]);
 
   return (
     <section className="watchlist-container">
@@ -41,9 +61,21 @@ const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovi
             watchlist={watchlist}
             setWatchlist={setWatchlist}
             history={history}
-            setHistory={setHistory} />
+            setHistory={setHistory}
+            setFormSubmitted={setFormSubmitted}
+            setError={setError} />
         ))}
       </div>
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="dark"
+      />
     </section> 
   );
 };

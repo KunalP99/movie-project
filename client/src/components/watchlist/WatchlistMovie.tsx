@@ -24,14 +24,14 @@ interface Props {
     movieId: number
   ): Promise<void>,
   history: IHistory[],
-  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>,
+  setFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  setError:  React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatchlist, history, setHistory } : Props) => {
+const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatchlist, history, setHistory, setFormSubmitted, setError } : Props) => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [runtime, setRuntime] = useState<number>(0);
-  const [error, setError] = useState<boolean>(false);
   const fromWatchlist = true;
   const { user } = useContext(UserContext);
 
@@ -39,7 +39,7 @@ const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatch
     getMovieDetails(movie.movieId.toString())
       .then(data => setRuntime(data.runtime));
   }, [movie]);
-
+  
   // Handle deleting movie from watchlist
   const handleDeleteFromWatchlist = () => {
     if (movie !== undefined) {

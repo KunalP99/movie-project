@@ -66,7 +66,8 @@ const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, han
   const [error, setError] = useState<boolean>(false);
   const { user } = useContext(UserContext);
 
-  const successNotif = () => toast.success(`You earned ${movieDetails?.runtime} points`);
+  const successNotif = () => toast.success('Movie added to History!');
+  const errorNotif = () => toast.error('Something went wrong!');
 
   useEffect(() => {
     setLoading(true);
@@ -107,17 +108,15 @@ const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, han
   // Checks to see if form is submitted and shows toast if true
   useEffect(() => {
     if (formSubmitted) {
-      successNotif();
+      if (!error) {
+        successNotif();
+      } else {
+        errorNotif();
+        setError(false);
+      }
       setFormSubmitted(false);
     }
   }, [formSubmitted]);
-
-  useEffect(() => {
-    if (error) {
-      // Notify
-      setError(false);
-    }
-  }, [error]);
 
   // Handle adding movie to watchlist
   const handleAddToWatchlist = () => {
@@ -224,21 +223,16 @@ const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, han
           }
         </div>
       }
-      {!error ? 
-        <ToastContainer 
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          pauseOnFocusLoss
-          pauseOnHover
-          theme="dark"
-        />
-        :
-        <p>error</p>
-      }
-
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="dark"
+      />
     </section>
   );
 };

@@ -81,7 +81,6 @@ const HistoryMovieDesktop = ({ movie, history, setHistory } : Props) => {
           </button>
         </div>
       </>
-
       }
     </div>
   );
