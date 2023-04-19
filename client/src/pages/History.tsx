@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { format, parseISO } from 'date-fns';
 
 // Components
@@ -33,9 +34,14 @@ const History = ({ history, setHistory, watchlist } : Props) => {
           <h3>Rewatch</h3>
         </div>
         {history && history.map((movie) => (
-          <>
+          <Fragment key={movie._id}>
             <div key={movie._id} className='history-item-container'>
-              <img src={`https://image.tmdb.org/t/p/w92/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
+              <a 
+                key={movie._id} 
+                href={`/movie/${movie.movie_id}`}
+                title={movie.title}>
+                <img src={`https://image.tmdb.org/t/p/w92/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
+              </a>
               <div className='history-item-info-container'>
                 <div className='history-item-main-info-container'>
                   <p className='history-watch-date'>{format(parseISO(`${movie.watch_date}`), 'd LLL yyyy')}</p>
@@ -59,7 +65,7 @@ const History = ({ history, setHistory, watchlist } : Props) => {
             </div>
             <HistoryMovieDesktop movie={movie} history={history} setHistory={setHistory} />
             <div className='white-underline'></div>
-          </>
+          </Fragment>
         ))}
       </div>
     </section>

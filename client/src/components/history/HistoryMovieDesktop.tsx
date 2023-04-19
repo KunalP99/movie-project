@@ -42,7 +42,9 @@ const HistoryMovieDesktop = ({ movie, history, setHistory } : Props) => {
   return (
     <div className='history-item-container-desktop'>
       <div className='history-img-title-container-desktop'>
-        <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
+        <a href={`/movie/${movie.movie_id}`} >
+          <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
+        </a>
         <p className='history-movie-title-desktop'>{movie.title}</p>
       </div>
       <p className='history-watch-date-container-desktop'>{format(parseISO(`${movie.watch_date}`), 'd LLL yyyy')}</p>

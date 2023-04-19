@@ -254,7 +254,3 @@ const HistoryForm = ({ setShowModal, id, title, posterPath, runtime, setFormSubm
 };
 
 export default HistoryForm;
-
-function handleDeleteWatchlistMovie(sub: string, id: number) {
-  throw new Error('Function not implemented.');
-}
