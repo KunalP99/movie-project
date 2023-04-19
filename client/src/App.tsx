@@ -99,6 +99,7 @@ function App() {
             <Route path='/search' element={<Search />} />
             <Route path='/history' element={<History 
               history={history}
+              setHistory={setHistory}
               watchlist={watchlist}
             />} />
           </Routes>

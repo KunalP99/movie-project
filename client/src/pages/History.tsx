@@ -14,11 +14,12 @@ import IHistory from '../models/IHistory';
 import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
 
 interface Props {
-  history: IHistory[]
+  history: IHistory[],
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>,
   watchlist: IHandleGetWatchlistMovies[],
 }
 
-const History = ({ history, watchlist } : Props) => {
+const History = ({ history, setHistory, watchlist } : Props) => {
   return (
     <section className="history-container">
       <ProfileWidget watchlist={watchlist} history={history} />
@@ -56,7 +57,7 @@ const History = ({ history, watchlist } : Props) => {
                 <p className='history-movie-title'>{movie.title}</p>
               </div>
             </div>
-            <HistoryMovieDesktop movie={movie} />
+            <HistoryMovieDesktop movie={movie} history={history} setHistory={setHistory} />
             <div className='white-underline'></div>
           </>
         ))}

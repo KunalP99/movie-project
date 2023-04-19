@@ -127,3 +127,9 @@ export const addMovieToHistory = (
       return res.json();
     });
 };
+
+export const deleteHistoryMovie = async (user_id: string, _id: string ) => {
+  return await fetch(`http://localhost:5000/history/${user_id}/${_id}`, {
+    method: 'DELETE',
+  });
+};

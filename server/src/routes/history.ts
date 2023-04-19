@@ -1,5 +1,5 @@
 import express from 'express';
-import {  getHistory, addToHistory, updateMovieInHistory } from '../controllers/historyController';
+import {  getHistory, addToHistory, updateMovieInHistory, deleteFromHistory } from '../controllers/historyController';
 
 const router = express.Router();
 
@@ -11,5 +11,7 @@ router.post('/', addToHistory);
 
 // PATCH movie in history collection
 router.patch('/:id', updateMovieInHistory);
+
+router.delete('/:user_id/:id', deleteFromHistory);
 
 export default router;

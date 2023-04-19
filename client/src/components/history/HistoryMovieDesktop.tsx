@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { format, parseISO } from 'date-fns';
+import { deleteHistoryMovie } from '../../api/mongoapi';
 
 // Images
 import RatingStar from '../../images/rating-star.svg';
@@ -12,12 +13,28 @@ import DeleteIcon from '../../images/trash-icon.svg';
 // Models
 import IHistory from '../../models/IHistory';
 
+// Context
+import { UserContext } from '../../components/context/UserContext';
+
 interface Props {
-  movie: IHistory
+  movie: IHistory,
+  history: IHistory[],
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>
 }
 
-const HistoryMovieDesktop = ({ movie } : Props) => {
+const HistoryMovieDesktop = ({ movie, history, setHistory } : Props) => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const { user } = useContext(UserContext);
+
+  // Handle deleting movie from history
+  const handleDeleteFromHistory = () => {
+    if (movie !== undefined && user.sub !== '') {
+      deleteHistoryMovie(user.sub, movie._id);
+      // Update UI to show array with removed movie
+      setHistory(history.filter(person => person.user_id === user.sub)
+        .filter(historyMovie => historyMovie._id !== movie._id));
+    }
+  };
 
   return (
     <div className='history-item-container-desktop'>
@@ -51,7 +68,7 @@ const HistoryMovieDesktop = ({ movie } : Props) => {
             <img src={EditIcon} alt="Edit movie" />
             <p>Edit</p>
           </button>
-          <button className='history-dropdown-button' type='button'>
+          <button className='history-dropdown-button' type='button' onClick={handleDeleteFromHistory}>
             <img src={DeleteIcon} alt="Delete movie" />
             <p>Delete</p> 
           </button>

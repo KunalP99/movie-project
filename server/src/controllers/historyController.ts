@@ -54,20 +54,17 @@ export const updateMovieInHistory = async (req: Request, res: Response) => {
       {
         ...req.body
       });
-
       res.status(200).json(movieToUpdate);
   } catch (err) {
       res.status(400).json({ error: err });
   }
-
 }
 
 // Deletes one movie from the history collection based on object and user id
 export const deleteFromHistory = async (req: Request, res: Response) => {
-  const { _id, user_id } = req.params;
-
+  const { user_id, id } = req.params;
   try {
-    const movie = await HistoryModel.findOneAndDelete({'_id:' : _id, 'user_id': user_id});
+    const movie = await HistoryModel.findOneAndDelete({user_id: user_id, _id: id});
     res.status(200).json(movie);
   } catch (err) {
     res.status(400).json({ error: err });
