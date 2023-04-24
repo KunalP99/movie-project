@@ -22,7 +22,8 @@ import HistoryAddForm from '../components/forms/HistoryAddForm';
 
 // Images
 import WhitePlus from '../images/white-plus.svg';
-import HistoryIcon from '../images/white-history-icon.svg';
+import HistoryIcon from '../images/blue-history-icon.svg';
+import RemoveIcon from '../images/x.svg';
 import VideoNotFound from '../images/video-not-found.svg';
 
 // Context
@@ -173,13 +174,15 @@ const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, han
                       className='primary-btn' 
                       type='button' 
                       onClick={handleAddToWatchlist}>
-                        Add to Watchlist <img src={WhitePlus} alt="Add to watchlist" />
+                      <img src={WhitePlus} alt="Add to watchlist" /> 
+                      Add to Watchlist 
                     </button>
                     :
                     <button 
                       className='remove-from-watchlist-btn primary-btn' 
                       onClick={handleDeleteFromWatchlist}>
-                        Remove from Watchlist
+                      <img src={RemoveIcon} alt="Remove from watchlist" />
+                      Remove from Watchlist
                     </button>
                   }
 
@@ -187,7 +190,8 @@ const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, han
                     className='secondary-btn' 
                     type='button'
                     onClick={() => setShowModal(true)}>
-                      Add to History <img src={HistoryIcon} alt="Add to history" />
+                    <img src={HistoryIcon} alt="Add to history" /> 
+                    Add to History
                   </button>
                 </div>
               </div>

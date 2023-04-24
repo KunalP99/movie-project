@@ -43,7 +43,7 @@ input[type="date"] {
   color: $primary-font-colour;
 }
 .primary-btn:hover {
-  background: #48727a;
+  background:#004887;
 }
 
 .secondary-btn {
@@ -51,18 +51,20 @@ input[type="date"] {
   background: $secondary-btn-bg-colour;
   display: flex;
   align-items: center;
-  color: $primary-font-colour;
+  color: $primary-colour;
   gap: $spacing-08;   
   backdrop-filter: blur(2px);
 }
 .secondary-btn:hover {
-  background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
+  background: rgb(187, 187, 187);
 }
 
 .remove-from-watchlist-btn {
-  @include main-btn-small;
-  background: #B27070;
-  color: $primary-font-colour;
+  background: $remove-from-watchlist-bg-colour;
+
+  img {
+    width: 24px;
+  }
 }
 .remove-from-watchlist-btn:hover {
   background: #734949;

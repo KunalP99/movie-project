@@ -10,7 +10,7 @@
 // BG Colours 
 $primary-colour: #0068C1;
 $primary-bg-colour: #000000;
-$secondary-btn-bg-colour: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+$secondary-btn-bg-colour: white;
 $dark-grey: #131313;
 $light-grey: #303030;
 $blue-linear: linear-gradient(90deg, #003E73 0%, #006FCF 100%);
@@ -19,6 +19,7 @@ $foreground-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000
 $genre-bg-colour: linear-gradient(90deg, rgba(199, 199, 199, 0.37) 0%, rgba(153, 153, 153, 0.37) 99.48%);
 $watchlist-movie-bg-colour: linear-gradient(90deg, rgba(28, 28, 28, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
 $history-grid-item-hover-bg-colour: linear-gradient(90deg, rgba(117, 155, 163, 0.1541) 0%, rgba(134, 167, 174, 0.23) 100%);
+$remove-from-watchlist-bg-colour: #E52020;
 
 // Form Colours
 $green-colour: #5BCF6D;
@@ -45,9 +46,10 @@ $border-radius: 16px;
 
 @mixin main-btn-small {
   padding: 9px 8px;
-  @include body-regular;
+  font-size: clamp(pxToRem(13px), 1.5vw, pxToRem(20px));
+  font-weight: $font-weight-regular;
   font-weight: bold;
-  border-radius: $spacing-16;
+  border-radius: $spacing-08;
   border: none;
 }
 

@@ -3,7 +3,8 @@ import { useState, useEffect, useContext } from 'react';
 // Images
 import RatingStar from '../../images/rating-star.svg';
 import WhitePlus from '../../images/white-plus.svg';
-import WhiteArrow from '../../images/white-arrow.svg';
+import BlueEye from '../../images/blue-eye.svg';
+import RemoveIcon from '../../images/x.svg';
 
 // Models
 import IHeroMovies from '../../models/IHeroMovies';
@@ -86,18 +87,20 @@ const HeroMovies = ({ movie, handleCreateWatchlistMovie, handleDeleteWatchlistMo
         <div className='hero-btn-container'>
           {!inWatchlist ?
             <button className='add-to-watchlist-btn primary-btn' onClick={handleAddToWatchlist}>
+              <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} />
               Add to Watchlist 
-              <img src={WhitePlus} alt={`Add ${movie.title} to Watchlist`} /></button> 
+            </button> 
             :
             <button 
               className='remove-from-watchlist-btn primary-btn' 
               onClick={handleDeleteFromWatchlist}>
-                Remove from watchlist
+              <img src={RemoveIcon} alt="Remove from watchlist" />
+              Remove from watchlist
             </button>
           }
           <a className='view-more-btn secondary-btn' href={`/movie/${movie.id}`}>
+            <img src={BlueEye} alt={`View more information about ${movie.title}`} />
             View more 
-            <img src={WhiteArrow} alt={`View more information about ${movie.title}`} />
           </a>
         </div>
       </div>

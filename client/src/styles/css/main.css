@@ -112,11 +112,10 @@ input[type=date] {
 
 .primary-btn {
   padding: 9px 8px;
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: clamp(0.8125rem, 1.5vw, 1.25rem);
   font-weight: 400;
-  line-height: 32px;
   font-weight: bold;
-  border-radius: 16px;
+  border-radius: 8px;
   border: none;
   background: #0068C1;
   display: flex;
@@ -126,40 +125,34 @@ input[type=date] {
 }
 
 .primary-btn:hover {
-  background: #48727a;
+  background: #004887;
 }
 
 .secondary-btn {
   padding: 9px 8px;
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: clamp(0.8125rem, 1.5vw, 1.25rem);
   font-weight: 400;
-  line-height: 32px;
   font-weight: bold;
-  border-radius: 16px;
+  border-radius: 8px;
   border: none;
-  background: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+  background: white;
   display: flex;
   align-items: center;
-  color: #FFFFFF;
+  color: #0068C1;
   gap: 8px;
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
 }
 
 .secondary-btn:hover {
-  background: linear-gradient(90deg, rgba(113, 146, 153, 0.37) 0%, rgba(84, 123, 131, 0.37) 100%);
+  background: rgb(187, 187, 187);
 }
 
 .remove-from-watchlist-btn {
-  padding: 9px 8px;
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  font-weight: 400;
-  line-height: 32px;
-  font-weight: bold;
-  border-radius: 16px;
-  border: none;
-  background: #B27070;
-  color: #FFFFFF;
+  background: #E52020;
+}
+.remove-from-watchlist-btn img {
+  width: 24px;
 }
 
 .remove-from-watchlist-btn:hover {
@@ -690,7 +683,7 @@ header nav .active {
   margin-bottom: 16px;
 }
 .movie-details-container .movie-details-grid .top-half .top-half-padded-content {
-  padding: 4px;
+  padding: 0px 16px;
 }
 .movie-details-container .movie-details-grid .top-half .top-half-padded-content .movie-details-information-container .movie-details-title-rating-container .movie-details-rating {
   display: inline-block;
@@ -734,12 +727,12 @@ header nav .active {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin-bottom: 24px;
+  margin: 24px 0px;
 }
 .movie-details-container .movie-details-grid .top-half .movie-details-btn-container button {
   display: flex;
-  justify-content: space-around;
-  width: 200px;
+  justify-content: center;
+  width: 220px;
 }
 .movie-details-container .movie-details-grid .bottom-half {
   display: flex;
@@ -765,8 +758,8 @@ header nav .active {
   }
   .movie-details-container .movie-details-grid .top-half .movie-details-btn-container button {
     display: flex;
-    justify-content: space-around;
-    width: 250px;
+    justify-content: center;
+    width: 300px;
   }
 }
 @media (min-width: 650px) {
@@ -843,9 +836,6 @@ header nav .active {
 @media (min-width: 1200px) {
   .movie-details-container .movie-details-grid .top-half iframe, .movie-details-container .movie-details-grid .top-half .no-video-found-img {
     height: 400px;
-  }
-  .movie-details-container .movie-details-grid .top-half .movie-details-btn-container .remove-from-watchlist-btn {
-    width: 280px;
   }
   .movie-details-container .movie-details-grid .bottom-half img {
     width: 300px;
@@ -1452,11 +1442,10 @@ header nav .active {
 }
 .form-modal #history-add-form .history-form-container .history-form-submit-btn {
   padding: 9px 8px;
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: clamp(0.8125rem, 1.5vw, 1.25rem);
   font-weight: 400;
-  line-height: 32px;
   font-weight: bold;
-  border-radius: 16px;
+  border-radius: 8px;
   border: none;
   display: flex;
   justify-content: center;
