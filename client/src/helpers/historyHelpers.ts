@@ -1,4 +1,6 @@
-import { addMovieToHistory } from '../api/mongoapi';
+import { addMovieToHistory, deleteHistoryMovie} from '../api/mongoapi';
+
+// Models
 import IHistory from '../models/IHistory';
 
 // Add movie to history
@@ -18,3 +20,21 @@ export const handleAddMovieToHistory = async (
 
   setHistory([historyMovie, ... history]);
 };  
+
+// Delete movie from history
+export const handleDeleteFromHistory = async (
+  movie: IHistory, 
+  user_id: string, 
+  history: IHistory[], 
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>, 
+  setShowDropdown: React.Dispatch<React.SetStateAction<boolean>>) => {
+  if (movie !== undefined && user_id !== '') {
+    deleteHistoryMovie(user_id, movie._id);
+    // Update UI to show array with removed movie
+    setHistory(history.filter(person => person.user_id === user_id)
+      .filter(historyMovie => historyMovie._id !== movie._id));
+
+    // Hide dropdown once delete is clicked
+    setShowDropdown(false);
+  }
+};

@@ -1,6 +1,9 @@
 import { useState, useContext } from 'react';
 import { format, parseISO } from 'date-fns';
-import { deleteHistoryMovie } from '../../api/mongoapi';
+import { handleDeleteFromHistory } from '../../helpers/historyHelpers';
+
+// Components
+import HistoryEditForm from '../forms/HistoryEditForm';
 
 // Images
 import RatingStar from '../../images/rating-star.svg';
@@ -19,25 +22,15 @@ import { UserContext } from '../../components/context/UserContext';
 interface Props {
   movie: IHistory,
   history: IHistory[],
-  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>,
+  setFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  setError: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const HistoryMovieDesktop = ({ movie, history, setHistory } : Props) => {
+const HistoryMovieDesktop = ({ movie, history, setHistory, setFormSubmitted, setError } : Props) => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const [showEditForm, setShowEditForm] = useState<boolean>(false);
   const { user } = useContext(UserContext);
-
-  // Handle deleting movie from history
-  const handleDeleteFromHistory = () => {
-    if (movie !== undefined && user.sub !== '') {
-      deleteHistoryMovie(user.sub, movie._id);
-      // Update UI to show array with removed movie
-      setHistory(history.filter(person => person.user_id === user.sub)
-        .filter(historyMovie => historyMovie._id !== movie._id));
-
-      // Hide dropdown once delete is clicked
-      setShowDropdown(false);
-    }
-  };
 
   return (
     <div className='history-item-container-desktop'>
@@ -71,16 +64,32 @@ const HistoryMovieDesktop = ({ movie, history, setHistory } : Props) => {
       <>
         <div className='history-dropdown-background' onClick={() => setShowDropdown(false)}></div>
         <div className='history-dropdown-container'>
-          <button className='history-dropdown-button' type='button'>
+          <button className='history-dropdown-button' type='button' onClick={() => setShowEditForm(true)}>
             <img src={EditIcon} alt="Edit movie" />
             <p>Edit</p>
           </button>
-          <button className='history-dropdown-button' type='button' onClick={handleDeleteFromHistory}>
+          <button 
+            className='history-dropdown-button' 
+            type='button' 
+            onClick={() => handleDeleteFromHistory(movie, user.sub, history, setHistory, setShowDropdown)}>
             <img src={DeleteIcon} alt="Delete movie" />
             <p>Delete</p> 
           </button>
         </div>
       </>
+      }
+      {showEditForm && 
+        <HistoryEditForm 
+          setShowEditForm={setShowEditForm}
+          _id={movie._id} 
+          title={movie.title}
+          posterPath={movie.poster_path}
+          watch_date={movie.watch_date}
+          user_rating={movie.user_rating}
+          user_rewatch={movie.rewatch}
+          setFormSubmitted={setFormSubmitted}
+          setError={setError} 
+        />
       }
     </div>
   );

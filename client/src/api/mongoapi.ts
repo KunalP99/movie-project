@@ -130,6 +130,28 @@ export const addMovieToHistory = (
     });
 };
 
+export const editHistoryMovie = (_id: string, watch_date: Date, user_rating: number, rewatch: boolean) => {
+  return fetch(`http://localhost:5000/history/${_id}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      watch_date,
+      user_rating,
+      rewatch
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(
+          `Error: Status code: ${res.status}`
+        );
+      }
+      return res.json();
+    });
+};
+
 export const deleteHistoryMovie = async (user_id: string, _id: string ) => {
   return await fetch(`http://localhost:5000/history/${user_id}/${_id}`, {
     method: 'DELETE',

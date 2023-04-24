@@ -1,5 +1,7 @@
-import { Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { format, parseISO } from 'date-fns';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Components
 import ProfileWidget from '../components/widgets/ProfileWidget';
@@ -21,6 +23,25 @@ interface Props {
 }
 
 const History = ({ history, setHistory, watchlist } : Props) => {
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+
+  const successNotif = () => toast.success('Movie successfully updated!');
+  const errorNotif = () => toast.error('Something went wrong!');
+
+  // Checks to see if form is submitted and shows toast if true
+  useEffect(() => {
+    if (formSubmitted) {
+      if (!error) {
+        successNotif();
+      } else {
+        errorNotif();
+        setError(false);
+      }
+      setFormSubmitted(false);
+    }
+  }, [formSubmitted]);
+
   return (
     <section className="history-container">
       <ProfileWidget watchlist={watchlist} history={history} />
@@ -63,11 +84,26 @@ const History = ({ history, setHistory, watchlist } : Props) => {
                 <p className='history-movie-title'>{movie.title}</p>
               </div>
             </div>
-            <HistoryMovieDesktop movie={movie} history={history} setHistory={setHistory} />
+            <HistoryMovieDesktop 
+              movie={movie} 
+              history={history} 
+              setHistory={setHistory} 
+              setFormSubmitted={setFormSubmitted}
+              setError={setError} />
             <div className='white-underline'></div>
           </Fragment>
         ))}
       </div>
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="dark"
+      />
     </section>
   );
 };
