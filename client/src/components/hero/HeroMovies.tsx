@@ -21,6 +21,7 @@ interface Props {
     rating: number, 
     poster_path: string, 
     release_date: string,
+    runtime: number,
     user_id: string): Promise<void>,
     handleDeleteWatchlistMovie(
       userId: string,
@@ -52,6 +53,7 @@ const HeroMovies = ({ movie, handleCreateWatchlistMovie, handleDeleteWatchlistMo
         movie.vote_average, 
         movie.poster_path, 
         movie.release_date,
+        movie.runtime,
         user.sub
       );
       setInWatchlist(true);
@@ -70,7 +72,7 @@ const HeroMovies = ({ movie, handleCreateWatchlistMovie, handleDeleteWatchlistMo
     <>
       <div className='banner-foreground-overlay'></div>
       <img className='hero-banner-img' src={`http://image.tmdb.org/t/p/original/${movie.backdrop_path}`}/>
-      <div className='hero-movie-information-container'>
+      <div className='hero-movie-information-container'> 
         <div className='hero-rating-container'>
           <img src={RatingStar} alt='Rating star' />
           <p>{movie.vote_average}</p>

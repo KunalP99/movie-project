@@ -1,4 +1,6 @@
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Components
 import ProfileWidget from '../components/widgets/ProfileWidget';
@@ -6,6 +8,7 @@ import WatchlistMovie from '../components/watchlist/WatchlistMovie';
 
 // Models
 import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
+import IHistory from '../models/IHistory';
 
 // Context
 import { UserContext } from '../components/context/UserContext';
@@ -18,14 +21,36 @@ interface Props {
       userId: string,
       movieId: number
     ): Promise<void>,
+  history: IHistory[],
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>
 }
 
-const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovie} : Props) => {
+const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovie, history, setHistory } : Props) => {
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const { user } = useContext(UserContext);
+
+  const successNotif = () => toast.success('Movie added to History!');
+  const errorNotif = () => toast.error('Something went wrong!');
+
+  // Checks to see if form is submitted and shows toast if true
+  useEffect(() => {
+    if (formSubmitted) {
+      if (!error) {
+        successNotif();
+      } else {
+        errorNotif();
+        setError(false);
+      }
+      setFormSubmitted(false);
+    }
+  }, [formSubmitted]);
 
   return (
     <section className="watchlist-container">
-      <ProfileWidget watchlist={watchlist}/>
+      <ProfileWidget 
+        watchlist={watchlist} 
+        history={history} />
       <h2>Your Watchlist</h2>
       <div className='watchlist-movies-container'>
         {!loading && watchlist.filter(person => person.user_id === user.sub).map(movie => (
@@ -34,9 +59,23 @@ const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovi
             movie={movie} 
             handleDeleteWatchlistMovie={handleDeleteWatchlistMovie} 
             watchlist={watchlist}
-            setWatchlist={setWatchlist} />
+            setWatchlist={setWatchlist}
+            history={history}
+            setHistory={setHistory}
+            setFormSubmitted={setFormSubmitted}
+            setError={setError} />
         ))}
       </div>
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="dark"
+      />
     </section> 
   );
 };

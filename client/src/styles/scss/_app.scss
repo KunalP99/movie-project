@@ -22,9 +22,16 @@ h5 {
 p {
   @include body-regular;
 }
+label {
+  @include body-regular;
+}
 
 button {
   cursor: pointer;
+}
+
+input[type="date"] {
+  font-family: $main-font-family;
 }
 
 .primary-btn {

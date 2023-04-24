@@ -7,6 +7,7 @@ export interface IWatchlist {
   rating: number,
   poster_path: string,
   release_date: string,
+  runtime: number,
   user_id: string
 }
 
@@ -22,6 +23,7 @@ const WatchListMovieSchema = new Schema({
   rating: Number,
   poster_path: String,
   release_date: String,
+  runtime: Number,
   user_id: {
     type: String,
     required: true

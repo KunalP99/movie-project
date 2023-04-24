@@ -1,6 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { getWatchlistMovies, createWatchlistMovie, deleteWatchlistMovie } from './api/mongoapi';
+import { 
+  getWatchlistMovies, 
+  createWatchlistMovie, 
+  deleteWatchlistMovie,
+  getHistoryMovies } from './api/mongoapi';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // Components
@@ -9,13 +13,20 @@ import Header from './components/Header';
 import MovieDetails from './pages/MovieDetails';
 import Watchlist from './pages/Watchlist';
 import Search from './pages/Search';
+import History from './pages/History';
 
 // Models
 import { IHandleGetWatchlistMovies } from './models/IWatchlist';
+import IHistory from './models/IHistory';
+
+// Context
+import { UserContext } from './components/context/UserContext';
 
 function App() {
   const [watchlist, setWatchlist] = useState<IHandleGetWatchlistMovies[]>([]);
+  const [history, setHistory] = useState<IHistory[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const { user } = useContext(UserContext);
 
   // Add movie to watchlist
   const handleCreateWatchlistMovie = async (
@@ -25,9 +36,10 @@ function App() {
     rating: number, 
     poster_path: string, 
     release_date: string,
+    runtime: number,
     user_id: string
   ) => {
-    const watchlistMovie = await createWatchlistMovie(movieId, title, overview, rating, poster_path, release_date, user_id);
+    const watchlistMovie = await createWatchlistMovie(movieId, title, overview, rating, poster_path, release_date, runtime, user_id);
     // Keep UI up to date when a new movie is added to watchlist 
     setWatchlist([watchlistMovie, ...watchlist]);
   };
@@ -42,9 +54,16 @@ function App() {
     setLoading(true);
     getWatchlistMovies()
       .then(data => setWatchlist(data))
-      .catch(err => console.log(err.message))
-      .finally(() => setLoading(false));
-  }, []);
+      .catch(err => console.log(err.message));
+
+    if (user.sub !== '') {
+      getHistoryMovies(user.sub)
+        .then(data => setHistory(data))
+        .catch(err => console.log(err.message));
+    }
+
+    setLoading(false);
+  }, [user]);
 
   return (
     <div className="main-container">
@@ -65,7 +84,10 @@ function App() {
                 {<MovieDetails 
                   handleCreateWatchlistMovie={handleCreateWatchlistMovie} 
                   handleDeleteWatchlistMovie={handleDeleteWatchlistMovie} 
-                  watchlist={watchlist} />} />
+                  watchlist={watchlist}
+                  setWatchlist={setWatchlist}
+                  history={history}
+                  setHistory={setHistory} />} />
             <Route 
               path='/watchlist' 
               element=
@@ -74,8 +96,15 @@ function App() {
                   loading={loading}
                   handleDeleteWatchlistMovie={handleDeleteWatchlistMovie}
                   setWatchlist={setWatchlist}
+                  history={history}
+                  setHistory={setHistory}
                 />} />
             <Route path='/search' element={<Search />} />
+            <Route path='/history' element={<History 
+              history={history}
+              setHistory={setHistory}
+              watchlist={watchlist}
+            />} />
           </Routes>
         </div>
       </GoogleOAuthProvider>

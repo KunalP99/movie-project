@@ -1,0 +1,266 @@
+.form-modal {
+  background: $form-bg-colour;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 105;
+  overflow-x: auto;
+  #history-add-form {
+    .close-btn {
+      @include reset-btn;
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin: $spacing-16;
+      font-weight: $font-weight-regular;
+    }
+
+    h3 {
+      @include subtitle;
+      margin-top: $spacing-40;
+      text-align: center;
+    }
+
+    .history-form-top-half {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        border-radius: 16px;
+        margin-top: $spacing-24;
+        width: 90px;
+      }
+
+      p {
+        margin-top: $spacing-16;
+        font-weight: $font-weight-medium;
+        text-align: center;
+        width: 280px
+      }
+    }
+
+    .history-form-container {
+      @include flex-center;
+      flex-direction: column;
+      .history-form-date-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: $spacing-24;
+
+        input[type="date"] {
+          margin-top: $spacing-08;
+          background: $light-grey;
+          border: none;
+          color: $primary-font-colour;
+          padding: $spacing-16;
+          border-radius: 6px;
+          font-size: pxToRem(14px);
+          width: 290px;
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator {
+          filter: invert(1);
+          cursor: pointer;
+        }
+      }
+      .history-form-rating-container {   
+        display: flex;
+        flex-direction: column;
+        margin-top: $spacing-16;
+        width: 322px;
+        .history-add-rating-item-container {
+          display: grid;
+          align-items: center;
+          grid-template-columns: repeat(5, 1fr);
+          gap: $spacing-08;
+          margin-top: $spacing-08;
+          .history-add-item {
+            display: flex;
+            input[type="radio"] {
+              -webkit-appearance: none;
+              appearance: none;
+              background-color: #fff;
+              margin: 0;
+            }
+            input[type="radio"]:checked + label {
+              background: $blue-linear;
+            }
+            .history-add-rating-label {
+              @include flex-center;
+              gap: $spacing-08;
+              background: $light-grey;
+              width: 58px;
+              border-radius: 8px;
+              cursor: pointer;
+
+              &:hover {
+                background: $input-hover-colour;
+              }
+
+              p {
+                font-size: pxToRem(10px);
+                font-weight: $font-weight-semi;
+              }
+            }
+          }
+        }
+      }
+      .history-rewatch-form-container {
+        display: flex;
+        gap: $spacing-16;
+        margin-top: $spacing-16;
+        
+        input[type="checkbox"] {
+          @include flex-center;
+          -webkit-appearance: none;
+          appearance: none;
+          background-color: $light-grey;
+          border: none;
+          border-radius: 6px;
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+
+          &:hover {
+            background: $input-hover-colour;
+          }
+        }
+        input[type="checkbox"]:checked {
+          background-color: $green-colour;
+        }
+        input[type="checkbox"]:checked:after {
+          content: url('https://gistcdn.githack.com/KunalP99/909ff4e406ccbeb233aa6c244696cc9c/raw/e098738fb4d2c932055cc40ea902b4c0ec93658f/white-tick.svg');
+        }
+      }
+      .history-form-points-container {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-04;
+        margin-top: $spacing-32;
+
+        :first-child {
+          color: $transparent-white-font-colour;
+        }
+
+        > div {
+          @include flex-center;
+          gap: $spacing-04;
+
+          p {
+            font-size: pxToRem(30px);
+          }
+        }
+      }
+      .history-form-submit-btn {
+        @include main-btn-small;
+        @include flex-center;
+        gap: $spacing-08;
+        width: 322px;
+        padding: $spacing-08 0px;
+        border-radius: 8px;
+        background: $primary-colour;
+        color: $primary-font-colour;
+        border: none;
+        margin-top: $spacing-32;
+        margin-bottom: $spacing-56;
+      }
+    }
+  }
+}
+
+@media (max-width: 330px) {
+  .form-modal {
+    width: 330px;
+    height: 100%;
+  }
+}
+
+@media (min-width: 750px) {
+  .form-modal {
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    #history-add-form {
+      @include flex-center;
+      gap: $spacing-80;
+      h3 {
+        margin-top: 0px;
+        text-align: left;
+      }
+      .history-form-top-half {
+        img {
+          width: 250px;
+        }
+      }
+
+      .history-form-container {
+        .history-form-date-container {
+          input[type="date"] {
+            font-size: pxToRem(16px);
+            width: 350px;
+          }
+        }
+
+        .history-form-rating-container {
+          width: 382px;
+          .history-add-rating-item-container {
+            .history-add-item {
+              .history-add-rating-label {
+                p {
+                  font-size: pxToRem(16px);
+                }
+              }
+            }
+          }
+        }
+        .history-form-submit-btn {
+          width: 382px;
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+    .form-modal {
+    #history-add-form {
+      .history-form-top-half {
+        img {
+          width: 350px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  .form-modal-background {
+    background: rgba(0, 0, 0, 0.753);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100vw;
+    height: 105vh;
+    z-index: 100;
+  }
+
+    .form-modal {
+      width: 1000px;
+      height: 700px;
+      border-radius: 16px;
+    #history-add-form {
+      .history-form-top-half {
+        img {
+          width: 300px;
+        }
+      }
+    }
+  }
+}
+

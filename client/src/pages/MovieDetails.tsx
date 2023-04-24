@@ -1,13 +1,16 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails, getMovieVideos, getMovieCredits } from '../api/api';
+import { ToastContainer, toast,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Models
 import IMovieDetails from '../models/IMovieDetails';
 import IGenres from '../models/IGenres';
 import IMovieVideos from '../models/IMovieVideos';
 import ITopCast from '../models/ITopCast';
-import { WatchlistProps } from '../models/IWatchlist';
+import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
+import IHistory from '../models/IHistory';
 
 // Components
 import MovieDetailsInformation from '../components/movie_details/MovieDetailsInformation';
@@ -15,6 +18,7 @@ import MovieDetailsExtraInfo from '../components/movie_details/MovieDetailsExtra
 import MovieDetailsTopCast from '../components/movie_details/MovieDetailsTopCast';
 import MovieDetailsStarring from '../components/movie_details/MovieDetailsStarring';
 import MovieDetailsMoreLikeThis from '../components/movie_details/MovieDetailsMoreLikeThis';
+import HistoryAddForm from '../components/forms/HistoryAddForm';
 
 // Images
 import WhitePlus from '../images/white-plus.svg';
@@ -28,15 +32,42 @@ type MovieParams = {
   movieId: string;
 }
 
-const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatchlistMovie } : WatchlistProps ) => {
+interface Props {
+  handleCreateWatchlistMovie(
+    movieId: number, 
+    title: string, 
+    overview: string, 
+    rating: number, 
+    poster_path: string, 
+    release_date: string,
+    runtime: number,
+    user_id: string): Promise<void>,
+    handleDeleteWatchlistMovie(
+      userId: string,
+      movieId: number
+    ): Promise<void>,
+  watchlist: IHandleGetWatchlistMovies[],
+  setWatchlist: React.Dispatch<React.SetStateAction<IHandleGetWatchlistMovies[]>>
+  history: IHistory[],
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>
+}
+
+const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, handleDeleteWatchlistMovie, history, setHistory } : Props ) => {
   const { movieId } = useParams<MovieParams>();
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
   const [genres, setGenres] = useState<IGenres[]>([]);
   const [videos, setVideos] = useState<IMovieVideos[]>([]);
   const [topCast, setTopCast] = useState<ITopCast[]>([]);
   const [inWatchlist, setInWatchlist] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const fromWatchlist = false;
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
   const { user } = useContext(UserContext);
+
+  const successNotif = () => toast.success('Movie added to History!');
+  const errorNotif = () => toast.error('Something went wrong!');
 
   useEffect(() => {
     setLoading(true);
@@ -74,6 +105,19 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
     });
   }, [watchlist]);
 
+  // Checks to see if form is submitted and shows toast if true
+  useEffect(() => {
+    if (formSubmitted) {
+      if (!error) {
+        successNotif();
+      } else {
+        errorNotif();
+        setError(false);
+      }
+      setFormSubmitted(false);
+    }
+  }, [formSubmitted]);
+
   // Handle adding movie to watchlist
   const handleAddToWatchlist = () => {
     if (movieDetails !== undefined) {
@@ -84,6 +128,7 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
         movieDetails.vote_average, 
         movieDetails.poster_path, 
         movieDetails.release_date,
+        movieDetails.runtime,
         user.sub
       );
       setInWatchlist(true);
@@ -140,7 +185,8 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
 
                   <button 
                     className='secondary-btn' 
-                    type='button'>
+                    type='button'
+                    onClick={() => setShowModal(true)}>
                       Add to History <img src={HistoryIcon} alt="Add to history" />
                   </button>
                 </div>
@@ -160,8 +206,33 @@ const MovieDetails = ({ watchlist, handleCreateWatchlistMovie, handleDeleteWatch
             <MovieDetailsMoreLikeThis genres={genres} loading={loading} />
           </div>
           }
+          {showModal && 
+            <HistoryAddForm
+              setShowModal={setShowModal}
+              id={movieDetails.id}
+              title={movieDetails.title}
+              posterPath={movieDetails.poster_path}
+              runtime={movieDetails.runtime}
+              setFormSubmitted={setFormSubmitted}
+              watchlist={watchlist}
+              setWatchlist={setWatchlist}
+              history={history}
+              setHistory={setHistory}
+              setError={setError}
+              fromWatchlist={fromWatchlist} />
+          }
         </div>
       }
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="dark"
+      />
     </section>
   );
 };

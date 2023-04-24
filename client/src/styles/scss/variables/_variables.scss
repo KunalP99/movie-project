@@ -2,20 +2,34 @@
 @import './spacing';
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap');
 
-$main-font-family: 'Red Hat Display', sans-serif;
+:root {
+  // Toastify 
+  --toastify-color-success: #0068C1;
+}
 
 // BG Colours 
-$primary-colour: #70A7B2;
+$primary-colour: #0068C1;
 $primary-bg-colour: #000000;
 $secondary-btn-bg-colour: linear-gradient(90deg, rgba(199, 220, 224, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+$dark-grey: #131313;
+$light-grey: #303030;
+$blue-linear: linear-gradient(90deg, #003E73 0%, #006FCF 100%);
 $rating-container-bg-colour: linear-gradient(90deg, rgba(117, 155, 163, 0.9) 0%, rgba(117, 155, 163, 0.6) 100%);
 $foreground-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 42.59%, #000000 100%);
 $genre-bg-colour: linear-gradient(90deg, rgba(199, 199, 199, 0.37) 0%, rgba(153, 153, 153, 0.37) 99.48%);
 $watchlist-movie-bg-colour: linear-gradient(90deg, rgba(28, 28, 28, 0.37) 0%, rgba(117, 155, 163, 0.37) 100%);
+$history-grid-item-hover-bg-colour: linear-gradient(90deg, rgba(117, 155, 163, 0.1541) 0%, rgba(134, 167, 174, 0.23) 100%);
+
+// Form Colours
+$green-colour: #5BCF6D;
+$input-hover-colour: #242424;
+$form-bg-colour:  linear-gradient(180deg, #131313 64.47%, #093A65 100%);
 
 // Font colours
 $primary-font-colour: #FFFFFF;
 $transparent-white-font-colour: rgba(255, 255, 255, 0.48);
+
+$main-font-family: 'Red Hat Display', sans-serif;
 
 // Border radius
 $border-radius: 16px;
@@ -65,7 +79,7 @@ $border-radius: 16px;
 }
 
 @mixin subtitle2 {
-  font-size: clamp(pxToRem(10px), 3vw, pxToRem(18px));
+  font-size: clamp(pxToRem(10px), 1vw, pxToRem(18px));
   font-weight: $font-weight-regular;
   letter-spacing: 0.4px;
   color: $transparent-white-font-colour;

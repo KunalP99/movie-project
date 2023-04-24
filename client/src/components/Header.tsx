@@ -9,7 +9,7 @@ import SearchIcon from '../images/sidebar/search-icon.svg';
 import WatchlistIcon from '../images/sidebar/watchlist-icon.svg';
 import HistoryIcon from '../images/sidebar/history-icon.svg';
 // import ProfileIcon from '../images/sidebar/profile-icon.svg';
-import CloseIcon from '../images/sidebar/x.svg';
+import CloseIcon from '../images/x.svg';
 
 // Models
 import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
@@ -76,7 +76,7 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
             </li>
             <li>
               <img src={HistoryIcon} alt="View your watch history" />
-              <a href="#">History</a>
+              <a href="/history">History</a>
             </li>
             <li>
               {user.email !== '' ? 

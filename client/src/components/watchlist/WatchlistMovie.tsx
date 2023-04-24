@@ -1,9 +1,16 @@
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { IHandleGetWatchlistMovies } from '../../models/IWatchlist';
+import { getMovieDetails } from '../../api/api';
+
+// Components
+import HistoryAddForm from '../forms/HistoryAddForm';
 
 // Images
 import HistoryIcon from '../../images/white-history-icon.svg';
 import DeleteIcon from '../../images/delete-icon.svg';
+
+// Models
+import IHistory from '../../models/IHistory';
 
 // Context
 import { UserContext } from '../context/UserContext';
@@ -16,11 +23,23 @@ interface Props {
     userId: string,
     movieId: number
   ): Promise<void>,
+  history: IHistory[],
+  setHistory: React.Dispatch<React.SetStateAction<IHistory[]>>,
+  setFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  setError:  React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatchlist } : Props) => {
+const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatchlist, history, setHistory, setFormSubmitted, setError } : Props) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [runtime, setRuntime] = useState<number>(0);
+  const fromWatchlist = true;
   const { user } = useContext(UserContext);
 
+  useEffect(() => {
+    getMovieDetails(movie.movieId.toString())
+      .then(data => setRuntime(data.runtime));
+  }, [movie]);
+  
   // Handle deleting movie from watchlist
   const handleDeleteFromWatchlist = () => {
     if (movie !== undefined) {
@@ -44,11 +63,27 @@ const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatch
           <button type='button' onClick={handleDeleteFromWatchlist}>
             <img src={DeleteIcon} alt="Delete movie from watchlist" />
           </button>
-          <button type='button'>
+          <button type='button' onClick={() => setShowModal(true)}>
             <img src={HistoryIcon} alt="Add movie to history" />
           </button>
         </div>
       </div>
+      {showModal &&
+        <HistoryAddForm 
+          setShowModal={setShowModal} 
+          id={movie.movieId}
+          title={movie.title}
+          posterPath={movie.poster_path}
+          runtime={runtime}
+          setFormSubmitted={setFormSubmitted}
+          watchlist={watchlist}
+          setWatchlist={setWatchlist}
+          history={history}
+          setHistory={setHistory}
+          setError={setError}
+          fromWatchlist={fromWatchlist}
+        />
+      }
     </>
   );
 };

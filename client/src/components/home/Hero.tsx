@@ -18,7 +18,7 @@ const Hero = ({ handleCreateWatchlistMovie, handleDeleteWatchlistMovie, watchlis
   useEffect(() => {
     // Get 5 movies in theatre
     getMoviesInTheatre(1)
-      .then(data => setMoviesInTheatre(data.results.slice(0, 5)))
+      .then(data =>  setMoviesInTheatre(data.results.slice(0, 5)))
       .catch(err => console.log(err.message));
   }, [watchlist]);
 
