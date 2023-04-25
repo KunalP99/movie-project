@@ -12,6 +12,7 @@ router.post('/', addToHistory);
 // PATCH movie in history collection
 router.patch('/:id', updateMovieInHistory);
 
+// DELETE movie in history
 router.delete('/:user_id/:id', deleteFromHistory);
 
 export default router;
