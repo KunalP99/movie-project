@@ -23,7 +23,7 @@ export const signUpUser = async (req: Request, res: Response) => {
       const createdUser = await newUser.save();
       res.status(200).json(createdUser);
     }
-  }  catch (err) {
+  } catch (err) {
     res.status(400).json('Account already in database');
   }
 }

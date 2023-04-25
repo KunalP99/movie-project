@@ -39,11 +39,10 @@ export const addToWatchlist = async (req: Request, res: Response) => {
   }
 }
 
+// Deletes one movie from the watchlsit collection based on movie and user id
 export const deleteFromWatchlist = async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const user_id = req.params.user_id;
+  const { id, user_id } = req.params;
 
   const movie = await WatchListMovieModel.findOneAndDelete({'movieId': id, 'user_id': user_id});
   res.json(movie);
-
 }
