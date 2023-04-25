@@ -40,7 +40,7 @@
       .hero-rating-container {
         @include flex-center;
         gap: $spacing-08;
-        background: $rating-container-bg-colour;
+        background: $blue-linear;
         width: 70px;
         padding: $spacing-04;
         backdrop-filter: blur(2px);

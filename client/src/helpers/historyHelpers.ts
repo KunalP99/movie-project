@@ -30,6 +30,7 @@ export const handleDeleteFromHistory = async (
   setShowDropdown: React.Dispatch<React.SetStateAction<boolean>>) => {
   if (movie !== undefined && user_id !== '') {
     deleteHistoryMovie(user_id, movie._id);
+    
     // Update UI to show array with removed movie
     setHistory(history.filter(person => person.user_id === user_id)
       .filter(historyMovie => historyMovie._id !== movie._id));

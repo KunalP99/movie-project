@@ -1,6 +1,6 @@
 import { createContext, useState, Dispatch, SetStateAction, ReactNode } from 'react';
 
-/* User Context to allow access to user data around entire application   */
+/* User Context to allow access to user data around entire application */
 
 export interface IUser {
   email: string,

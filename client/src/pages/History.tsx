@@ -11,6 +11,7 @@ import HistoryMovieDesktop from '../components/history/HistoryMovieDesktop';
 import RatingStar from '../images/rating-star.svg';
 import PopcornPoints from '../images/popcorn-points.svg';
 import WhiteTick from '../images/white-tick.svg';
+import ImageNotFound from '../images/image-not-found.svg';
 
 // Models
 import IHistory from '../models/IHistory';
@@ -61,7 +62,7 @@ const History = ({ history, setHistory, watchlist } : Props) => {
                 key={movie._id} 
                 href={`/movie/${movie.movie_id}`}
                 title={movie.title}>
-                <img src={`https://image.tmdb.org/t/p/w92/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
+                <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w92/${movie.poster_path}` : ImageNotFound} alt={`Poster for ${movie.title}`} />
               </a>
               <div className='history-item-info-container'>
                 <div className='history-item-main-info-container'>
