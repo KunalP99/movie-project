@@ -25,6 +25,7 @@ import WhitePlus from '../images/white-plus.svg';
 import HistoryIcon from '../images/blue-history-icon.svg';
 import RemoveIcon from '../images/x.svg';
 import VideoNotFound from '../images/video-not-found.svg';
+import ImageNotFound from '../images/image-not-found.svg';
 
 // Context
 import { UserContext } from '../components/context/UserContext';
@@ -196,7 +197,7 @@ const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, han
                 </div>
               </div>
               <div className='bottom-half'>
-                <img src={`http://image.tmdb.org/t/p/w780/${movieDetails?.poster_path}`} alt={`Poster for ${movieDetails.title}`} />
+                <img src={movieDetails.poster_path ? `http://image.tmdb.org/t/p/w780/${movieDetails?.poster_path}` : ImageNotFound} alt={`Poster for ${movieDetails.title}`} />
                 <MovieDetailsExtraInfo
                   release_date={movieDetails.release_date}
                   runtime={movieDetails.runtime}

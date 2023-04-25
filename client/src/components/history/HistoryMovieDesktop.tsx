@@ -12,6 +12,7 @@ import WhiteTick from '../../images/white-tick.svg';
 import WhiteDots from '../../images/more_horiz.svg';
 import EditIcon from '../../images/edit-icon.svg';
 import DeleteIcon from '../../images/trash-icon.svg';
+import ImageNotFound from '../../images/image-not-found.svg';
 
 // Models
 import IHistory from '../../models/IHistory';
@@ -36,7 +37,7 @@ const HistoryMovieDesktop = ({ movie, history, setHistory, setFormSubmitted, set
     <div className='history-item-container-desktop'>
       <div className='history-img-title-container-desktop'>
         <a href={`/movie/${movie.movie_id}`} >
-          <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
+          <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w185/${movie.poster_path}` : ImageNotFound} alt={`Poster for ${movie.title}`} />
         </a>
         <p className='history-movie-title-desktop'>{movie.title}</p>
       </div>

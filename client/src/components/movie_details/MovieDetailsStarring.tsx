@@ -11,6 +11,7 @@ import IMoviesStarring from '../../models/IMoviesStarring';
 
 // Images 
 import WhiteArrow from '../../images/white-arrow.svg';
+import ImageNotFoundBanner from '../../images/image-not-found-banner.svg';
 
 interface Props {
   topCast: ITopCast[],
@@ -91,7 +92,7 @@ const MovieDetailsStarring = ({ topCast } : Props) => {
             <SwiperSlide key={movie.id}>
               <a className='link' href={`/movie/${movie.id}`}>
                 <div className='movie-details-starring-movie-container'>
-                  {movie.backdrop_path ? <img src={`http://image.tmdb.org/t/p/w780/${movie.backdrop_path}`} title={`${movie.title}`} alt={`Backdrop for ${movie.title}`} /> : <p>Image not found</p> }
+                  <img src={movie.backdrop_path ? `http://image.tmdb.org/t/p/w780/${movie.backdrop_path}` : ImageNotFoundBanner} title={`${movie.title}`} alt={`Backdrop for ${movie.title}`} /> 
                   <p>{movie.title}</p>
                 </div>
               </a>

@@ -9,6 +9,7 @@ import ISmallSwiperMovies from '../../models/ISmallSwiperMovies';
 // Images
 import RatingStar from '../../images/rating-star.svg';
 import WhiteArrow from '../../images/white-arrow.svg';
+import ImageNotFound from '../../images/image-not-found.svg';
 
 const InTheatres = () => {
   const [inTheatres, setInTheatres] = useState<ISmallSwiperMovies[]>();
@@ -82,7 +83,7 @@ const InTheatres = () => {
                   <img src={RatingStar} alt='Rating star' />
                   <p>{Math.round(movie.vote_average * 10) / 10}</p>
                 </div>
-                <img src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={`${movie.title}`} />
+                <img src={movie.poster_path ? `http://image.tmdb.org/t/p/w342/${movie.poster_path}` : ImageNotFound} alt={`Poster for ${movie.title}`} />
               </div>
             </a>
           </SwiperSlide>   

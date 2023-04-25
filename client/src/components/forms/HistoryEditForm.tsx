@@ -5,6 +5,7 @@ import { editHistoryMovie } from '../../api/mongoapi';
 import RatingStar from '../../images/rating-star.svg';
 import WhitePlus from '../../images/white-plus.svg';
 import CloseIcon from '../../images/x.svg';
+import ImageNotFound from '../../images/image-not-found.svg';
 
 interface Props {
   setShowEditForm: React.Dispatch<React.SetStateAction<boolean>>,
@@ -51,7 +52,7 @@ const HistoryForm = ({ setShowEditForm, _id, title, posterPath, watch_date, user
           <div>
             <h3>Edit this movie</h3>
             <div className='history-form-top-half'>
-              <img src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt="Poster for movie" />
+              <img src={posterPath ? `https://image.tmdb.org/t/p/w500/${posterPath}` : ImageNotFound} alt={`Poster for ${title}`} />
               <p>{title}</p>
             </div>
           </div>

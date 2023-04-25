@@ -8,6 +8,7 @@ import HistoryAddForm from '../forms/HistoryAddForm';
 // Images
 import HistoryIcon from '../../images/white-history-icon.svg';
 import DeleteIcon from '../../images/delete-icon.svg';
+import ImageNotFound from '../../images/image-not-found.svg';
 
 // Models
 import IHistory from '../../models/IHistory';
@@ -57,7 +58,7 @@ const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatch
           key={movie.movieId} 
           href={`/movie/${movie.movieId}`} 
           title={movie.title}>
-          <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} />
+          <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w185/${movie.poster_path}` : ImageNotFound} alt={movie.title} />
         </a>
         <div className='watchlist-movie-btn-container'>
           <button type='button' onClick={handleDeleteFromWatchlist}>
