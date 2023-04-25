@@ -1,5 +1,5 @@
 export const getWatchlistMovies = () => {
-  return fetch('http://localhost:5000/watchlist-movies')
+  return fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/watchlist-movies`)
     .then(res => {
       if (!res.ok) {
         throw new Error(
@@ -20,7 +20,7 @@ export const createWatchlistMovie = (
   runtime: number,
   user_id: string
 ) => {
-  return fetch('http://localhost:5000/watchlist-movies', {
+  return fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/watchlist-movies`, {
     method: 'POST',
     body: JSON.stringify({
       movieId,
@@ -47,7 +47,7 @@ export const createWatchlistMovie = (
 };
 
 export const deleteWatchlistMovie = async (userId: string ,movieId: number) => {
-  return await fetch(`http://localhost:5000/watchlist-movies/${userId}/${movieId}`, {
+  return await fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/watchlist-movies/${userId}/${movieId}`, {
     method: 'DELETE',
   });
 };
@@ -59,7 +59,7 @@ export const addUser = (
   picture: string,
   sub: string
 ) => {
-  return fetch('http://localhost:5000/user/sign-up', {
+  return fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/user/sign-up`, {
     method: 'POST',
     body: JSON.stringify({
       email,
@@ -83,7 +83,7 @@ export const addUser = (
 };
 
 export const getHistoryMovies = (userId: string) => {
-  return fetch(`http://localhost:5000/history/${userId}`)
+  return fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/history/${userId}`)
     .then(res => {
       if (!res.ok) {
         throw new Error(
@@ -104,7 +104,7 @@ export const addMovieToHistory = (
   rewatch: boolean,
   points: number
 ) => {
-  return fetch('http://localhost:5000/history', {
+  return fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/history`, {
     method: 'POST',
     body: JSON.stringify({
       user_id,
@@ -131,7 +131,7 @@ export const addMovieToHistory = (
 };
 
 export const editHistoryMovie = (_id: string, watch_date: Date, user_rating: number, rewatch: boolean) => {
-  return fetch(`http://localhost:5000/history/${_id}`, {
+  return fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/history/${_id}`, {
     method: 'PATCH',
     body: JSON.stringify({
       watch_date,
@@ -153,7 +153,7 @@ export const editHistoryMovie = (_id: string, watch_date: Date, user_rating: num
 };
 
 export const deleteHistoryMovie = async (user_id: string, _id: string ) => {
-  return await fetch(`http://localhost:5000/history/${user_id}/${_id}`, {
+  return await fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/history/${user_id}/${_id}`, {
     method: 'DELETE',
   });
 };
