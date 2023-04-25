@@ -156,7 +156,7 @@ input[type=date] {
 }
 
 .remove-from-watchlist-btn:hover {
-  background: #734949;
+  background: #941515;
 }
 
 .link {
@@ -371,7 +371,7 @@ header nav .active {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(90deg, rgba(117, 155, 163, 0.9) 0%, rgba(117, 155, 163, 0.6) 100%);
+  background: linear-gradient(90deg, #003E73 0%, #006FCF 100%);
   width: 70px;
   padding: 4px;
   -webkit-backdrop-filter: blur(2px);
@@ -466,7 +466,7 @@ header nav .active {
   top: 8px;
   align-items: center;
   gap: 4px;
-  background: linear-gradient(90deg, rgba(117, 155, 163, 0.9) 0%, rgba(117, 155, 163, 0.6) 100%);
+  background: linear-gradient(90deg, #003E73 0%, #006FCF 100%);
   border-radius: 8px;
   padding: 0px 8px;
   color: #FFFFFF;
@@ -520,7 +520,7 @@ header nav .active {
   top: 8px;
   align-items: center;
   gap: 4px;
-  background: linear-gradient(90deg, rgba(117, 155, 163, 0.9) 0%, rgba(117, 155, 163, 0.6) 100%);
+  background: linear-gradient(90deg, #003E73 0%, #006FCF 100%);
   border-radius: 8px;
   padding: 0px 8px;
   color: #FFFFFF;
@@ -688,7 +688,7 @@ header nav .active {
 .movie-details-container .movie-details-grid .top-half .top-half-padded-content .movie-details-information-container .movie-details-title-rating-container .movie-details-rating {
   display: inline-block;
   vertical-align: middle;
-  background: linear-gradient(90deg, rgba(117, 155, 163, 0.9) 0%, rgba(117, 155, 163, 0.6) 100%);
+  background: linear-gradient(90deg, #003E73 0%, #006FCF 100%);
   padding: 0px 16px;
   border-radius: 8px;
   margin-left: 8px;
@@ -1002,7 +1002,7 @@ header nav .active {
 .history-container .white-underline {
   height: 1px;
   width: 100%;
-  background: white;
+  background: rgba(255, 255, 255, 0.097);
 }
 
 .history-item-container-desktop {
