@@ -24,7 +24,7 @@ const MovieDetailsExtraInfo = ({ release_date, runtime, budget, revenue } : Prop
       </div>
       <div>
         <p className='movie-details-extra-subtitle'>Budget</p>
-        {budget >= 0 ? 
+        {budget > 0 ? 
           <p className='movie-details-extra-body'>{`${formatToUsDollars.format(budget)}`}</p> 
           : 
           <p className='movie-details-extra-body'>Unknown</p>
@@ -32,7 +32,7 @@ const MovieDetailsExtraInfo = ({ release_date, runtime, budget, revenue } : Prop
       </div>
       <div>
         <p className='movie-details-extra-subtitle'>Revenue</p>
-        {revenue >= 0 ? 
+        {revenue > 0 ? 
           <p className='movie-details-extra-body'>{`${formatToUsDollars.format(revenue)}`}</p>
           : 
           <p className='movie-details-extra-body'>Unknown</p> 
