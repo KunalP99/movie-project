@@ -80,9 +80,10 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
             </li>
             <li>
               {user.email !== '' ? 
-                <div>
+                <>
+                  <img className='header-user-profile-picture' src={user.picture} alt="User profile picture" />
                   <a>{user.given_name}</a>
-                </div>
+                </>
                 :
                 <GoogleLogin 
                   useOneTap

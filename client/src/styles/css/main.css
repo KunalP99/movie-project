@@ -262,7 +262,7 @@ header nav .header-logo h2 span {
 header nav .navbar-links {
   display: none;
   position: fixed;
-  background: black;
+  background: #131313;
   right: 0;
   top: 0;
   height: 100vh;
@@ -280,6 +280,10 @@ header nav .navbar-links ul li {
   display: flex;
   align-items: center;
   gap: 32px;
+}
+header nav .navbar-links ul li .header-user-profile-picture {
+  width: 34px;
+  border-radius: 80px;
 }
 header nav .nav-btn {
   position: fixed;
