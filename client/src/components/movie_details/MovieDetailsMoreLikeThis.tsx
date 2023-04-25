@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { getMoviesByOnGenre } from '../../api/api';
+import { getMoviesByOneGenre } from '../../api/api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import type SwiperCore from 'swiper';
@@ -23,7 +23,7 @@ const MovieDetailsMoreLikeThis = ({ genres, loading } : Props) => {
 
   useEffect(() => {
     // Get random value based on the genres array length and get a random page from the list of movies
-    getMoviesByOnGenre(genres[Math.floor(Math.random() * genres.length)].id.toString() || '', Math.floor(Math.random() * 21))
+    getMoviesByOneGenre(genres[Math.floor(Math.random() * genres.length)].id.toString() || '', Math.floor(Math.random() * 21))
       .then(data => setMovies(data.results))
       .catch(err =>console.log(err.message));
   }, []);
