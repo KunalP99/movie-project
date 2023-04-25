@@ -92,7 +92,6 @@ const HistoryForm = ({ setShowModal, id, title, posterPath, runtime, setFormSubm
             </div>
           </div>
           <div className='history-form-container'>
-
             <div className='history-form-date-container'>
               <label htmlFor="date-watched">Date Watched</label>
               <input 
