@@ -64,11 +64,12 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
             <h2>Popcorn<span>.</span></h2>
           </a>
         </div>
+        <button className='nav-btn' type='button' onClick={toggleMenu}><img src={navIcon} alt="Open sidebar" /></button>
         <div className='navbar-links'>
           <ul>
-            <li>
+            <li className='search-bar-container'>
               <img src={SearchIcon} alt="Search for a movie" />
-              <a href="/search">Search</a>
+              <input type="text" placeholder='Search for a movie...' />
             </li>
             <li>
               <img src={WatchlistIcon} alt="View your watchlist" />
@@ -108,7 +109,6 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
             </li>
           </ul>
         </div>
-        <button className='nav-btn' type='button' onClick={toggleMenu}><img src={navIcon} alt="Open sidebar" /></button>
       </nav>
     </header>
   );

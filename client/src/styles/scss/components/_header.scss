@@ -43,9 +43,34 @@ header {
           display: flex;
           align-items: center;
           gap: $spacing-32;
+
           .header-user-profile-picture {
             width: 34px;
             border-radius: 80px;
+          }
+        }
+        .search-bar-container {
+          position: relative;
+          width: 220px;
+          img {
+            position: absolute;
+            top: 50%;
+            left: 3px;
+            transform: translateY(-50%);
+          }
+
+          input {
+            padding: $spacing-08 $spacing-32;
+            background: white;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+
+            &:focus {
+              outline-style: solid;
+              outline-color: $primary-colour;
+              outline-width: 2px;
+            }
           }
         }
       }
@@ -102,8 +127,10 @@ header {
           position: static;
           flex-direction: row;
 
-          li > img {
-            display: none;
+          li + li {
+            img {
+              display: none;
+            }
           }
         }
       }

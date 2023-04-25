@@ -285,6 +285,28 @@ header nav .navbar-links ul li .header-user-profile-picture {
   width: 34px;
   border-radius: 80px;
 }
+header nav .navbar-links ul .search-bar-container {
+  position: relative;
+  width: 220px;
+}
+header nav .navbar-links ul .search-bar-container img {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+}
+header nav .navbar-links ul .search-bar-container input {
+  padding: 8px 32px;
+  background: white;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+}
+header nav .navbar-links ul .search-bar-container input:focus {
+  outline-style: solid;
+  outline-color: #0068C1;
+  outline-width: 2px;
+}
 header nav .nav-btn {
   position: fixed;
   right: 0;
@@ -323,7 +345,7 @@ header nav .active {
     position: static;
     flex-direction: row;
   }
-  header nav .navbar-links ul li > img {
+  header nav .navbar-links ul li + li img {
     display: none;
   }
   header nav .nav-btn {
