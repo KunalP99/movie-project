@@ -287,9 +287,11 @@ header nav .navbar-links ul li .header-user-profile-picture {
 }
 header nav .navbar-links ul .search-bar-container {
   position: relative;
-  width: 220px;
 }
-header nav .navbar-links ul .search-bar-container img {
+header nav .navbar-links ul .search-bar-container button {
+  display: flex;
+  border: none;
+  background: none;
   position: absolute;
   top: 50%;
   left: 3px;
@@ -300,7 +302,7 @@ header nav .navbar-links ul .search-bar-container input {
   background: white;
   border-radius: 8px;
   border: none;
-  width: 100%;
+  width: 150px;
 }
 header nav .navbar-links ul .search-bar-container input:focus {
   outline-style: solid;

@@ -1,24 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { searchForMovie } from '../api/api';
 
 // Models
 import ISearchMovies  from '../models/ISearchMovies';
 
-const Search = () => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [movies, setMovies] = useState<ISearchMovies[]>([]);
-  
-  // Get searchQuery from user and pass results into the sort function
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    searchForMovie(searchQuery)
-      .then(data => {
-        sortMovies(data.results);
-      });
+type SearchParams = {
+  searchQuery: string;
+}
 
-    setSearchQuery('');
-  };
+const Search = () => {
+  const [movies, setMovies] = useState<ISearchMovies[]>([]);
+  const { searchQuery } = useParams<SearchParams>();
+
+  // Get searchQuery from params and pass results into the sort function
+  useEffect(() => {
+    if (searchQuery) {
+      searchForMovie(searchQuery)
+        .then(data => {
+          sortMovies(data.results);
+        });
+    }
+  }, []);
 
   // Sort the returned movies from search query in descending order based on movie popularity
   const sortMovies = (allMovies: ISearchMovies[]) => {
@@ -36,15 +39,6 @@ const Search = () => {
 
   return (
     <section className="search-container" style={{'marginTop': '150px'}}>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="search-movie">Search for a movie: 
-          <input 
-            type="text" 
-            value={searchQuery} 
-            onChange={(e) => setSearchQuery(e.target.value)}  />
-        </label>
-        <button>Search</button>
-      </form>
       {movies.map(movie => (
         <div key={movie.id}>
           <p>{movie.title}</p>
