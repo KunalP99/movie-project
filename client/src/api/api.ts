@@ -92,8 +92,8 @@ export const getMoviesByOneGenre = (genreId: string, page: number) => {
     });
 };
 
-export const searchForMovie = (searchQuery: string) => {
-  return fetch(`${process.env.REACT_APP_TMDB_BASE_URL}/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchQuery}&page=1&include_adult=false`)
+export const searchForMovie = (searchQuery: string, page: number) => {
+  return fetch(`${process.env.REACT_APP_TMDB_BASE_URL}/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchQuery}&page=${page}&include_adult=false`)
     .then(res => {
       if (!res.ok) {
         throw new Error(
