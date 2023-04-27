@@ -8,6 +8,8 @@ import ISearchMovies  from '../models/ISearchMovies';
 // Images
 import RatingStar from '../images/rating-star.svg';
 import ImageNotFound from '../images/image-not-found.svg';
+import WhiteArrow from '../images/white-arrow.svg';
+import BlueArrow from '../images/blue-arrow.svg';
 
 type SearchParams = {
   searchQuery: string;
@@ -79,9 +81,23 @@ const Search = () => {
           </>
         ))}
       </div>
-      <button onClick={() => setPage(page => page - 1)}>Prev</button>
-      <button onClick={() => setPage(page => page + 1)}>Next</button>
-      <p>{page}</p>
+      {totalResults !== 0 && 
+        <div className='search-pagination'>
+          {page !== 1 &&
+            <button className='search-pagination-prev-btn' onClick={() => setPage(page => page - 1)}><img src={WhiteArrow} alt="Previous page" /></button>
+          }
+          <div className='search-pagination-box-page'>
+            <p>{page}</p>
+          </div>
+          <p>of</p>
+          <div className='search-pagination-box-total-page'>
+            <p>{totalPages}</p>
+          </div>
+          {page !== totalPages &&
+            <button className='search-pagination-next-btn' onClick={() => setPage(page => page + 1)}><img src={BlueArrow} alt="Next page" /></button>
+          }
+        </div>
+      }
     </section>
   );
 };

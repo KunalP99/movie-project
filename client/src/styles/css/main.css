@@ -1288,6 +1288,47 @@ header nav .active {
 .search-container .search-flex-container .search-movie-container .search-movie-information .search-movie-overview {
   display: none;
 }
+.search-container .search-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin: 80px 0px;
+}
+.search-container .search-pagination button {
+  border: none;
+  background: transparent;
+}
+.search-container .search-pagination .search-pagination-prev-btn {
+  transform: rotate(180deg);
+}
+.search-container .search-pagination .search-pagination-box-page {
+  background: #0068C1;
+  padding: 32px;
+  position: relative;
+  border-radius: 8px;
+}
+.search-container .search-pagination .search-pagination-box-page p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+}
+.search-container .search-pagination .search-pagination-box-total-page {
+  border: solid 2px #0068C1;
+  padding: 32px;
+  position: relative;
+  border-radius: 8px;
+}
+.search-container .search-pagination .search-pagination-box-total-page p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  color: #0068C1;
+}
 .search-container .underline {
   height: 1px;
   width: 100%;

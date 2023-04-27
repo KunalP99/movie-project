@@ -79,6 +79,52 @@
       }
     }
   }
+
+  .search-pagination {
+    @include flex-center;
+    gap: $spacing-32;
+    margin: $spacing-80 0px;
+    button {
+      @include reset-btn;
+    }
+
+    .search-pagination-prev-btn {
+      transform: rotate(180deg)
+    }
+
+    .search-pagination-box-page {
+      background: $primary-colour;
+      padding: $spacing-32;
+      position: relative;
+      border-radius: 8px;
+
+
+      p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    .search-pagination-box-total-page {
+      border: solid 2px $primary-colour;
+      padding: $spacing-32;
+      position: relative;
+      border-radius: 8px;
+
+      p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: $font-weight-bold;
+        color: $primary-colour;
+      }
+    }
+  }
+
   .underline {
     @include underline;
   }
