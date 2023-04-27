@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { searchForMovie } from '../api/api';
+import { scrollToTop } from '../helpers/scrollToTop';
 
 // Models
 import ISearchMovies  from '../models/ISearchMovies';
@@ -21,6 +22,16 @@ const Search = () => {
   const [totalPages, setTotalPages] = useState<number>(1);
   const [totalResults, setTotalResults] = useState<number>(0);
   const { searchQuery } = useParams<SearchParams>();
+
+  const handleNextBtn = () => {
+    scrollToTop();
+    setPage(page => page + 1);
+  };
+
+  const handlePrevBtn = () => {
+    scrollToTop();
+    setPage(page => page - 1);
+  };
 
   // Get searchQuery from params and pass results into the sort function
   useEffect(() => {
@@ -84,7 +95,7 @@ const Search = () => {
       {totalResults !== 0 && 
         <div className='search-pagination'>
           {page !== 1 &&
-            <button className='search-pagination-prev-btn' onClick={() => setPage(page => page - 1)}><img src={WhiteArrow} alt="Previous page" /></button>
+            <button className='search-pagination-prev-btn' onClick={handlePrevBtn}><img src={WhiteArrow} alt="Previous page" /></button>
           }
           <div className='search-pagination-box-page'>
             <p>{page}</p>
@@ -94,7 +105,7 @@ const Search = () => {
             <p>{totalPages}</p>
           </div>
           {page !== totalPages &&
-            <button className='search-pagination-next-btn' onClick={() => setPage(page => page + 1)}><img src={BlueArrow} alt="Next page" /></button>
+            <button className='search-pagination-next-btn' onClick={handleNextBtn}><img src={BlueArrow} alt="Next page" /></button>
           }
         </div>
       }
