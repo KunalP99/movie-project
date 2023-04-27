@@ -8,6 +8,8 @@
 
   .in-theatres-rating-container {
     @include rating-container-style;
+    top: 8px;
+    left: 8px;
 
     p {
       font-size: pxToRem(10px);

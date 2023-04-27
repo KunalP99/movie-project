@@ -5,6 +5,10 @@ import { searchForMovie } from '../api/api';
 // Models
 import ISearchMovies  from '../models/ISearchMovies';
 
+// Images
+import RatingStar from '../images/rating-star.svg';
+import ImageNotFound from '../images/image-not-found.svg';
+
 type SearchParams = {
   searchQuery: string;
 }
@@ -13,6 +17,7 @@ const Search = () => {
   const [movies, setMovies] = useState<ISearchMovies[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
+  const [totalResults, setTotalResults] = useState<number>(0);
   const { searchQuery } = useParams<SearchParams>();
 
   // Get searchQuery from params and pass results into the sort function
@@ -23,6 +28,7 @@ const Search = () => {
           console.log(data);
           sortMovies(data.results);
           setTotalPages(data.total_pages);
+          setTotalResults(data.total_results);
         });
     }
   }, [page]);
@@ -42,15 +48,40 @@ const Search = () => {
   };
 
   return (
-    <section className="search-container" style={{'marginTop': '200px'}}>
+    <section className="search-container">
       <h2>Search results for <span>&quot;</span>{searchQuery}<span>&quot;</span></h2>
-      {movies.map(movie => (
-        <div key={movie.id}>
-          <p>{movie.title}</p>
-        </div>
-      ))}
+      <p className='search-total-results'>{`${totalResults} results found`}</p>
+      <div className='search-flex-container'>
+        <div className='underline'></div>
+        {movies.map(movie => (
+          <>
+            <div key={movie.id} className='search-movie-container' title={movie.title}>
+              <div className='search-movie-img-container'>
+                {movie.vote_average !== 0 && 
+                <div className='search-movie-rating-container'>
+                  <img src={RatingStar} alt='Rating star' />
+                  <p>{Math.round(movie.vote_average * 10) / 10}</p>
+                </div>
+                }
+                <a href={`/movie/${movie.id}`}>
+                  <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w154/${movie.poster_path}` : ImageNotFound} alt={`Poster for ${movie.title}`} />
+                </a>
+              </div>
+              <div className='search-movie-information'>
+                <p className='search-movie-date'>{movie.release_date.slice(0, 4)}</p>
+                <a href={`/movie/${movie.id}`}>
+                  <p className='search-movie-title'>{movie.title}</p>
+                </a>
+                <p className='search-movie-overview'>{movie.overview}</p>
+              </div>
+            </div>
+            <div className='underline'></div>
+          </>
+        ))}
+      </div>
       <button onClick={() => setPage(page => page - 1)}>Prev</button>
       <button onClick={() => setPage(page => page + 1)}>Next</button>
+      <p>{page}</p>
     </section>
   );
 };
