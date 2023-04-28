@@ -181,5 +181,11 @@
   .search-container {
     margin-top: 200px;
     padding: 0px 180px;
+
+    .search-flex-container {
+      .search-movie-container {
+        gap: $spacing-24;
+      }
+    }
   }
 }
