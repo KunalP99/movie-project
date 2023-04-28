@@ -1,6 +1,7 @@
 import Hero from '../components/home/Hero';
 import Trending from '../components/home/Trending';
 import InTheatres from '../components/home/InTheatres';
+import PopularStars from '../components/home/PopularStars';
 
 // Models
 import { WatchlistProps } from '../models/IWatchlist';
@@ -16,6 +17,7 @@ const Home = ({ handleCreateWatchlistMovie, handleDeleteWatchlistMovie, watchlis
         <div className='home-content-container'>
           <Trending />
           <InTheatres />
+          <PopularStars />
         </div>
       </section>
     </div>

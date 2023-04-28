@@ -75,7 +75,7 @@ $border-radius: 16px;
 }
 
 @mixin subtitle {
-  font-size: clamp(pxToRem(20px), 6vw, pxToRem(28px));
+  font-size: clamp(pxToRem(20px), 2vw, pxToRem(28px));
   font-weight: $font-weight-regular;
 }
 
