@@ -685,6 +685,41 @@ header nav .active {
     margin-top: 8px;
   }
 }
+.in-watchlist-container {
+  margin-top: 64px;
+}
+.in-watchlist-container h2, .in-watchlist-container p {
+  padding-left: 16px;
+}
+.in-watchlist-container h2 {
+  margin-bottom: 4px;
+}
+.in-watchlist-container p {
+  color: rgba(255, 255, 255, 0.48);
+  margin-bottom: 16px;
+}
+.in-watchlist-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+.in-watchlist-container .swiper-slide-prev img,
+.in-watchlist-container .swiper-slide-next img {
+  transition: 400ms ease-in-out;
+  opacity: 0.5;
+}
+
+@media (min-width: 1000px) {
+  .in-watchlist-container {
+    margin-top: 120px;
+  }
+  .in-watchlist-container h2, .in-watchlist-container p {
+    padding-left: 180px;
+  }
+  .in-watchlist-container p {
+    margin-bottom: 40px;
+  }
+}
 .movie-details-container {
   margin-top: 100px;
 }

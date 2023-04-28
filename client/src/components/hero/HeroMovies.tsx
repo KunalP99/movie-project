@@ -21,6 +21,7 @@ interface Props {
     overview: string, 
     rating: number, 
     poster_path: string, 
+    backdrop_path: string,
     release_date: string,
     runtime: number,
     user_id: string): Promise<void>,
@@ -53,6 +54,7 @@ const HeroMovies = ({ movie, handleCreateWatchlistMovie, handleDeleteWatchlistMo
         movie.overview, 
         movie.vote_average, 
         movie.poster_path, 
+        movie.backdrop_path,
         movie.release_date,
         movie.runtime,
         user.sub
