@@ -53,7 +53,7 @@ function App() {
   // Get watchlist movies from backend
   useEffect(() => {
     setLoading(true);
-    getWatchlistMovies()
+    getWatchlistMovies(user.sub)
       .then(data => setWatchlist(data))
       .catch(err => console.log(err.message));
 

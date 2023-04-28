@@ -1,5 +1,5 @@
-export const getWatchlistMovies = () => {
-  return fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/watchlist-movies`)
+export const getWatchlistMovies = (userId: string) => {
+  return fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/watchlist-movies/${userId}`)
     .then(res => {
       if (!res.ok) {
         throw new Error(

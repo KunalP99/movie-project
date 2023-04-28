@@ -4,8 +4,14 @@ import WatchListMovieModel from '../models/WatchlistMovie';
 
 // Gets the list of watchlist movies from database
 export const getWatchlist = async (req: Request, res: Response) => {
-  const watchlistMovies = await WatchListMovieModel.find();
-  res.status(200).json(watchlistMovies);
+  const { user_id } = req.params;
+
+  try {
+    const watchlistMovies = await WatchListMovieModel.find({user_id: user_id}).sort({"createdAt": -1});
+    res.status(200).json(watchlistMovies);
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
 }
 
 // Adds a movie to the database with the request body information

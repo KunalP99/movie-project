@@ -46,8 +46,7 @@ const WatchlistMovie = ({ movie, handleDeleteWatchlistMovie, watchlist, setWatch
     if (movie !== undefined) {
       handleDeleteWatchlistMovie(user.sub, movie.movieId);
       // Update UI to show array with removed movie
-      setWatchlist(watchlist.filter(person => person.user_id === user.sub)
-        .filter(watchlistMovie => watchlistMovie.movieId !== movie.movieId));
+      setWatchlist(watchlist.filter(watchlistMovie => watchlistMovie.movieId !== movie.movieId));
     }
   };
 

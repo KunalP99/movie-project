@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -9,9 +9,6 @@ import WatchlistMovie from '../components/watchlist/WatchlistMovie';
 // Models
 import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
 import IHistory from '../models/IHistory';
-
-// Context
-import { UserContext } from '../components/context/UserContext';
 
 interface Props {
   watchlist: IHandleGetWatchlistMovies[],
@@ -28,7 +25,6 @@ interface Props {
 const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovie, history, setHistory } : Props) => {
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const { user } = useContext(UserContext);
 
   const successNotif = () => toast.success('Movie added to History!');
   const errorNotif = () => toast.error('Something went wrong!');
@@ -53,7 +49,7 @@ const Watchlist = ({ watchlist, setWatchlist, loading, handleDeleteWatchlistMovi
         history={history} />
       <h2>Your Watchlist</h2>
       <div className='watchlist-movies-container'>
-        {!loading && watchlist.filter(person => person.user_id === user.sub).map(movie => (
+        {!loading && watchlist.map(movie => (
           <WatchlistMovie
             key={movie.movieId} 
             movie={movie} 
