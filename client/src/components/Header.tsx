@@ -16,6 +16,7 @@ import { IHandleGetWatchlistMovies } from '../models/IWatchlist';
 
 // Context
 import { UserContext } from './context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   watchlist: IHandleGetWatchlistMovies[],
@@ -32,6 +33,8 @@ interface GoogleUserInfo {
 
 const Header = ({ watchlist, setWatchlist } : Props) => {
   const [navIcon, setNavIcon] = useState(HambugerIcon);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const navigate = useNavigate();
   const {user, setUser} = useContext(UserContext);
 
   // Get local storage item data when component mounts if there is data
@@ -55,6 +58,10 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
     // Show X icon and Hamburger icon
     navbarLinks?.classList.toggle('active');
   };
+
+  const handleSearchSubmit = () => {
+    navigate(`/search/${searchQuery}`, { replace: true });
+  };
   
   return (
     <header>
@@ -64,11 +71,19 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
             <h2>Popcorn<span>.</span></h2>
           </a>
         </div>
+        <button className='nav-btn' type='button' onClick={toggleMenu}><img src={navIcon} alt="Open sidebar" /></button>
         <div className='navbar-links'>
           <ul>
-            <li>
-              <img src={SearchIcon} alt="Search for a movie" />
-              <a href="/search">Search</a>
+            <li className='search-bar-container'>
+              <form onSubmit={handleSearchSubmit}>
+                <button type='submit'>
+                  <img src={SearchIcon} alt="Search for a movie" />
+                </button>
+                <input 
+                  type="text" 
+                  placeholder='Search for a movie...' 
+                  onChange={(e) => setSearchQuery(e.target.value)} />
+              </form>
             </li>
             <li>
               <img src={WatchlistIcon} alt="View your watchlist" />
@@ -108,7 +123,6 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
             </li>
           </ul>
         </div>
-        <button className='nav-btn' type='button' onClick={toggleMenu}><img src={navIcon} alt="Open sidebar" /></button>
       </nav>
     </header>
   );
