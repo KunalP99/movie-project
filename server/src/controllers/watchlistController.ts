@@ -10,12 +10,13 @@ export const getWatchlist = async (req: Request, res: Response) => {
 
 // Adds a movie to the database with the request body information
 export const addToWatchlist = async (req: Request, res: Response) => {
-  const { movieId, title, overview, rating, poster_path, release_date, runtime, user_id } : 
+  const { movieId, title, overview, rating, poster_path, backdrop_path, release_date, runtime, user_id } : 
   { movieId: number, 
     title: string, 
     overview: string, 
     rating: number, 
     poster_path: string,
+    backdrop_path: string,
     release_date: string, 
     runtime: number,
     user_id: string } = req.body;
@@ -27,6 +28,7 @@ export const addToWatchlist = async (req: Request, res: Response) => {
       overview,
       rating,
       poster_path,
+      backdrop_path,
       release_date,
       runtime,
       user_id

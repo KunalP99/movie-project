@@ -1,0 +1,73 @@
+.small-circle-swiper {
+  .swiper-slide {
+    img {
+      object-fit: cover;
+      width: 120px;
+      height: 120px;
+      border-radius: 300px;
+      cursor: pointer;
+    }
+  }
+}
+
+.swiper-button-next-unique-container, 
+.swiper-button-prev-unique-container {
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .small-circle-swiper {
+    .swiper-slide {
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .swiper-button-next-unique-container, 
+  .swiper-button-prev-unique-container {
+    display: block;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+  }
+
+  .swiper-button-prev-unique-container {
+    left: 20px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.83) 0%, rgba(0, 0, 0, 0) 100%);
+    .swiper-button-prev-unique {
+      cursor: pointer;
+      @include reset-btn;
+      transform: rotate(180deg) ;
+      img {
+        width: 50px;
+      }
+    }
+  }
+
+  .swiper-button-next-unique-container {
+    right: 20px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.83) 0%, rgba(0, 0, 0, 0) 100%);
+    .swiper-button-next-unique {
+      cursor: pointer;
+      @include reset-btn;
+      img {
+        width: 50px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  .small-circle-swiper {
+    .swiper-slide {
+      img {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  }
+}

@@ -22,6 +22,7 @@ const WatchListMovieSchema = new Schema({
   overview: String,
   rating: Number,
   poster_path: String,
+  backdrop_path: String,
   release_date: String,
   runtime: Number,
   user_id: {

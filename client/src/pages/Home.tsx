@@ -1,7 +1,8 @@
 import Hero from '../components/home/Hero';
 import Trending from '../components/home/Trending';
 import InTheatres from '../components/home/InTheatres';
-import Trailers from '../components/home/LatestVideos';
+import PopularStars from '../components/home/PopularStars';
+import InWatchlist from '../components/home/InWatchlist';
 
 // Models
 import { WatchlistProps } from '../models/IWatchlist';
@@ -17,7 +18,10 @@ const Home = ({ handleCreateWatchlistMovie, handleDeleteWatchlistMovie, watchlis
         <div className='home-content-container'>
           <Trending />
           <InTheatres />
-          <Trailers />
+          <PopularStars />
+          {watchlist.length >= 4 &&
+            <InWatchlist watchlist={watchlist} />
+          }
         </div>
       </section>
     </div>

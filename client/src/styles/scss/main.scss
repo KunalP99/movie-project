@@ -4,13 +4,15 @@
 
 // Components
 @import './components/small-swiper';
+@import './components/small-circle-swiper';
 @import './components/header';
 
 // Home Page Components
   @import './components/hero';
   @import './components/in-theatres';
   @import './components/trending';
-  @import './components/latest-videos';
+  @import './components/popular-stars';
+  @import './components/in-watchlist';
 
 // Pages
 @import './pages/movie-details';

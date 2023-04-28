@@ -1,0 +1,43 @@
+.in-watchlist-container {
+  margin-top: $spacing-64;
+
+  h2, p {
+    padding-left: $spacing-16;
+  }
+
+  h2 {
+    margin-bottom: $spacing-04;
+  }
+
+  p {
+    color: $transparent-white-font-colour;
+    margin-bottom: $spacing-16;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .swiper-slide-prev, 
+  .swiper-slide-next {
+    img {
+      transition: 400ms ease-in-out;
+      opacity: 0.5;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .in-watchlist-container {
+    margin-top: $spacing-120;
+    
+    h2, p {
+      padding-left: 180px;
+    }
+
+    p {
+      margin-bottom: $spacing-40;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.stars-container {
+  @include container-spacing;
+  position: relative;
+
+  h2 {
+    @include h2-spacing;
+  }
+
+  .stars-person-container {
+    width: 120px;
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      width: 120px;
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .stars-container {
+    .stars-person-container {
+      width: 200px;
+      p {
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  .stars-container {
+    .stars-person-container {
+      width: 300px;
+      p {
+        width: 300px;
+        margin-top: $spacing-08;
+      }
+    }
+  }
+}

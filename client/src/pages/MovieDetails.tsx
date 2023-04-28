@@ -41,6 +41,7 @@ interface Props {
     overview: string, 
     rating: number, 
     poster_path: string, 
+    backdrop_path: string,
     release_date: string,
     runtime: number,
     user_id: string): Promise<void>,
@@ -129,6 +130,7 @@ const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, han
         movieDetails.overview, 
         movieDetails.vote_average, 
         movieDetails.poster_path, 
+        movieDetails.backdrop_path,
         movieDetails.release_date,
         movieDetails.runtime,
         user.sub

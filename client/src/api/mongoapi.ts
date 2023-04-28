@@ -16,6 +16,7 @@ export const createWatchlistMovie = (
   overview: string, 
   rating: number, 
   poster_path: string, 
+  backdrop_path: string,
   release_date: string,
   runtime: number,
   user_id: string
@@ -28,6 +29,7 @@ export const createWatchlistMovie = (
       overview,
       rating,
       poster_path, 
+      backdrop_path,
       release_date,
       runtime,
       user_id
