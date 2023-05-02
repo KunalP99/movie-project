@@ -19,9 +19,7 @@ const ProfileWidget = ({ watchlist, history } : Props) => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    const userWatchlist = watchlist.filter(person => person.user_id === user.sub);
-
-    setWatchlistLength(userWatchlist.length);
+    setWatchlistLength(watchlist.length);
     setHistoryLength(history.length);
   }, [watchlist, history]);
 

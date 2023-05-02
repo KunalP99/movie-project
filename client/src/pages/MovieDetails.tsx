@@ -101,7 +101,7 @@ const MovieDetails = ({ watchlist, setWatchlist, handleCreateWatchlistMovie, han
 
   // Check if movie is already in watchlist 
   useEffect(() => {
-    watchlist.filter(person => person.user_id === user.sub).map(watchlistMovie => {
+    watchlist.map(watchlistMovie => {
       if (movieDetails?.id === watchlistMovie.movieId) {
         setInWatchlist(true);
       }

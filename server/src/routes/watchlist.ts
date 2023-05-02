@@ -4,7 +4,7 @@ import { getWatchlist, addToWatchlist, deleteFromWatchlist } from '../controller
 const router = express.Router();
 
 // GET watchlist
-router.get('/', getWatchlist);
+router.get('/:user_id', getWatchlist);
 
 // POST new movie to watchlist
 router.post('/', addToWatchlist);
