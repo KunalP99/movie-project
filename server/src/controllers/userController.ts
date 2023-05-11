@@ -4,8 +4,8 @@ import UserModel from '../models/User';
 
 // Add user to database only if they are not already in it
 export const signUpUser = async (req: Request, res: Response) => {
-  const {email, given_name, name, picture, sub}: 
-  { email: string, given_name: string, name: string, picture: string, sub: string } = req.body
+  const {email, given_name, name, picture, points, sub}: 
+  { email: string, given_name: string, name: string, picture: string, points: number, sub: string } = req.body
 
   // Find if the the user trying to log in to website is already in the database using the sub property
   const result = await UserModel.findOne({sub: sub}).select('sub').lean();
@@ -17,6 +17,7 @@ export const signUpUser = async (req: Request, res: Response) => {
         given_name,
         name,
         picture,
+        points,
         sub
       });
       

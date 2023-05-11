@@ -114,6 +114,7 @@ const Header = ({ watchlist, setWatchlist } : Props) => {
                       decoded.given_name,
                       decoded.name,
                       decoded.picture,
+                      0,
                       decoded.sub
                     );
                   }}

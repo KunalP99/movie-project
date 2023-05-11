@@ -5,6 +5,7 @@ export interface IUser {
   given_name: string,
   name: string,
   picture: string,
+  points: number,
   sub: string
 }
 
@@ -29,6 +30,10 @@ const UserSchema: Schema = new Schema({
   },
   picture: {
     type: String,
+    required: true
+  },
+  points: {
+    type: Number,
     required: true
   },
   sub: {

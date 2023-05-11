@@ -59,6 +59,7 @@ export const addUser = (
   given_name: string,
   name: string,
   picture: string,
+  points: number,
   sub: string
 ) => {
   return fetch(`${process.env.REACT_APP_MONGO_API_BASE_URL}/user/sign-up`, {
@@ -68,6 +69,7 @@ export const addUser = (
       given_name,
       name,
       picture,
+      points,
       sub
     }),
     headers: {
