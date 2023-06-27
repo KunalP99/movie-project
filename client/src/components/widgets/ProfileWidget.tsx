@@ -1,5 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 
+// Images
+import PopcornPoints from '../../images/popcorn-points.svg';
+
 // Models 
 import { IHandleGetWatchlistMovies } from '../../models/IWatchlist';
 import IHistory from '../../models/IHistory';
@@ -15,12 +18,14 @@ interface Props {
 const ProfileWidget = ({ watchlist, history } : Props) => {
   const [watchlistLength, setWatchlistLength] = useState<number>(0);
   const [historyLength, setHistoryLength] = useState<number>(0);
+  const [points, setPoints] = useState<number>(0);
 
   const { user } = useContext(UserContext);
 
   useEffect(() => {
     setWatchlistLength(watchlist.length);
     setHistoryLength(history.length);
+    setPoints(history.reduce((prev, curr) => prev + curr.points, 0));
   }, [watchlist, history]);
 
   return (
@@ -37,12 +42,10 @@ const ProfileWidget = ({ watchlist, history } : Props) => {
         <p>Watched</p>
       </div>
       <div className='profile-widget-item'>
-        <h3>2</h3>
-        <p>Level</p>
-      </div>
-      <div className='profile-widget-item'>
-        <h3>5</h3>
-        <p>Achievements</p>
+        <div className='popcorn-points-container'>
+          <img className='popcorn-points-img' src={PopcornPoints} alt="Points icon" />
+          <h3>{points}</h3>
+        </div>
       </div>
     </div>
   );

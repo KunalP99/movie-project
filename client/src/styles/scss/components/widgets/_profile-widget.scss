@@ -1,6 +1,6 @@
 .profile-widget-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   gap: $spacing-24;
   background: #131313;
@@ -22,6 +22,17 @@
     p {
       color: $transparent-white-font-colour;
       font-size: clamp(pxToRem(16px), 2vw, pxToRem(28px));
+    }
+
+    .popcorn-points-container {
+      display: flex;
+      align-items: center;
+      gap: $spacing-08;
+    }
+
+    .popcorn-points-img {
+      width: 30px;
+      height: 30px;
     }
   }
 }
