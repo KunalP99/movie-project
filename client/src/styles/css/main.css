@@ -1812,7 +1812,7 @@ header nav .active {
 }
 .profile-widget-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   gap: 24px;
   background: #131313;
@@ -1835,6 +1835,15 @@ header nav .active {
 .profile-widget-container .profile-widget-item p {
   color: rgba(255, 255, 255, 0.48);
   font-size: clamp(1rem, 2vw, 1.75rem);
+}
+.profile-widget-container .profile-widget-item .popcorn-points-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.profile-widget-container .profile-widget-item .popcorn-points-img {
+  width: 30px;
+  height: 30px;
 }
 
 @media (min-width: 600px) {
